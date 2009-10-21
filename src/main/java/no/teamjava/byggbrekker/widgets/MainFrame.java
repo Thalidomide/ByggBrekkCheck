@@ -6,7 +6,7 @@ import java.awt.HeadlessException;
 import javax.swing.JFrame;
 
 import no.teamjava.byggbrekker.logic.ByggBrekkListener;
-import no.teamjava.byggbrekker.logic.CheckStatus;
+import no.teamjava.byggbrekker.logic.BuildStatus;
 import no.teamjava.byggbrekker.logic.Checker;
 import no.teamjava.byggbrekker.logic.CheckerListener;
 import no.teamjava.byggbrekker.logic.Credentials;
@@ -27,7 +27,8 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	public MainFrame() throws HeadlessException {
 		addGUI();
 
-		getNewCredentials();
+//		getNewCredentials();
+		gotCredentials(new Credentials("", ""));
 	}
 
 	private void getNewCredentials() {
@@ -86,15 +87,15 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	}
 
 	@Override
-	public void gotStatus(CheckStatus status) {
+	public void gotStatus(BuildStatus status) {
 		Color color;
 
 		switch (status) {
-			case good:
+			case ok:
 				color = Color.GREEN;
 				stopPlayer();
 				break;
-			case bad:
+			case broken:
 				color = Color.RED;
 				startPlayer();
 				break;

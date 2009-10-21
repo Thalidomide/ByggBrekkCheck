@@ -6,7 +6,7 @@ package no.teamjava.byggbrekker.logic;
  */
 public interface CheckerListener {
 
-	void gotStatus(CheckStatus status);
+	void gotStatus(BuildStatus status);
 
 	void stop();
 

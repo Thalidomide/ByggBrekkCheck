@@ -21,7 +21,8 @@ public class Checker extends Thread {
 	@Override
 	public void run() {
 		while (run) {
-			listener.gotStatus(getBobStatus());
+//			listener.gotStatus(getBobStatus());
+			listener.gotStatus(BuildStatus.broken);
 			try {
 				sleep(Settings.CHECK_INTERVAL);
 			} catch (InterruptedException e) {
@@ -36,7 +37,7 @@ public class Checker extends Thread {
 		listener.stop();
 	}
 
-	private CheckStatus getBobStatus() {
+	private BuildStatus getBobStatus() {
 		String responeBodyAsString = null;
 		HttpClient client = new HttpClient();
 
@@ -69,13 +70,13 @@ public class Checker extends Thread {
 		}
 
 		if (responeBodyAsString == null) {
-			return CheckStatus.unknown;
+			return BuildStatus.unknown;
 		} else if (responeBodyAsString.contains("Login")) {
-			return CheckStatus.authorizationFailed;
+			return BuildStatus.authorizationFailed;
 		} else if (responeBodyAsString.contains("Failed")) {
-			return CheckStatus.bad;
+			return BuildStatus.broken;
 		} else {
-			return CheckStatus.good;
+			return BuildStatus.ok;
 		}
 	}
 }
