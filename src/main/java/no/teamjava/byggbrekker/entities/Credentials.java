@@ -1,4 +1,4 @@
-package no.teamjava.byggbrekker.logic;
+package no.teamjava.byggbrekker.entities;
 
 /**
  * @author Olav Jensen

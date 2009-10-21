@@ -1,6 +1,6 @@
 package no.teamjava.byggbrekker.widgets;
 
-import no.teamjava.byggbrekker.logic.Credentials;
+import no.teamjava.byggbrekker.entities.Credentials;
 
 /**
  * @author Olav Jensen

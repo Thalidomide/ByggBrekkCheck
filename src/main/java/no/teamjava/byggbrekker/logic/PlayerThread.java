@@ -19,7 +19,6 @@ public class PlayerThread extends Thread {
 	public void run() {
 		player = null;
 		try {
-			System.out.println(new File(soundBuildDownPath).getAbsoluteFile());
 			player = new Player(new FileInputStream(new File(soundBuildDownPath)));
 			player.play();
 		} catch (Exception e1) {

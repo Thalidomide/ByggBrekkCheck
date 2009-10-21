@@ -5,17 +5,24 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 
+import no.teamjava.byggbrekker.entities.BuildCheckResult;
+import no.teamjava.byggbrekker.entities.BuildCheckStatus;
+import no.teamjava.byggbrekker.entities.Settings;
+import no.teamjava.byggbrekker.parser.BuildParser;
+
 /**
  * @author Olav Jensen, Raymond Koteng
  * @since 21.okt.2009
  */
-public class Checker extends Thread {
+public class BuildChecker extends Thread {
 
 	private boolean run = true;
 	private CheckerListener listener;
+	private BuildParser parser;
 
-	public Checker(CheckerListener listener) {
+	public BuildChecker(CheckerListener listener) {
 		this.listener = listener;
+		parser = new BuildParser();
 	}
 
 	@Override
@@ -36,7 +43,7 @@ public class Checker extends Thread {
 		listener.stop();
 	}
 
-	private BuildStatus getBobStatus() {
+	private BuildCheckResult getBobStatus() {
 		String responeBodyAsString = null;
 		HttpClient client = new HttpClient();
 
@@ -68,14 +75,18 @@ public class Checker extends Thread {
 			e.printStackTrace();
 		}
 
+		BuildCheckResult result = new BuildCheckResult();
+		BuildCheckStatus status;
+
 		if (responeBodyAsString == null) {
-			return BuildStatus.unknown;
+			status = BuildCheckStatus.CHECK_FAILED;
 		} else if (responeBodyAsString.contains("Login")) {
-			return BuildStatus.authorizationFailed;
-		} else if (responeBodyAsString.contains("Failed")) {
-			return BuildStatus.broken;
+			status = BuildCheckStatus.AUTHORIZATION_FAILED;
 		} else {
-			return BuildStatus.ok;
+			status = BuildCheckStatus.OK;
+			result.setBuilds(parser.checkBuilds(responeBodyAsString));
 		}
+		result.setBuildCheckStatus(status);
+		return result;
 	}
 }

@@ -3,13 +3,15 @@ package no.teamjava.byggbrekker.widgets;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.HeadlessException;
+import java.util.List;
 import javax.swing.JFrame;
 
+import no.teamjava.byggbrekker.entities.Build;
+import no.teamjava.byggbrekker.entities.BuildCheckResult;
+import no.teamjava.byggbrekker.entities.Credentials;
+import no.teamjava.byggbrekker.logic.BuildChecker;
 import no.teamjava.byggbrekker.logic.ByggBrekkListener;
-import no.teamjava.byggbrekker.logic.BuildStatus;
-import no.teamjava.byggbrekker.logic.Checker;
 import no.teamjava.byggbrekker.logic.CheckerListener;
-import no.teamjava.byggbrekker.logic.Credentials;
 import no.teamjava.byggbrekker.logic.PlayerThread;
 
 /**
@@ -18,7 +20,7 @@ import no.teamjava.byggbrekker.logic.PlayerThread;
  */
 public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListener, CredentialsFrameListener {
 	private StatusPanel statusPanel;
-	private Checker checker;
+	private BuildChecker buildChecker;
 	private Credentials credentials;
 
 	private PlayerThread playerThread;
@@ -27,7 +29,8 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	public MainFrame() throws HeadlessException {
 		addGUI();
 
-		getNewCredentials();
+//		getNewCredentials();
+		gotCredentials(new Credentials("olj", "4950Riso"));
 	}
 
 	private void getNewCredentials() {
@@ -57,23 +60,23 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 
 	@Override
 	public void stopCheckStatus() {
-		if (checker != null) {
-			checker.stopChecking();
-			checker = null;
+		if (buildChecker != null) {
+			buildChecker.stopChecking();
+			buildChecker = null;
 		}
 		setDefaultBackground();
 	}
 
 	private void setDefaultBackground() {
-		statusPanel.setBackgroundColor(Color.black);
+		statusPanel.reset();
 	}
 
 	private void checkStatus() {
-		if (checker != null) {
+		if (buildChecker != null) {
 			return;
 		}
-		checker = new Checker(this);
-		checker.start();
+		buildChecker = new BuildChecker(this);
+		buildChecker.start();
 	}
 
 	private void initDefaultFrameValues() {
@@ -86,30 +89,56 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	}
 
 	@Override
-	public void gotStatus(BuildStatus status) {
-		Color color;
-
-		switch (status) {
-			case ok:
-				color = Color.GREEN;
-				stopPlayer();
+	public void gotStatus(BuildCheckResult result) {
+		switch (result.getBuildCheckStatus()) {
+			case OK:
+				presentResult(result);
 				break;
-			case broken:
-				color = Color.RED;
-				startPlayer();
-				break;
-			case unknown:
-				color = Color.ORANGE;
-				stopPlayer();
-				break;
-			case authorizationFailed:
+			case AUTHORIZATION_FAILED:
 				authorizationFailed();
-				return;
+				stopPlayer();
+				break;
+			case CHECK_FAILED:
+				statusPanel.displayFailedCheck();
+				stopPlayer();
+				break;
 			default:
-				throw new RuntimeException("Uhandled status: " + status);
+				throw new RuntimeException("Unhandled status: " + result.getBuildCheckStatus());
 		}
 
-		statusPanel.setBackgroundColor(color);
+//		switch (checkStatus) {
+//			case OK:
+//				color = Color.GREEN;
+//				stopPlayer();
+//				break;
+//			case BROKEN_CRITICAL:
+//				color = Color.RED;
+//				startPlayer();
+//				break;
+//			case BROKEN_MINOR:
+//				color = Color.PINK;
+//				startPlayer();
+//				break;
+//			case UNKNOWN:
+//				color = Color.ORANGE;
+//				stopPlayer();
+//				break;
+//			case AUTHORIZATION_FAILED:
+//				authorizationFailed();
+//				return;
+//			default:
+//				throw new RuntimeException("Uhandled status: " + checkStatus);
+//		}
+//
+//		statusPanel.displayBuilds(color);
+	}
+
+	private void presentResult(BuildCheckResult result) {
+		List<Build> failedBuilds = result.getFailedBuilds();
+		if (!failedBuilds.isEmpty()) {
+			startPlayer();
+		}
+		statusPanel.displayBuilds(result.getBuilds());
 	}
 
 	@Override
