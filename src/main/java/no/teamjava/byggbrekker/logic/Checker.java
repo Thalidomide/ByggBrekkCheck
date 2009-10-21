@@ -23,7 +23,7 @@ public class Checker extends Thread {
 		while (run) {
 			listener.gotStatus(getBobStatus());
 			try {
-				sleep(10000);
+				sleep(Settings.CHECK_INTERVAL);
 			} catch (InterruptedException e) {
 				run = false;
 			}

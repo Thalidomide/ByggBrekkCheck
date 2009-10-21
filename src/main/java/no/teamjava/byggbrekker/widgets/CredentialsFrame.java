@@ -26,7 +26,7 @@ public class CredentialsFrame extends JFrame {
 		this.listener = listener;
 
 		setLocation(200, 200);
-		setSize(300, 100);
+		setSize(350, 100);
 		setTitle("Oppgi brukernavn og passord");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
