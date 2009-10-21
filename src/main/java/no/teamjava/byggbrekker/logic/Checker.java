@@ -21,8 +21,7 @@ public class Checker extends Thread {
 	@Override
 	public void run() {
 		while (run) {
-//			listener.gotStatus(getBobStatus());
-			listener.gotStatus(BuildStatus.broken);
+			listener.gotStatus(getBobStatus());
 			try {
 				sleep(Settings.CHECK_INTERVAL);
 			} catch (InterruptedException e) {
