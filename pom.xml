@@ -76,7 +76,6 @@
                     <artifactId>maven-jar-plugin</artifactId>
                     <configuration>
                         <archive>
-
                             <manifest>
                                 <mainClass>no.teamjava.byggbrekker.main.StartProject</mainClass>
                             </manifest>
