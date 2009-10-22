@@ -70,6 +70,19 @@
                         <encoding>UTF-8</encoding>
                     </configuration>
                 </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <mainClass>no.teamjava.byggbrekker.main.StartProject</mainClass>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+
             </plugins>
         </pluginManagement>
     </build>
