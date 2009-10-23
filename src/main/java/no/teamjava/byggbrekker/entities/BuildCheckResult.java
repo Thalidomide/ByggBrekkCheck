@@ -21,7 +21,7 @@ public class BuildCheckResult {
 
 		for (Build build : builds) {
 			if (!build.isSuccessful()) {
-				builds.add(build);
+				failedBuilds.add(build);
 			}
 		}
 		return failedBuilds;

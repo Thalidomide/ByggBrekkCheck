@@ -29,7 +29,8 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	public MainFrame() throws HeadlessException {
 		addGUI();
 
-		getNewCredentials();
+//		getNewCredentials();
+		gotCredentials(new Credentials("olj", "4950Riso"));
 	}
 
 	private void getNewCredentials() {
