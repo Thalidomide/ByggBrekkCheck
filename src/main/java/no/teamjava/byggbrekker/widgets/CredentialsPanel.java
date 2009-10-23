@@ -19,13 +19,13 @@ import no.teamjava.byggbrekker.entities.Credentials;
  * @author Olav Jensen
  * @since 21.okt.2009
  */
-public class CredentialsFrame extends JFrame {
+public class CredentialsPanel extends JFrame {
 
 	private CredentialsFrameListener listener;
 	private TextField usernameWidget;
 	private TextField passwordWidget;
 
-	public CredentialsFrame(CredentialsFrameListener listener) throws HeadlessException {
+	public CredentialsPanel(CredentialsFrameListener listener) throws HeadlessException {
 		this.listener = listener;
 
 		setLocation(200, 200);
