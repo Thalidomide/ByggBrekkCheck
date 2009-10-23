@@ -43,7 +43,7 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 		this.add(startCheckPanel, BorderLayout.NORTH);
 		this.add(statusPanel, BorderLayout.CENTER);
 
-		setDefaultBackground();
+		resetStatusPanel();
 	}
 
 	@Override
@@ -63,10 +63,10 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 			buildChecker.stopChecking();
 			buildChecker = null;
 		}
-		setDefaultBackground();
+		resetStatusPanel();
 	}
 
-	private void setDefaultBackground() {
+	private void resetStatusPanel() {
 		statusPanel.reset();
 	}
 
@@ -104,32 +104,6 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 			default:
 				throw new RuntimeException("Unhandled status: " + result.getBuildCheckStatus());
 		}
-
-//		switch (checkStatus) {
-//			case OK:
-//				color = Color.GREEN;
-//				stopPlayer();
-//				break;
-//			case BROKEN_CRITICAL:
-//				color = Color.RED;
-//				startPlayer();
-//				break;
-//			case BROKEN_MINOR:
-//				color = Color.PINK;
-//				startPlayer();
-//				break;
-//			case UNKNOWN:
-//				color = Color.ORANGE;
-//				stopPlayer();
-//				break;
-//			case AUTHORIZATION_FAILED:
-//				authorizationFailed();
-//				return;
-//			default:
-//				throw new RuntimeException("Uhandled status: " + checkStatus);
-//		}
-//
-//		statusPanel.displayBuilds(color);
 	}
 
 	private void presentResult(BuildCheckResult result) {

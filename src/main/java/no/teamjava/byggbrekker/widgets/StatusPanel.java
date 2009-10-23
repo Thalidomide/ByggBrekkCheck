@@ -68,9 +68,11 @@ class BuildRow extends JPanel {
 	private Color OK_MINOR = new Color(10, 100, 0);
 	private Color FAILURE_IMPORTANT = new Color(150, 50, 0);
 	private Color FAILURE_MINOR = new Color(100, 30, 0);
+	private Color UNKNOWN_IMPORTANT = new Color(0, 50, 150);
+	private Color UNKNOWN_MINOR = new Color(0, 30, 100);
 
 	BuildRow() {
-		label = new JLabel("IIT");
+		label = new JLabel("");
 		label.setFont(new Font("Verdana", Font.PLAIN, 18));
 		label.setForeground(Color.WHITE);
 
@@ -86,18 +88,28 @@ class BuildRow extends JPanel {
 			return;
 		}
 
-		BuildType buildType = build.getBuildType();
+		BuildType buildType = build.getType();
 		boolean important = BuildCategory.IMPORTANT.equals(buildType.getCategory());
 
 		Color color;
+		String postFix = "";
 
-		if (build.isSuccessful()) {
-			color = important ? OK_IMPORTANT : OK_MINOR;
-		} else {
-			color = important ? FAILURE_IMPORTANT : FAILURE_MINOR;
+		switch (build.getStatus()) {
+			case SUCCESSFUL:
+				color = important ? OK_IMPORTANT : OK_MINOR;
+				break;
+			case FAILED:
+				color = important ? FAILURE_IMPORTANT : FAILURE_MINOR;
+				break;
+			case UNKNOWN:
+				color = important ? UNKNOWN_IMPORTANT : UNKNOWN_MINOR;
+				postFix = " - Ukjent status!!";
+				break;
+			default:
+				throw new RuntimeException("Unhandeled status: " + build.getStatus());
 		}
 
-		label.setText(buildType.getText());
+		label.setText(buildType.getText() + postFix);
 
 		setBackground(color);
 	}

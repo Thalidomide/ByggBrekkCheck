@@ -8,6 +8,7 @@ import java.util.List;
 
 import junit.framework.TestCase;
 import no.teamjava.byggbrekker.entities.Build;
+import no.teamjava.byggbrekker.entities.BuildStatus;
 import no.teamjava.byggbrekker.entities.BuildType;
 
 /**
@@ -25,9 +26,9 @@ public class BuildParserTest extends TestCase {
 		int brokenBuilds = 0;
 		BuildType brokenBuildType = null;
 		for (Build build : builds) {
-			if (!build.isSuccessful()) {
+			if (BuildStatus.FAILED.equals(build.getStatus())) {
 				brokenBuilds ++;
-				brokenBuildType = build.getBuildType();
+				brokenBuildType = build.getType();
 			}
 		}
 

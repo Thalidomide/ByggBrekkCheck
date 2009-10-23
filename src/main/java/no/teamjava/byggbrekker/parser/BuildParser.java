@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import no.teamjava.byggbrekker.entities.Build;
+import no.teamjava.byggbrekker.entities.BuildStatus;
 import no.teamjava.byggbrekker.entities.BuildType;
 
 /**
@@ -20,14 +21,21 @@ public class BuildParser {
 		buildText = buildText.toUpperCase();
 
 		for (BuildType buildType : BuildType.values()) {
-			String splitText = buildType.getLookup().toUpperCase();
-			String[] lines = buildText.split(splitText);
-			String line = lines[1];
-			int successIndex = line.indexOf(successfulString);
-			int failedIndex = line.indexOf(failedString);
+			BuildStatus status;
 
-			boolean successful = failedIndex == -1 || successIndex < failedIndex;
-			builds.add(new Build(buildType, successful));
+			String[] lines = buildText.split(buildType.getLookup().toUpperCase());
+
+			if (lines.length > 0) {
+				String line = lines[1];
+				int successIndex = line.indexOf(successfulString);
+				int failedIndex = line.indexOf(failedString);
+
+				status = failedIndex == -1 || successIndex < failedIndex ? BuildStatus.SUCCESSFUL : BuildStatus.FAILED;
+			} else {
+				status = BuildStatus.UNKNOWN;
+			}
+
+			builds.add(new Build(buildType, status));
 		}
 
 		return builds;

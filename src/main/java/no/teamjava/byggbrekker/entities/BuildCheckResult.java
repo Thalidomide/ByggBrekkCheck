@@ -20,7 +20,7 @@ public class BuildCheckResult {
 		List<Build> failedBuilds = new ArrayList<Build>();
 
 		for (Build build : builds) {
-			if (!build.isSuccessful()) {
+			if (BuildStatus.FAILED.equals(build.getStatus())) {
 				failedBuilds.add(build);
 			}
 		}

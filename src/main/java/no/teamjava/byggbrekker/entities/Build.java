@@ -6,19 +6,19 @@ package no.teamjava.byggbrekker.entities;
  */
 public class Build {
 
-	private final BuildType buildType;
-	private final boolean successful;
+	private final BuildType type;
+	private final BuildStatus status;
 
-	public Build(BuildType buildType, boolean successful) {
-		this.buildType = buildType;
-		this.successful = successful;
+	public Build(BuildType type, BuildStatus status) {
+		this.type = type;
+		this.status = status;
 	}
 
-	public BuildType getBuildType() {
-		return buildType;
+	public BuildType getType() {
+		return type;
 	}
 
-	public boolean isSuccessful() {
-		return successful;
+	public BuildStatus getStatus() {
+		return status;
 	}
 }
