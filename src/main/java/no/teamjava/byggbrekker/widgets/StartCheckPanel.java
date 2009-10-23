@@ -1,12 +1,16 @@
 package no.teamjava.byggbrekker.widgets;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
 
+import no.teamjava.byggbrekker.entities.Settings;
 import no.teamjava.byggbrekker.logic.ByggBrekkListener;
 
 /**
@@ -21,9 +25,17 @@ public class StartCheckPanel extends JPanel {
 
 
 	public StartCheckPanel(ByggBrekkListener listener) throws HeadlessException {
+		super(new GridBagLayout());
 		this.listener = listener;
+
+		setBackground(Settings.INPUT_PANEL);
+		setBorder(new BevelBorder(BevelBorder.LOWERED));
+		
 		feedBackLabel = new JLabel("Klar til bruk");
 		startOrCancleButton = new JButton("Start");
+
+		feedBackLabel.setFont(Settings.DEFAULT);
+
 		startOrCancleButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -31,8 +43,17 @@ public class StartCheckPanel extends JPanel {
 			}
 		});
 
-		this.add(feedBackLabel);
-		this.add(startOrCancleButton);
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.fill = GridBagConstraints.CENTER;
+
+		constraints.gridy = 0;
+		constraints.weightx = 1;
+		add(startOrCancleButton, constraints);
+
+		constraints.gridy = 1;
+		constraints.gridwidth = 1;
+		constraints.ipady = 10;
+		add(feedBackLabel, constraints);
 	}
 
 	public void reset() {

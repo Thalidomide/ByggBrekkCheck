@@ -1,5 +1,8 @@
 package no.teamjava.byggbrekker.entities;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  * @author Olav Jensen
  * @since 21.okt.2009
@@ -7,4 +10,10 @@ package no.teamjava.byggbrekker.entities;
 public class Settings {
 
 	public static final long CHECK_INTERVAL = 10000;
+
+	public static Color INPUT_PANEL = new Color(255, 150, 0);
+
+	public static final Font HEADER = new Font("Verdana", Font.BOLD, 16);
+	public static final Font DEFAULT = new Font("Verdana", Font.PLAIN, 13);
+
 }

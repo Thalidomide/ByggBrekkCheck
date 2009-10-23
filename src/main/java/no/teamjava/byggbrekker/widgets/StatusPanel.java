@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 
 import no.teamjava.byggbrekker.entities.Build;
 import no.teamjava.byggbrekker.entities.BuildCategory;
@@ -76,8 +76,8 @@ class BuildRow extends JPanel {
 		label.setFont(new Font("Verdana", Font.PLAIN, 18));
 		label.setForeground(Color.WHITE);
 
-		setBackground(Color.YELLOW);
-		setBorder(new BevelBorder(BevelBorder.RAISED, Color.gray, Color.DARK_GRAY));
+		setBackground(Color.BLACK);
+		setBorder(new LineBorder(Color.BLACK, 5));
 
 		add(label);
 	}

@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.HeadlessException;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import no.teamjava.byggbrekker.entities.Build;
 import no.teamjava.byggbrekker.entities.BuildCheckResult;
@@ -20,36 +21,62 @@ import no.teamjava.byggbrekker.logic.PlayerThread;
  */
 public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListener, CredentialsFrameListener {
 	private StatusPanel statusPanel;
+	private StartCheckPanel startCheckPanel;
+	private CredentialsPanel credentialsPanel;
+
 	private BuildChecker buildChecker;
 	private Credentials credentials;
-
 	private PlayerThread playerThread;
-	private StartCheckPanel startCheckPanel;
+	private JPanel panel;
 
 	public MainFrame() throws HeadlessException {
-		addGUI();
+		initializeGui();
 
 		getNewCredentials();
+//		addCheckerGui();
+
+		this.setVisible(true);
+	}
+
+	private void initializeGui() {
+		panel = new JPanel(new BorderLayout());
+
+		setSize(600, 600);
+		setLocation(200, 200);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setTitle("ByggBrekkSjekker3000 - KnowIT");
+		getContentPane().setBackground(Color.WHITE);
+		getContentPane().add(panel);
+		setResizable(false);
+
+		startCheckPanel = new StartCheckPanel(this);
+		statusPanel = new StatusPanel();
+		credentialsPanel = new CredentialsPanel(this);
+	}
+
+	private void addCheckerGui() {
+		panel.removeAll();
+		panel.add(startCheckPanel, BorderLayout.NORTH);
+		panel.add(statusPanel, BorderLayout.CENTER);
+		refreshPanel();
 	}
 
 	private void getNewCredentials() {
-		new CredentialsFrame(this);
+		panel.removeAll();
+		panel.add(credentialsPanel, BorderLayout.CENTER);
+		refreshPanel();
 	}
 
-	private void addGUI() {
-		startCheckPanel = new StartCheckPanel(this);
-		statusPanel = new StatusPanel();
-
-		this.add(startCheckPanel, BorderLayout.NORTH);
-		this.add(statusPanel, BorderLayout.CENTER);
-
-		resetStatusPanel();
+	private void refreshPanel() {
+		validateTree();
+		panel.repaint();
+		panel.validate();
 	}
 
 	@Override
 	public void gotCredentials(Credentials credentials) {
 		this.credentials = credentials;
-		initDefaultFrameValues();
+		addCheckerGui();
 	}
 
 	@Override
@@ -63,11 +90,6 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 			buildChecker.stopChecking();
 			buildChecker = null;
 		}
-		resetStatusPanel();
-	}
-
-	private void resetStatusPanel() {
-		statusPanel.reset();
 	}
 
 	private void checkStatus() {
@@ -76,15 +98,6 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 		}
 		buildChecker = new BuildChecker(this);
 		buildChecker.start();
-	}
-
-	private void initDefaultFrameValues() {
-		this.setSize(600, 600);
-		this.setLocation(200, 200);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setTitle("ByggBrekkSjekker3000 - KnowIT");
-		this.getContentPane().setBackground(Color.WHITE);
-		this.setVisible(true);
 	}
 
 	@Override
@@ -141,7 +154,6 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	private void authorizationFailed() {
 		stopCheckStatus();
 		startCheckPanel.reset();
-		setVisible(false);
 		getNewCredentials();
 	}
 }
