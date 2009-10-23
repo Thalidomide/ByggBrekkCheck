@@ -41,13 +41,13 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	private void initializeGui() {
 		panel = new JPanel(new BorderLayout());
 
-		setSize(600, 600);
-		setLocation(200, 200);
+		setSize(800, 700);
+		setLocation(0, 0);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("ByggBrekkSjekker3000 - KnowIT");
 		getContentPane().setBackground(Color.WHITE);
 		getContentPane().add(panel);
-		setResizable(false);
+//		setResizable(false);
 
 		startCheckPanel = new StartCheckPanel(this);
 		statusPanel = new StatusPanel();

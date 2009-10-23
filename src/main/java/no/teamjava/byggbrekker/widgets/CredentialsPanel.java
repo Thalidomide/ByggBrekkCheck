@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.HeadlessException;
 import java.awt.Label;
 import java.awt.Rectangle;
 import java.awt.TextField;
@@ -29,7 +30,7 @@ public class CredentialsPanel extends JPanel {
 	private TextField passwordWidget;
 	private JPanel panel;
 
-	public CredentialsPanel(CredentialsFrameListener listener) {
+	public CredentialsPanel(CredentialsFrameListener listener) throws HeadlessException {
 		super(null);
 		this.listener = listener;
 
