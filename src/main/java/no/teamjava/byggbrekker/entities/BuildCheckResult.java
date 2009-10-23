@@ -24,6 +24,7 @@ public class BuildCheckResult {
 				failedBuilds.add(build);
 			}
 		}
+		
 		return failedBuilds;
 	}
 
