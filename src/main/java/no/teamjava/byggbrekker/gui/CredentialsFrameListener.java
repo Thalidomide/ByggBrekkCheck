@@ -1,4 +1,4 @@
-package no.teamjava.byggbrekker.widgets;
+package no.teamjava.byggbrekker.gui;
 
 import no.teamjava.byggbrekker.entities.Credentials;
 

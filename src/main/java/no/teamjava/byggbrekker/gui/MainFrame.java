@@ -1,4 +1,4 @@
-package no.teamjava.byggbrekker.widgets;
+package no.teamjava.byggbrekker.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

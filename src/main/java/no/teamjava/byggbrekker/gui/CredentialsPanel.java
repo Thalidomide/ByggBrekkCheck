@@ -1,23 +1,24 @@
-package no.teamjava.byggbrekker.widgets;
+package no.teamjava.byggbrekker.gui;
 
-import java.awt.Button;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
-import java.awt.Label;
 import java.awt.Rectangle;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 
 import no.teamjava.byggbrekker.entities.Credentials;
 import no.teamjava.byggbrekker.entities.Settings;
+import no.teamjava.byggbrekker.gui.widgets.Button;
+import no.teamjava.byggbrekker.gui.widgets.Label;
+import no.teamjava.byggbrekker.gui.widgets.LabelType;
 
 /**
  * @author Olav Jensen
@@ -26,8 +27,8 @@ import no.teamjava.byggbrekker.entities.Settings;
 public class CredentialsPanel extends JPanel {
 
 	private CredentialsFrameListener listener;
-	private TextField usernameWidget;
-	private TextField passwordWidget;
+	private JTextField usernameWidget;
+	private JPasswordField passwordWidget;
 	private JPanel panel;
 
 	public CredentialsPanel(CredentialsFrameListener listener) throws HeadlessException {
@@ -41,7 +42,7 @@ public class CredentialsPanel extends JPanel {
 	public void paint(Graphics g) {
 		super.paint(g);
 
-		int width = 300;
+		int width = 400;
 		int height = 200;
 		int x = getWidth() / 2 - width / 2;
 		int y = getHeight() / 2 - height / 2;
@@ -52,19 +53,17 @@ public class CredentialsPanel extends JPanel {
 		panel = new JPanel(new GridBagLayout());
 		add(panel);
 
-		setBackground(Color.BLACK);
+		setBackground(Settings.BACKGROUND);
 		panel.setBackground(Settings.INPUT_PANEL);
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED));
 
-		usernameWidget = new TextField();
-		passwordWidget = new TextField();
+		usernameWidget = new JTextField();
+		passwordWidget = new JPasswordField();
 		Button okButton = new Button("Ok");
 
 		usernameWidget.setFont(Settings.DEFAULT);
 		passwordWidget.setFont(Settings.DEFAULT);
 		okButton.setFont(Settings.DEFAULT);
-
-		passwordWidget.setEchoChar('*');
 
 		okButton.addActionListener(new ActionListener() {
 			@Override
@@ -76,8 +75,7 @@ public class CredentialsPanel extends JPanel {
 		usernameWidget.addKeyListener(getLoginKeyListener());
 		passwordWidget.addKeyListener(getLoginKeyListener());
 
-		Label header = new Label("Oppgi brukernavn og passord");
-		header.setFont(Settings.HEADER);
+		Label header = new Label("Oppgi brukernavn og passord", LabelType.HEADER);
 
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -108,7 +106,7 @@ public class CredentialsPanel extends JPanel {
 		listener.gotCredentials(new Credentials(usernameWidget.getText(), passwordWidget.getText()));
 	}
 
-	private void addLabelAndTextBox(String text, TextField widget, JPanel panel, GridBagConstraints constraints) {
+	private void addLabelAndTextBox(String text, JTextField widget, JPanel panel, GridBagConstraints constraints) {
 		constraints.gridwidth = 1;
 		constraints.gridx = 0;
 

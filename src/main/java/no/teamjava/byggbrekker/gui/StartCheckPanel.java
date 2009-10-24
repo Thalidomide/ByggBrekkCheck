@@ -1,16 +1,17 @@
-package no.teamjava.byggbrekker.widgets;
+package no.teamjava.byggbrekker.gui;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
 import no.teamjava.byggbrekker.entities.Settings;
+import no.teamjava.byggbrekker.gui.widgets.Button;
+import no.teamjava.byggbrekker.gui.widgets.Label;
+import no.teamjava.byggbrekker.gui.widgets.LabelType;
 import no.teamjava.byggbrekker.logic.ByggBrekkListener;
 
 /**
@@ -19,8 +20,8 @@ import no.teamjava.byggbrekker.logic.ByggBrekkListener;
  */
 public class StartCheckPanel extends JPanel {
 	boolean start = false;
-	JButton startOrCancleButton;
-	JLabel feedBackLabel;
+	Button startOrCancleButton;
+	Label feedBackLabel;
 	private final ByggBrekkListener listener;
 
 
@@ -31,10 +32,8 @@ public class StartCheckPanel extends JPanel {
 		setBackground(Settings.INPUT_PANEL);
 		setBorder(new BevelBorder(BevelBorder.LOWERED));
 		
-		feedBackLabel = new JLabel("Klar til bruk");
-		startOrCancleButton = new JButton("Start");
-
-		feedBackLabel.setFont(Settings.DEFAULT);
+		feedBackLabel = new Label("Klar til bruk", LabelType.BIG);
+		startOrCancleButton = new Button("Start");
 
 		startOrCancleButton.addActionListener(new ActionListener() {
 			@Override

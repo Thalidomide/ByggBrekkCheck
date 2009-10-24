@@ -1,6 +1,6 @@
 package no.teamjava.byggbrekker.main;
 
-import no.teamjava.byggbrekker.widgets.MainFrame;
+import no.teamjava.byggbrekker.gui.MainFrame;
 
 /**
  * @author : Raymond Koteng

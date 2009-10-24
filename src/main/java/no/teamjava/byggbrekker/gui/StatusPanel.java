@@ -1,18 +1,18 @@
-package no.teamjava.byggbrekker.widgets;
+package no.teamjava.byggbrekker.gui;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Label;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import no.teamjava.byggbrekker.entities.Build;
 import no.teamjava.byggbrekker.entities.BuildCategory;
 import no.teamjava.byggbrekker.entities.BuildType;
+import no.teamjava.byggbrekker.entities.Settings;
+import no.teamjava.byggbrekker.gui.widgets.Label;
+import no.teamjava.byggbrekker.gui.widgets.LabelType;
 
 /**
  * @author : Raymond Koteng, Olav Jensen
@@ -48,8 +48,7 @@ public class StatusPanel extends JPanel {
 
 	public void displayFailedCheck() {
 		reset();
-		Label label = new Label("Noe gikk galt ved sjekking av status!");
-		label.setFont(new Font("Verdana", Font.BOLD, 18));
+		Label label = new Label("Noe gikk galt ved sjekking av status!", LabelType.BIG);
 		label.setForeground(Color.YELLOW);
 
 		add(label);
@@ -63,7 +62,7 @@ public class StatusPanel extends JPanel {
 }
 class BuildRow extends JPanel {
 
-	private JLabel label;
+	private Label label;
 	private Color OK_IMPORTANT = new Color(20, 150, 0);
 	private Color OK_MINOR = new Color(10, 100, 0);
 	private Color FAILURE_IMPORTANT = new Color(150, 50, 0);
@@ -72,12 +71,11 @@ class BuildRow extends JPanel {
 	private Color UNKNOWN_MINOR = new Color(0, 30, 100);
 
 	BuildRow() {
-		label = new JLabel("");
-		label.setFont(new Font("Verdana", Font.PLAIN, 18));
+		label = new Label("", LabelType.BIG);
 		label.setForeground(Color.WHITE);
 
-		setBackground(Color.BLACK);
-		setBorder(new LineBorder(Color.BLACK, 5));
+		setBackground(Settings.BACKGROUND);
+		setBorder(new LineBorder(Settings.BACKGROUND, 5));
 
 		add(label);
 	}
@@ -115,7 +113,7 @@ class BuildRow extends JPanel {
 	}
 
 	public void reset() {
-		setBackground(Color.BLACK);
+		setBackground(Settings.BACKGROUND);
 		label.setText("");
 	}
 }
