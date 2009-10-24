@@ -11,6 +11,12 @@ public class Settings {
 
 	public static final long CHECK_INTERVAL = 10000;
 
+	public static final String BROKEN_BUILD_MP3_PATH = "src/main/resources/sounds/buildDown.mp3";
+
+	public static final String HOST = "projects.knowit.no";
+	public static final String GET_METHOD = "/byggmesterbob/browse/DSB";
+	public static final String POST_METHOD = "/byggmesterbob/userlogin.action";
+
 	public static Color INPUT_PANEL = new Color(255, 150, 0);
 	public static Color BACKGROUND = Color.BLACK;
 	public static Color BUTTON = new Color(255, 170, 0);

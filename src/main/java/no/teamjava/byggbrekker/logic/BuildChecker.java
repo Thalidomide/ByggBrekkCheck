@@ -48,13 +48,13 @@ public class BuildChecker extends Thread {
 		HttpClient client = new HttpClient();
 
 		HostConfiguration configuration = new HostConfiguration();
-		configuration.setHost("projects.knowit.no");
+
+		configuration.setHost(Settings.HOST);
 
 		client.setHostConfiguration(configuration);
 
-		GetMethod getMethod = new GetMethod("/byggmesterbob/browse/DSB");
-
-		PostMethod postMethod = new PostMethod("/byggmesterbob/userlogin.action");
+		GetMethod getMethod = new GetMethod(Settings.GET_METHOD);
+		PostMethod postMethod = new PostMethod(Settings.POST_METHOD);
 
 		postMethod.setParameter("checkBoxFields", "os_cookie");
 		postMethod.setParameter("os_destination", "/start.action");

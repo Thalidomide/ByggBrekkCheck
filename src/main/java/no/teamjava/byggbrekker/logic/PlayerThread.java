@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 
 import javazoom.jl.player.Player;
+import no.teamjava.byggbrekker.entities.Settings;
 
 /**
  * @author : Raymond Koteng
@@ -11,7 +12,6 @@ import javazoom.jl.player.Player;
  */
 public class PlayerThread extends Thread {
 
-	private final String soundBuildDownPath = "src/main/resources/sounds/buildDown.mp3";
 
 	private Player player;
 
@@ -19,7 +19,7 @@ public class PlayerThread extends Thread {
 	public void run() {
 		player = null;
 		try {
-			player = new Player(new FileInputStream(new File(soundBuildDownPath)));
+			player = new Player(new FileInputStream(new File(Settings.BROKEN_BUILD_MP3_PATH)));
 			player.play();
 		} catch (Exception e1) {
 			e1.printStackTrace();
