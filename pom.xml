@@ -28,6 +28,7 @@
             <email>rak@knowit.no</email>
             <timezone>GMT+1</timezone>
         </developer>
+
         <developer>
             <id>olj</id>
             <name>Olav Jensen</name>
@@ -77,11 +78,28 @@
                     <configuration>
                         <archive>
                             <manifest>
+                                <addClasspath>true</addClasspath>
                                 <mainClass>no.teamjava.byggbrekker.main.StartProject</mainClass>
                             </manifest>
                         </archive>
                     </configuration>
                 </plugin>
+
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <addClasspath>true</addClasspath>
+                                <mainClass>no.teamjava.byggbrekker.main.StartProject</mainClass>
+                            </manifest>
+                        </archive>
+                        <descriptorRefs>
+                            <descriptorRef>jar-with-dependencies</descriptorRef>
+                        </descriptorRefs>
+                    </configuration>
+                </plugin>
+
 
             </plugins>
         </pluginManagement>
