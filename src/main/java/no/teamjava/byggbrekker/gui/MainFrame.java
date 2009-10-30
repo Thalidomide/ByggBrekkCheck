@@ -14,6 +14,7 @@ import no.teamjava.byggbrekker.logic.BuildChecker;
 import no.teamjava.byggbrekker.logic.ByggBrekkListener;
 import no.teamjava.byggbrekker.logic.CheckerListener;
 import no.teamjava.byggbrekker.logic.PlayerThread;
+import no.teamjava.byggbrekker.phidget.Phidget;
 
 /**
  * @author : Raymond Koteng
@@ -28,8 +29,10 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	private Credentials credentials;
 	private PlayerThread playerThread;
 	private JPanel panel;
+	private Phidget phidget;
 
 	public MainFrame() throws HeadlessException {
+		phidget = new Phidget();
 		initializeGui();
 		getNewCredentials();
 		this.setVisible(true);
@@ -44,7 +47,6 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 		setTitle("ByggBrekkSjekker3000 - KnowIT");
 		getContentPane().setBackground(Color.WHITE);
 		getContentPane().add(panel);
-//		setResizable(false);
 
 		startCheckPanel = new StartCheckPanel(this);
 		statusPanel = new StatusPanel();
@@ -99,6 +101,7 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 
 	@Override
 	public void gotStatus(BuildCheckResult result) {
+		phidget.setBuildStatus(result.getFailedBuilds());
 		switch (result.getBuildCheckStatus()) {
 			case OK:
 				presentResult(result);
@@ -127,6 +130,7 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	@Override
 	public void stop() {
 		stopPlayer();
+		phidget.resetOutput();
 	}
 
 	@Override
