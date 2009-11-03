@@ -20,8 +20,8 @@ public class Phidget {
 	private List<Build> failedBuilds = new ArrayList<Build>();
 	private boolean attached;
 
-	private final static int OUTPUT_IMPORTANT = 0;
-	private final static int OUTPUT_MINOR = 1;
+	private final static int[] OUTPUT_IMPORTANT = new int[]{0};
+	private final static int[] OUTPUT_MINOR = new int[]{1};
 	private final static int OUPUT_COUNT = 8;
 
 	public Phidget() {
@@ -67,13 +67,22 @@ public class Phidget {
 
 		for (int output = 0; output < OUPUT_COUNT; output++) {
 			boolean condition = false;
-			if (OUTPUT_IMPORTANT == output && importantBroken) {
+			if (importantBroken && checkOutput(output, OUTPUT_IMPORTANT)) {
 				condition = true;
-			} else if (OUTPUT_MINOR == output && minorBroken) {
+			} else if (minorBroken && checkOutput(output, OUTPUT_MINOR)) {
 				condition = true;
 			}
 			setOutputState(output, condition);
 		}
+	}
+
+	private boolean checkOutput(int output, int[] checkValues) {
+		for (int checkValue : checkValues) {
+			if (output == checkValue) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private boolean isBroken(BuildCategory category) {
