@@ -25,4 +25,6 @@ public class Settings {
 	public static final Font BIG = new Font("Verdana", Font.PLAIN, 16);
 	public static final Font HEADER = new Font("Verdana", Font.BOLD, 18);
 
+	public final static long LIGHT_UPDATE_INTERVAL = 2000;
+
 }
