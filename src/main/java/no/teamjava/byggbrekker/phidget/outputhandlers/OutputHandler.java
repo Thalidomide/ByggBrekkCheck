@@ -8,18 +8,30 @@ import no.teamjava.byggbrekker.phidget.CanUpdateOutput;
  */
 public abstract class OutputHandler {
 
-	final CanUpdateOutput canUpdateOutput;
-	final int[] outputs;
+	private final CanUpdateOutput canUpdateOutput;
+	private final int[] outputs;
+
+	private int brokenRunCount = 0;
+	private boolean lastStatus = true;
 
 	public OutputHandler(CanUpdateOutput canUpdateOutput, int[] outputs) {
 		this.canUpdateOutput = canUpdateOutput;
 		this.outputs = outputs;
 	}
 
-	public void update(long runTime, boolean broken) {
+	public void update(boolean broken) {
+		if (broken && lastStatus != broken) {
+			brokenRunCount = 0;
+		}
+
 		for (int output : outputs) {
-			boolean condition = broken && getCondition(runTime);
+			boolean condition = broken && getCondition(brokenRunCount);
 			canUpdateOutput.setOutputState(output, condition);
+		}
+
+		lastStatus = broken;
+		if (broken) {
+			brokenRunCount ++;
 		}
 	}
 

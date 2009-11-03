@@ -8,15 +8,17 @@ import no.teamjava.byggbrekker.phidget.CanUpdateOutput;
  */
 public class ConstantFlasher extends OutputHandler {
 
-	private final long phase;
+	private final int duration;
+	private final int phase;
 
-	public ConstantFlasher(CanUpdateOutput canUpdateOutput, int[] outputs, long phase) {
+	public ConstantFlasher(CanUpdateOutput canUpdateOutput, int[] outputs, int duration, int phase) {
 		super(canUpdateOutput, outputs);
+		this.duration = duration;
 		this.phase = phase;
 	}
 
 	@Override
 	protected boolean getCondition(long runTime) {
-		return runTime % 2 == phase;
+		return (runTime + phase) % (duration * 2) < duration;
 	}
 }

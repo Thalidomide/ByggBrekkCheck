@@ -31,7 +31,7 @@ class PhidgetThread extends Thread {
 	public PhidgetThread(PhidgetThreadListener listener) {
 		this.listener = listener;
 
-		kit = new InterfaceKitPhidgetMockable(false);
+		kit = new InterfaceKitPhidgetMockable(true);
 		kit.addAttachListener(new AttachListener() {
 			@Override
 			public void attached(AttachEvent attachEvent) {
@@ -40,9 +40,9 @@ class PhidgetThread extends Thread {
 			}
 		});
 
-		importantHandler0 = new ConstantFlasher(kit, OUTPUT_IMPORTANT0, 0);
-		importantHandler1 = new ConstantFlasher(kit, OUTPUT_IMPORTANT1, 1);
-		minorHandler = new ConstantFlasher(kit, OUTPUT_MINOR, 0);
+		importantHandler0 = new ConstantFlasher(kit, OUTPUT_IMPORTANT0, 2, 0);
+		importantHandler1 = new ConstantFlasher(kit, OUTPUT_IMPORTANT1, 2, 1);
+		minorHandler = new ConstantFlasher(kit, OUTPUT_MINOR, 1, 0);
 	}
 
 	@Override
@@ -52,10 +52,9 @@ class PhidgetThread extends Thread {
 		}
 		running = true;
 		kit.openAndWaitForAttachment();
-		long runs = 0;
 
 		while (true) {
-			updateOutput(runs++);
+			updateOutput();
 
 			try {
 				sleep(Settings.LIGHT_UPDATE_INTERVAL);
@@ -68,7 +67,7 @@ class PhidgetThread extends Thread {
 		running = false;
 	}
 
-	private synchronized void updateOutput(long runTime) {
+	private synchronized void updateOutput() {
 		if (!attached) {
 			return;
 		}
@@ -76,9 +75,9 @@ class PhidgetThread extends Thread {
 		boolean importantBroken = isBroken(BuildCategory.IMPORTANT);
 		boolean minorBroken = isBroken(BuildCategory.MINOR);
 
-		importantHandler0.update(runTime, importantBroken);
-		importantHandler1.update(runTime, importantBroken);
-		minorHandler.update(runTime, minorBroken);
+		importantHandler0.update(importantBroken);
+		importantHandler1.update(importantBroken);
+		minorHandler.update(minorBroken);
 	}
 
 	private boolean isBroken(BuildCategory category) {
