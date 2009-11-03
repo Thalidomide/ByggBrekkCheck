@@ -3,12 +3,16 @@ package no.teamjava.byggbrekker.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.HeadlessException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import no.teamjava.byggbrekker.entities.Build;
 import no.teamjava.byggbrekker.entities.BuildCheckResult;
+import no.teamjava.byggbrekker.entities.BuildCheckStatus;
+import no.teamjava.byggbrekker.entities.BuildStatus;
+import no.teamjava.byggbrekker.entities.BuildType;
 import no.teamjava.byggbrekker.entities.Credentials;
 import no.teamjava.byggbrekker.logic.BuildChecker;
 import no.teamjava.byggbrekker.logic.ByggBrekkListener;
@@ -88,6 +92,24 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 		if (buildChecker != null) {
 			buildChecker.stopChecking();
 			buildChecker = null;
+		}
+	}
+
+	@Override
+	public void setDemoDefault(boolean demoDefault) {
+		stop();
+		if (demoDefault) {
+			BuildCheckResult result = new BuildCheckResult();
+			result.setBuildCheckStatus(BuildCheckStatus.OK);
+			ArrayList<Build> builds = new ArrayList<Build>();
+
+			for (BuildType buildType : BuildType.values()) {
+				BuildStatus status = BuildType.DEFAULT.equals(buildType) ? BuildStatus.FAILED : BuildStatus.SUCCESSFUL;
+				builds.add(new Build(buildType, status));
+			}
+
+			result.setBuilds(builds);
+			gotStatus(result);
 		}
 	}
 

@@ -21,6 +21,7 @@ import no.teamjava.byggbrekker.logic.ByggBrekkListener;
 public class StartCheckPanel extends JPanel {
 	boolean start = false;
 	Button startOrCancleButton;
+	Button demoDefaultBroken;
 	Label feedBackLabel;
 	private final ByggBrekkListener listener;
 
@@ -42,12 +43,21 @@ public class StartCheckPanel extends JPanel {
 			}
 		});
 
+		demoDefaultBroken = new Button("Demo: Default brukket");
+		demoDefaultBroken.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				demoDefault();
+			}
+		});
+
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.CENTER;
 
 		constraints.gridy = 0;
-		constraints.weightx = 1;
+//		constraints.weightx = 1;
 		add(startOrCancleButton, constraints);
+		add(demoDefaultBroken, constraints);
 
 		constraints.gridy = 1;
 		constraints.gridwidth = 1;
@@ -78,6 +88,13 @@ public class StartCheckPanel extends JPanel {
 			startOrCancleButton.setText("Start");
 			feedBackLabel.setText("Klar til bruk");
 		}
+	}
+
+	private boolean demoDefault = false;
+	private void demoDefault() {
+		demoDefault = !demoDefault;
+
+		listener.setDemoDefault(demoDefault);
 	}
 }
 

@@ -8,4 +8,6 @@ public interface ByggBrekkListener {
 	void startCheckStatus();
 
 	void stopCheckStatus();
+
+	void setDemoDefault(boolean demoDefault);
 }
