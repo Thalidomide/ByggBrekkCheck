@@ -31,27 +31,34 @@ class PhidgetThread extends Thread {
 	public PhidgetThread(PhidgetThreadListener listener) {
 		this.listener = listener;
 
-		kit = new InterfaceKitPhidgetMockable(true);
-		kit.addAttachListener(new AttachListener() {
-			@Override
-			public void attached(AttachEvent attachEvent) {
-				attached = true;
-				start();
-			}
-		});
+		kit = new InterfaceKitPhidgetMockable(false);
 
 		importantHandler0 = new ConstantFlasher(kit, OUTPUT_IMPORTANT0, 2, 0);
 		importantHandler1 = new ConstantFlasher(kit, OUTPUT_IMPORTANT1, 2, 1);
 		minorHandler = new ConstantFlasher(kit, OUTPUT_MINOR, 1, 0);
+
+		start();
 	}
 
 	@Override
 	public void run() {
-		if (!attached || running) {
+		if (running) {
 			return;
 		}
 		running = true;
-		kit.openAndWaitForAttachment();
+
+		if (!attached) {
+			kit.addAttachListener(new AttachListener() {
+				@Override
+				public void attached(AttachEvent attachEvent) {
+					attached = true;
+				}
+			});
+			kit.openAndWaitForAttachment();
+			if (!attached) {
+				throw new RuntimeException("Should be attached by now!");
+			}
+		}
 
 		while (true) {
 			updateOutput();
