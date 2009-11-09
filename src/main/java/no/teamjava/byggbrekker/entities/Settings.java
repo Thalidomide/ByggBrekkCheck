@@ -27,4 +27,8 @@ public class Settings {
 
 	public final static long LIGHT_UPDATE_INTERVAL = 1000;
 
+	public final static int[] OUTPUTS_IMPORTANT0 = new int[]{0};
+	public final static int[] OUTPUTS_IMPORTANT1 = new int[]{1};
+	public final static int[] OUTPUTS_MINOR = new int[]{5};
+	public final static int[] OUTPUTS_OK = new int[]{8};
 }

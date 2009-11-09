@@ -6,7 +6,7 @@ import no.teamjava.byggbrekker.phidget.CanUpdateOutput;
  * @author Olav Jensen
  * @since 03.nov.2009
  */
-public class ConstantFlasher extends OutputHandler {
+public class ConstantFlasher extends OutputFlasher {
 
 	private final int duration;
 	private final int phase;
@@ -18,7 +18,7 @@ public class ConstantFlasher extends OutputHandler {
 	}
 
 	@Override
-	protected boolean getCondition(long runTime) {
+	protected boolean getConditionAtBrokenTime(long runTime) {
 		return (runTime + phase) % (duration * 2) < duration;
 	}
 }
