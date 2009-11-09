@@ -3,6 +3,7 @@ package no.teamjava.byggbrekker.gui;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
@@ -52,16 +53,15 @@ public class StartCheckPanel extends JPanel {
 		});
 
 		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.fill = GridBagConstraints.CENTER;
+		constraints.fill = GridBagConstraints.BASELINE_LEADING;
+		constraints.insets = new Insets(1, 10, 1, 10);
 
 		constraints.gridy = 0;
-//		constraints.weightx = 1;
+		constraints.weightx = 0;
 		add(startOrCancleButton, constraints);
 		add(demoDefaultBroken, constraints);
 
-		constraints.gridy = 1;
-		constraints.gridwidth = 1;
-		constraints.ipady = 10;
+		constraints.weightx = 1;
 		add(feedBackLabel, constraints);
 	}
 
