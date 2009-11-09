@@ -32,7 +32,7 @@ class PhidgetThread extends Thread {
 	public PhidgetThread(PhidgetThreadListener listener) {
 		this.listener = listener;
 
-		kit = new InterfaceKitPhidgetMockable(true);
+		kit = new InterfaceKitPhidgetMockable(false);
 
 		importantHandler0 = new ConstantFlasher(kit, Settings.OUTPUTS_IMPORTANT0, 2, 0);
 		importantHandler1 = new ConstantFlasher(kit, Settings.OUTPUTS_IMPORTANT1, 2, 1);
