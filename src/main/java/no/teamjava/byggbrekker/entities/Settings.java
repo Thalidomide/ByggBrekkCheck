@@ -11,7 +11,7 @@ public class Settings {
 
 	public static final long CHECK_INTERVAL = 10000;
 
-	public static final String BROKEN_BUILD_MP3_PATH = "src/main/resources/sounds/buildDown.mp3";
+	public static final String BROKEN_BUILD_MP3_PATH = "src/main/resources/sounds/";
 
 	public static final String HOST = "projects.knowit.no";
 	public static final String GET_METHOD = "/byggmesterbob/browse/DSB";

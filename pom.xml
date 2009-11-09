@@ -12,7 +12,7 @@
     <artifactId>ByggBrekker</artifactId>
     <version>1.0</version>
     <description>
-        ByggBrekkSjekker3000 - somthing goes here TODO
+        ByggBrekkSjekker3000. 
     </description>
 
     <prerequisites>
@@ -58,12 +58,14 @@
             <version>3.1</version>
         </dependency>
 
-         <!--<dependency>-->
-             <!--<groupId>com.phidget</groupId>-->
-             <!--<artifactId>com.phidget</artifactId>-->
-             <!--<version>2.1</version>-->
-             <!--<scope>provided</scope>-->
-         <!--</dependency>-->
+        <dependency>
+            <groupId>com.phidgets</groupId>
+            <artifactId>phidget</artifactId>
+            <version>2.1</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/phidget21.jar</systemPath>
+        </dependency>
+        
     </dependencies>
 
     <build>
@@ -114,29 +116,27 @@
                 </plugin>
 
                 <plugin>
-                   <groupId>org.apache.maven.plugins</groupId>
-                   <artifactId>maven-resources-plugin</artifactId>
-                        <version>2.3</version>
-                        <executions>
-                                <execution>
-                                        <id>copy-prod-resources</id>
-                                        <phase>process-resources</phase>
-                                        <goals>
-                                                <goal>copy-resources</goal>
-                                        </goals>
-                                        <configuration>
-                                                <outputDirectory>target/src/main/resources/</outputDirectory>
-                                                <resources>
-                                                        <resource>
-                                                                <directory>src/main/resources/</directory>
-                                                        </resource>
-                                                </resources>
-                                        </configuration>
-                                </execution>
-                        </executions>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.3</version>
+                    <executions>
+                        <execution>
+                            <id>copy-prod-resources</id>
+                            <phase>process-resources</phase>
+                            <goals>
+                                <goal>copy-resources</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>target/src/main/resources/</outputDirectory>
+                                <resources>
+                                    <resource>
+                                        <directory>src/main/resources/</directory>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
-
-
             </plugins>
         </pluginManagement>
     </build>
