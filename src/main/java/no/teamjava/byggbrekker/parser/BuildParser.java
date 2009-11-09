@@ -15,6 +15,7 @@ public class BuildParser {
 
 	private String successfulString = "SUCCESSFUL";
 	private String failedString = "FAILED";
+	private String buildingString = "BUILD IN PROGRESS";
 
 	public List<Build> checkBuilds(String buildText) {
 		List<Build> builds = new ArrayList<Build>();
@@ -24,18 +25,23 @@ public class BuildParser {
 			BuildStatus status;
 
 			String[] lines = buildText.split(buildType.getLookup().toUpperCase());
+			boolean building = false;
 
 			if (lines.length > 0) {
 				String line = lines[1];
 				int successIndex = line.indexOf(successfulString);
 				int failedIndex = line.indexOf(failedString);
+				int buildingIndex = line.indexOf(buildingString);
 
 				status = failedIndex == -1 || successIndex < failedIndex ? BuildStatus.SUCCESSFUL : BuildStatus.FAILED;
+
+				building = buildingIndex > 0 && buildingIndex < 150;
 			} else {
 				status = BuildStatus.UNKNOWN;
 			}
 
-			builds.add(new Build(buildType, status));
+
+			builds.add(new Build(buildType, status, building));
 		}
 
 		return builds;

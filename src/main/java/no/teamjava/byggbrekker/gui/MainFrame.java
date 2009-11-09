@@ -104,8 +104,9 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 			ArrayList<Build> builds = new ArrayList<Build>();
 
 			for (BuildType buildType : BuildType.values()) {
-				BuildStatus status = BuildType.DEFAULT.equals(buildType) ? BuildStatus.FAILED : BuildStatus.SUCCESSFUL;
-				builds.add(new Build(buildType, status));
+				boolean isDefault = BuildType.DEFAULT.equals(buildType);
+				BuildStatus status = isDefault ? BuildStatus.FAILED : BuildStatus.SUCCESSFUL;
+				builds.add(new Build(buildType, status, isDefault));
 			}
 
 			result.setBuilds(builds);

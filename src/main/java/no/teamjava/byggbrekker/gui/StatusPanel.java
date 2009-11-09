@@ -1,6 +1,7 @@
 package no.teamjava.byggbrekker.gui;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,27 +71,34 @@ class BuildRow extends JPanel {
 	private Color UNKNOWN_IMPORTANT = new Color(0, 50, 150);
 	private Color UNKNOWN_MINOR = new Color(0, 30, 100);
 
+	private Build build;
+	private int borderThickness = 5;
+
+
 	BuildRow() {
 		label = new Label("", LabelType.BIG);
 		label.setForeground(Color.WHITE);
 
 		setBackground(Settings.BACKGROUND);
-		setBorder(new LineBorder(Settings.BACKGROUND, 5));
+		setBorder(new LineBorder(Settings.BACKGROUND, borderThickness));
 
 		add(label);
 	}
 
 	public void setBuild(Build build) {
+		this.build = build;
 		if (build == null) {
 			reset();
 			return;
 		}
 
+		repaint();
+
 		BuildType buildType = build.getType();
 		boolean important = BuildCategory.IMPORTANT.equals(buildType.getCategory());
 
 		Color color;
-		String postFix = "";
+		String postFix = build.isBuilding() ? " (Bygger...)" : "";
 
 		switch (build.getStatus()) {
 			case SUCCESSFUL:
@@ -112,7 +120,44 @@ class BuildRow extends JPanel {
 		setBackground(color);
 	}
 
+	@Override
+	public void paint(Graphics g) {
+		super.paint(g);
+
+		if (build != null && build.isBuilding()) {
+			drawBuildingGui(g);
+		}
+	}
+
+	private void drawBuildingGui(Graphics g) {
+		g.setColor(Color.yellow);
+		int topBottomSpace = borderThickness + 5;
+		int width = getWidth();
+
+		int x = 20;
+		int elements = 4;
+		int elementWidth = 15;
+		int elementSpace = 30;
+		int shift = 30;
+		int yTop = topBottomSpace;
+		int yBottom = getHeight() - topBottomSpace;
+
+		for (int i = 0; i < elements; i++) {
+			drawBuildingElement(g, x, elementWidth, shift, yTop, yBottom);
+			drawBuildingElement(g, width - x - elementWidth, elementWidth, - shift, yTop, yBottom);
+
+			x += elementSpace;
+		}
+	}
+
+	private void drawBuildingElement(Graphics g, int x, int width, int shift, int yTop, int yBottom) {
+		int[] xPoints = new int[]{x, x + width, x + width + shift, x + shift};
+		int[] yPoints = new int[]{yBottom, yBottom, yTop, yTop};
+		g.fillPolygon(xPoints, yPoints, 4);
+	}
+
 	public void reset() {
+		repaint();
 		setBackground(Settings.BACKGROUND);
 		label.setText("");
 	}
