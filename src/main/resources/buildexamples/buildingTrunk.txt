@@ -1,0 +1,938 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Direktoratet for samfunnssikkerhet og beredskap:
+Project Summary - Byggmester Objectnet </title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="robots" content="all" />
+	<meta name="MSSmartTagsPreventParsing" content="true" />
+
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+
+    <link type="text/css" rel="stylesheet" href="/byggmesterbob/s/801/1/_/scripts/yui-2.4.1/build/grids/grids.css" />
+    <!--<link type="text/css" rel="stylesheet" href="/byggmesterbob/s/801/1/_/scripts/yui/build/reset-fonts-grids/reset-fonts-grids.css" />-->
+    <link rel="stylesheet" href="/byggmesterbob/s/801/1/_/styles/main.css" type="text/css" />
+    <link rel="stylesheet" href="/byggmesterbob/s/801/1/_/styles/main2.css" type="text/css" />
+    <link rel="stylesheet" href="/byggmesterbob/s/801/1/_/styles/global-static.css" type="text/css" />
+    <link rel="stylesheet" href="/byggmesterbob/s/801/1/_/styles/widePlanList.css" type="text/css" />
+    <link rel="stylesheet" href="/byggmesterbob/s/801/1/_/styles/forms.css" type="text/css" />
+    <link rel="stylesheet" href="/byggmesterbob/s/801/1/_/styles/yui-support/yui-custom.css" type="text/css" />
+    <link rel="shortcut icon" href="/byggmesterbob/s/801/1/_/images/icons/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="/byggmesterbob/s/801/1/_/images/icons/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="/byggmesterbob/s/801/1/_/styles/bamboo-tabs.css" type="text/css" />
+
+    <!-- Core YUI-->
+    <link rel="stylesheet" type="text/css" href="/byggmesterbob/s/801/1/_/scripts/yui-2.4.1/build/tabview/assets/tabview-core.css">
+    <link rel="stylesheet" type="text/css" href="/byggmesterbob/s/801/1/_/scripts/yui-2.4.1/build/tabview/assets/skins/sam/tabview-skin.css">
+
+    <script type="text/javascript"          src="/byggmesterbob/s/801/1/_/scripts/yui-2.4.1/build/yahoo/yahoo-min.js"></script>
+    <script type="text/javascript"          src="/byggmesterbob/s/801/1/_/scripts/yui-2.4.1/build/event/event-min.js" ></script>
+    <script type="text/javascript"          src="/byggmesterbob/s/801/1/_/scripts/yui-2.4.1/build/dom/dom-min.js" ></script>
+    <!--<script type="text/javascript"          src="/byggmesterbob/s/801/1/_/scripts/yui-2.4.1/build/animation/animation.js" ></script>-->
+
+    <!-- Container -->
+    <script type="text/javascript"          src="/byggmesterbob/s/801/1/_/scripts/yui-2.4.1/build/container/container-min.js"></script>
+    <script type="text/javascript"          src="/byggmesterbob/s/801/1/_/scripts/yui-2.4.1/build/connection/connection-min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/byggmesterbob/s/801/1/_/scripts/yui-2.4.1/build/container/assets/container.css" />
+
+    <!-- Menu -->
+    <script type="text/javascript"          src="/byggmesterbob/s/801/1/_/scripts/yui-2.4.1/build/menu/menu-min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/byggmesterbob/s/801/1/_/scripts/yui-2.4.1/build/menu/assets/menu.css" />
+
+    <!-- Tab view -->
+    <!-- JavaScript Dependencies for Tabview: -->
+    <script type="text/javascript"          src="/byggmesterbob/s/801/1/_/scripts/yui-2.4.1/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+    <script type="text/javascript"          src="/byggmesterbob/s/801/1/_/scripts/yui-2.4.1/build/element/element-beta-min.js"></script>
+    <!-- Needed for old versions of the YUI -->
+    <link rel="stylesheet" href="/byggmesterbob/s/801/1/_/styles/yui-support/tabview.css" type="text/css" />
+    <link rel="stylesheet" href="/byggmesterbob/s/801/1/_/styles/yui-support/round_tabs.css" type="text/css" />
+
+    <script type="text/javascript"          src="/byggmesterbob/s/801/1/_/scripts/yui-2.4.1/build/tabview/tabview-min.js"></script>
+
+    <script type="text/javascript"          src="/byggmesterbob/s/801/1/_/scripts/yui-2.4.1/build/json/json-beta-min.js"></script>
+    <script type="text/javascript" src="/byggmesterbob/s/801/1/_/scripts/yui-ext/yui-ext-nogrid.js"></script>
+
+    <script type="text/javascript" src="/byggmesterbob/s/801/1/_/scripts/bamboo.js"></script>
+
+    <script type="text/javascript">
+        YAHOO.namespace('bamboo');
+        YAHOO.bamboo.tooltips = new Object();
+        YAHOO.bamboo.contextPath = '/byggmesterbob';
+        YAHOO.ext.UpdateManager.defaults.loadScripts = true;
+        YAHOO.ext.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">Currently loading...</div>';
+        YAHOO.ext.UpdateManager.defaults.timeout = 60;
+        addUniversalOnload(addConfirmationToLinks);
+    </script>
+
+</head>
+<body>
+<ul id="top">
+    <li id="skipNav">
+        <a href="#menu">Skip to navigation</a>
+    </li>
+    <li>
+        <a href="#content">Skip to content</a>
+    </li>
+</ul>
+<div id="nonFooter">
+
+<div id="hd">
+
+<div id="header">
+    <div id="logo">
+        <a href="/byggmesterbob/start.action"><img src="/byggmesterbob/images/bamboo_header_logo.gif" alt="Atlassian Bamboo" height="36" width="118" /></a>
+    </div>
+    <ul id="userOptions">
+        <li id="userInfo">
+            User: <strong>Olav Jensen</strong>
+        </li>
+        <li id="profileLink">
+            <a id="profile" href="/byggmesterbob/profile/userProfile.action">Profile</a>
+        </li>
+        <li id="logoutLink">
+            <a id="logout" href="/byggmesterbob/userLogout.action">Logout</a>
+        </li>
+        <li id="helpLink">
+            <a id="help" href="/byggmesterbob/help/bamboo-help.ftl" onclick="openHelp('/byggmesterbob/help/bamboo-help.ftl');return false;">Help</a>
+        </li>
+    </ul>
+</div> <!-- END #header -->
+<div id="menu">
+    <ul>
+        <li><a id="home" href="/byggmesterbob/start.action" title="Atlassian Bamboo" accesskey="H"><u>H</u>ome</a></li>
+        <li><a id="authors" href="/byggmesterbob/authors/gotoAuthorReport.action" accesskey="U">A<u>u</u>thors</a></li>
+        <li><a id="reports" href="/byggmesterbob/reports/viewReport.action" accesskey="R"><u>R</u>eports</a></li>
+    </ul>
+</div> <!-- END #menu -->
+</div> <!-- END #hd --><div id="bd">
+<div id="content">
+
+<p id="breadcrumb">
+                Project: <a class="current" id="breadcrumb:DSB"  href="/byggmesterbob/browse/DSB">Direktoratet for samfunnssikkerhet og beredskap</a>
+</p><h1>
+        Direktoratet for samfunnssikkerhet og beredskap:
+Project Summary</h1>
+
+<div class="paddedClearer" ></div>
+
+<div class="widePlanList">
+
+
+<div id="singleProject_project_196609_section" class="projectSection">
+        <div id="singleProject_196609" class="projectHeaderSection headerOpen headerDisabled">
+            <a id="viewProject:DSB" href="/byggmesterbob/browse/DSB" title="Project Summary" class="projectLink alwaysFollow">
+                Direktoratet for samfunnssikkerhet og beredskap
+            </a>
+        </div>
+         <ul class="buildList" id="singleProject_196609_target">
+
+<li id="buildPlan0" class="buildPlan ">
+    <div class="planOperations">
+        <!-- operations -->
+                <a id="singleProjectresumeBuild:DSB-SYSTESTDEF" href="/byggmesterbob/build/admin/resumeBuild.action?buildKey=DSB-SYSTESTDEF"><img src="/byggmesterbob/images/jt/icn_enable.gif" border="0" hspace="2" alt="Enable Build" title="Enable 'Direktoratet for samfunnssikkerhet og beredskap - Branch Default Build st2_02'"></a>
+        <a id="singleProjectbuildLog:DSB-SYSTESTDEF" accesskey="L" href="/byggmesterbob/browse/DSB-SYSTESTDEF/log"><img src="/byggmesterbob/images/jt/icn_log.gif" border="0" hspace="2" alt="View Build Activity Log" title="View Build Activity Log for 'Direktoratet for samfunnssikkerhet og beredskap - Branch Default Build st2_02'"></a>
+<a href="#" class="internalLink" id="toggleFavourite_DSB-SYSTESTDEF" onclick="toggleFavourite('/byggmesterbob/build/label/setFavourite.action?returnUrl=%2Fproject%2FviewProject.action%3FprojectKey%3DDSB&amp;buildKey=DSB-SYSTESTDEF'); return false;"><img src="/byggmesterbob/images/jt/icn_favourites_on.gif" class="evented" id="singleProject_favouriteIconFor_DSB-SYSTESTDEF" title="Toggle 'Direktoratet for samfunnssikkerhet og beredskap - Branch Default Build st2_02' to/from your favourites" /></a>            <script type="text/javascript">
+                YAHOO.ext.EventManager.addListener('singleProject_favouriteIconFor_DSB-SYSTESTDEF', 'click', toggleIcon);
+            </script>
+    </div>
+
+    <ul class="latestBuildResults">
+        <!-- Last Build Time-->
+        <li>Ran: <span id="lastBuiltSummaryDSB-SYSTESTDEF">7 months ago</span></li>
+
+        <!-- Reason -->
+        <li id="singleProjectreasonForBuildDSB-SYSTESTDEF">
+            <span  id="reasonSummaryDSB-SYSTESTDEF">
+                Updated by
+<a href="/byggmesterbob/browse/user/olj">Olav Jensen</a>
+            </span>
+<span id="singleProjectreasonForBuildDSB-SYSTESTDEFTooltipContainer"></span>
+<script type="text/javascript">
+        YAHOO.bamboo.tooltips['singleProjectreasonForBuildDSB-SYSTESTDEFTooltip'] = new YAHOO.widget.Tooltip("singleProjectreasonForBuildDSB-SYSTESTDEFTooltip", { context:"singleProjectreasonForBuildDSB-SYSTESTDEF", text: '<strong>Who:</strong> Olav Jensen<br /><strong>Why:</strong> DSB-1586 F&aring;r riktig zoom-niv&aring; n&aring;r man finner kartlokasjonen ved adresses&oslash;k<br>DSB-1591 Endret til &aring; bruke Toporaster2<br />', container: 'singleProjectreasonForBuildDSB-SYSTESTDEFTooltipContainer', zIndex: 20});
+
+    if (getEl('singleProjectreasonForBuildDSB-SYSTESTDEF'))
+    {
+        getEl('singleProjectreasonForBuildDSB-SYSTESTDEF').addClass('evented');
+    }
+
+    if (getEl('singleProjectreasonForBuildDSB-SYSTESTDEFTooltip'))
+    {
+        getEl('singleProjectreasonForBuildDSB-SYSTESTDEFTooltip').addClass('evented');
+        getEl('singleProjectreasonForBuildDSB-SYSTESTDEFTooltip').addClass('yuiTooltips');
+    }
+</script>
+        </li>
+
+        <!-- Duration -->
+        <li>
+            Duration:
+            <span id="durationSummaryDSB-SYSTESTDEF">
+7 minutes            </span>
+        </li>
+
+        <!-- test count summary -->
+        <li class="last" >
+            Tests:
+            <span id="testSummaryDSB-SYSTESTDEF">
+701 passed            </span>
+        </li>
+    </ul>
+
+    <!-- summary icon -->
+    <div id="statusSectionDSB-SYSTESTDEF"class="statusIcon">
+<a href="/byggmesterbob/browse/DSB-SYSTESTDEF/log" class="Link"> <img src="/byggmesterbob/images/jt/icn_plan_disabled.gif" title="Plan Disabled"/></a>    </div>
+
+    <div class="planKeySection Suspended">
+    <!-- plan -->
+        <a id="singleProjectviewBuild:DSB-SYSTESTDEF"
+           href="/byggmesterbob/browse/DSB-SYSTESTDEF" title="Plan Summary">Branch Default Build st2_02</a>
+    <!-- latest build -->
+        >
+        <a id="singleProjectlatestBuild:DSB-SYSTESTDEF:335"
+           href="/byggmesterbob/browse/DSB-SYSTESTDEF/latest"  title="Latest Build">DSB-SYSTESTDEF-<span id="latestBuildNumberDSB-SYSTESTDEF">335</span></a>
+    </div>
+    <div class="clearer"></div>
+</li>
+
+
+<li id="buildPlan1" class="buildPlan ">
+    <div class="planOperations">
+        <!-- operations -->
+                <a id="singleProjectstopBuild:DSB-ST3" style="display:none;" href="/byggmesterbob/build/admin/stopBuild.action?buildKey=DSB-ST3"><img src="/byggmesterbob/images/jt/icn_stop.gif" border="0" hspace="2" alt="Stop Build" title="Stop 'Direktoratet for samfunnssikkerhet og beredskap - Branch Default Build st3_01'"></a>
+                <a id="singleProjectbuildBuild:DSB-ST3"  href="/byggmesterbob/build/admin/triggerManualBuild.action?buildKey=DSB-ST3"><img src="/byggmesterbob/images/jt/icn_run.gif" border="0" hspace="2" alt="Checkout & Build" title="Build 'Direktoratet for samfunnssikkerhet og beredskap - Branch Default Build st3_01'"></a>
+        <a id="singleProjectbuildLog:DSB-ST3" accesskey="L" href="/byggmesterbob/browse/DSB-ST3/log"><img src="/byggmesterbob/images/jt/icn_log.gif" border="0" hspace="2" alt="View Build Activity Log" title="View Build Activity Log for 'Direktoratet for samfunnssikkerhet og beredskap - Branch Default Build st3_01'"></a>
+<a href="#" class="internalLink" id="toggleFavourite_DSB-ST3" onclick="toggleFavourite('/byggmesterbob/build/label/setFavourite.action?returnUrl=%2Fproject%2FviewProject.action%3FprojectKey%3DDSB&amp;buildKey=DSB-ST3'); return false;"><img src="/byggmesterbob/images/jt/icn_favourites_on.gif" class="evented" id="singleProject_favouriteIconFor_DSB-ST3" title="Toggle 'Direktoratet for samfunnssikkerhet og beredskap - Branch Default Build st3_01' to/from your favourites" /></a>            <script type="text/javascript">
+                YAHOO.ext.EventManager.addListener('singleProject_favouriteIconFor_DSB-ST3', 'click', toggleIcon);
+            </script>
+    </div>
+
+    <ul class="latestBuildResults">
+        <!-- Last Build Time-->
+        <li>Ran: <span id="lastBuiltSummaryDSB-ST3">3 days ago</span></li>
+
+        <!-- Reason -->
+        <li id="singleProjectreasonForBuildDSB-ST3">
+            <span  id="reasonSummaryDSB-ST3">
+                Updated by
+<a href="/byggmesterbob/browse/author/jhh">jhh</a>
+            </span>
+<span id="singleProjectreasonForBuildDSB-ST3TooltipContainer"></span>
+<script type="text/javascript">
+        YAHOO.bamboo.tooltips['singleProjectreasonForBuildDSB-ST3Tooltip'] = new YAHOO.widget.Tooltip("singleProjectreasonForBuildDSB-ST3Tooltip", { context:"singleProjectreasonForBuildDSB-ST3", text: '<strong>Who:</strong> jhh<br /><strong>Why:</strong> Validering av riktig branch. Endringen er dummy<br />', container: 'singleProjectreasonForBuildDSB-ST3TooltipContainer', zIndex: 20});
+
+    if (getEl('singleProjectreasonForBuildDSB-ST3'))
+    {
+        getEl('singleProjectreasonForBuildDSB-ST3').addClass('evented');
+    }
+
+    if (getEl('singleProjectreasonForBuildDSB-ST3Tooltip'))
+    {
+        getEl('singleProjectreasonForBuildDSB-ST3Tooltip').addClass('evented');
+        getEl('singleProjectreasonForBuildDSB-ST3Tooltip').addClass('yuiTooltips');
+    }
+</script>
+        </li>
+
+        <!-- Duration -->
+        <li>
+            Duration:
+            <span id="durationSummaryDSB-ST3">
+10 minutes            </span>
+        </li>
+
+        <!-- test count summary -->
+        <li class="last" >
+            Tests:
+            <span id="testSummaryDSB-ST3">
+1223 passed            </span>
+        </li>
+    </ul>
+
+    <!-- summary icon -->
+    <div id="statusSectionDSB-ST3"class="statusIcon">
+<a href="/byggmesterbob/browse/DSB-ST3/log" class="Link"> <img src="/byggmesterbob/images/jt/icn_plan_passed.gif" alt="Last build was successful" title="Last build was successful" ></a>    </div>
+
+    <div class="planKeySection Successful">
+    <!-- plan -->
+        <a id="singleProjectviewBuild:DSB-ST3"
+           href="/byggmesterbob/browse/DSB-ST3" title="Plan Summary">Branch Default Build st3_01</a>
+    <!-- latest build -->
+        >
+        <a id="singleProjectlatestBuild:DSB-ST3:502"
+           href="/byggmesterbob/browse/DSB-ST3/latest"  title="Latest Build">DSB-ST3-<span id="latestBuildNumberDSB-ST3">502</span></a>
+    </div>
+    <div class="clearer"></div>
+</li>
+
+
+<li id="buildPlan2" class="buildPlan ">
+    <div class="planOperations">
+        <!-- operations -->
+                <a id="singleProjectstopBuild:DSB-ST4" style="display:none;" href="/byggmesterbob/build/admin/stopBuild.action?buildKey=DSB-ST4"><img src="/byggmesterbob/images/jt/icn_stop.gif" border="0" hspace="2" alt="Stop Build" title="Stop 'Direktoratet for samfunnssikkerhet og beredskap - Branch Default Build st4'"></a>
+                <a id="singleProjectbuildBuild:DSB-ST4"  href="/byggmesterbob/build/admin/triggerManualBuild.action?buildKey=DSB-ST4"><img src="/byggmesterbob/images/jt/icn_run.gif" border="0" hspace="2" alt="Checkout & Build" title="Build 'Direktoratet for samfunnssikkerhet og beredskap - Branch Default Build st4'"></a>
+        <a id="singleProjectbuildLog:DSB-ST4" accesskey="L" href="/byggmesterbob/browse/DSB-ST4/log"><img src="/byggmesterbob/images/jt/icn_log.gif" border="0" hspace="2" alt="View Build Activity Log" title="View Build Activity Log for 'Direktoratet for samfunnssikkerhet og beredskap - Branch Default Build st4'"></a>
+<a href="#" class="internalLink" id="toggleFavourite_DSB-ST4" onclick="toggleFavourite('/byggmesterbob/build/label/setFavourite.action?returnUrl=%2Fproject%2FviewProject.action%3FprojectKey%3DDSB&amp;buildKey=DSB-ST4'); return false;"><img src="/byggmesterbob/images/jt/icn_favourites_on.gif" class="evented" id="singleProject_favouriteIconFor_DSB-ST4" title="Toggle 'Direktoratet for samfunnssikkerhet og beredskap - Branch Default Build st4' to/from your favourites" /></a>            <script type="text/javascript">
+                YAHOO.ext.EventManager.addListener('singleProject_favouriteIconFor_DSB-ST4', 'click', toggleIcon);
+            </script>
+    </div>
+
+    <ul class="latestBuildResults">
+        <!-- Last Build Time-->
+        <li>Ran: <span id="lastBuiltSummaryDSB-ST4">1 hour ago</span></li>
+
+        <!-- Reason -->
+        <li id="singleProjectreasonForBuildDSB-ST4">
+            <span  id="reasonSummaryDSB-ST4">
+                Updated by
+<a href="/byggmesterbob/browse/user/olj">Olav Jensen</a>
+            </span>
+<span id="singleProjectreasonForBuildDSB-ST4TooltipContainer"></span>
+<script type="text/javascript">
+        YAHOO.bamboo.tooltips['singleProjectreasonForBuildDSB-ST4Tooltip'] = new YAHOO.widget.Tooltip("singleProjectreasonForBuildDSB-ST4Tooltip", { context:"singleProjectreasonForBuildDSB-ST4", text: '<strong>Who:</strong> Olav Jensen<br /><strong>Why:</strong> DSB-2057 Epostene som sendes til innmelder for elvirksomhet sendes n&aring; p&aring; engelsk hvis engelsk spr&aring;k. Tekstene er placeholders inntil vi f&aring;r de riktige.<br />', container: 'singleProjectreasonForBuildDSB-ST4TooltipContainer', zIndex: 20});
+
+    if (getEl('singleProjectreasonForBuildDSB-ST4'))
+    {
+        getEl('singleProjectreasonForBuildDSB-ST4').addClass('evented');
+    }
+
+    if (getEl('singleProjectreasonForBuildDSB-ST4Tooltip'))
+    {
+        getEl('singleProjectreasonForBuildDSB-ST4Tooltip').addClass('evented');
+        getEl('singleProjectreasonForBuildDSB-ST4Tooltip').addClass('yuiTooltips');
+    }
+</script>
+        </li>
+
+        <!-- Duration -->
+        <li>
+            Duration:
+            <span id="durationSummaryDSB-ST4">
+7 minutes            </span>
+        </li>
+
+        <!-- test count summary -->
+        <li class="last" >
+            Tests:
+            <span id="testSummaryDSB-ST4">
+1434 passed            </span>
+        </li>
+    </ul>
+
+    <!-- summary icon -->
+    <div id="statusSectionDSB-ST4"class="statusIcon">
+<a href="/byggmesterbob/browse/DSB-ST4/log" class="Link"> <img src="/byggmesterbob/images/jt/icn_plan_passed.gif" alt="Last build was successful" title="Last build was successful" ></a>    </div>
+
+    <div class="planKeySection Successful">
+    <!-- plan -->
+        <a id="singleProjectviewBuild:DSB-ST4"
+           href="/byggmesterbob/browse/DSB-ST4" title="Plan Summary">Branch Default Build st4</a>
+    <!-- latest build -->
+        >
+        <a id="singleProjectlatestBuild:DSB-ST4:151"
+           href="/byggmesterbob/browse/DSB-ST4/latest"  title="Latest Build">DSB-ST4-<span id="latestBuildNumberDSB-ST4">151</span></a>
+    </div>
+    <div class="clearer"></div>
+</li>
+
+
+<li id="buildPlan3" class="buildPlan ">
+    <div class="planOperations">
+        <!-- operations -->
+                <a id="singleProjectstopBuild:DSB-DEF"  href="/byggmesterbob/build/admin/stopBuild.action?buildKey=DSB-DEF"><img src="/byggmesterbob/images/jt/icn_stop.gif" border="0" hspace="2" alt="Stop Build" title="Stop 'Direktoratet for samfunnssikkerhet og beredskap - Default'"></a>
+                <a id="singleProjectbuildBuild:DSB-DEF" style="display:none;" href="/byggmesterbob/build/admin/triggerManualBuild.action?buildKey=DSB-DEF"><img src="/byggmesterbob/images/jt/icn_run.gif" border="0" hspace="2" alt="Checkout & Build" title="Build 'Direktoratet for samfunnssikkerhet og beredskap - Default'"></a>
+        <a id="singleProjectbuildLog:DSB-DEF" accesskey="L" href="/byggmesterbob/browse/DSB-DEF/log"><img src="/byggmesterbob/images/jt/icn_log.gif" border="0" hspace="2" alt="View Build Activity Log" title="View Build Activity Log for 'Direktoratet for samfunnssikkerhet og beredskap - Default'"></a>
+<a href="#" class="internalLink" id="toggleFavourite_DSB-DEF" onclick="toggleFavourite('/byggmesterbob/build/label/setFavourite.action?returnUrl=%2Fproject%2FviewProject.action%3FprojectKey%3DDSB&amp;buildKey=DSB-DEF'); return false;"><img src="/byggmesterbob/images/jt/icn_favourites_on.gif" class="evented" id="singleProject_favouriteIconFor_DSB-DEF" title="Toggle 'Direktoratet for samfunnssikkerhet og beredskap - Default' to/from your favourites" /></a>            <script type="text/javascript">
+                YAHOO.ext.EventManager.addListener('singleProject_favouriteIconFor_DSB-DEF', 'click', toggleIcon);
+            </script>
+    </div>
+
+    <ul class="latestBuildResults">
+        <!-- Last Build Time-->
+        <li>Ran: <span id="lastBuiltSummaryDSB-DEF">1 hour ago</span></li>
+
+        <!-- Reason -->
+        <li id="singleProjectreasonForBuildDSB-DEF">
+            <span  id="reasonSummaryDSB-DEF">
+                Updated by
+<a href="/byggmesterbob/browse/user/aks">Alf Kristian Støyle</a>
+            </span>
+<span id="singleProjectreasonForBuildDSB-DEFTooltipContainer"></span>
+<script type="text/javascript">
+        YAHOO.bamboo.tooltips['singleProjectreasonForBuildDSB-DEFTooltip'] = new YAHOO.widget.Tooltip("singleProjectreasonForBuildDSB-DEFTooltip", { context:"singleProjectreasonForBuildDSB-DEF", text: '<strong>Who:</strong> Alf Kristian St&oslash;yle<br /><strong>Why:</strong> Merge fra st4. Skulle vaert annotert som TypeSafeEnums, saa de faar riktig db type.<br />', container: 'singleProjectreasonForBuildDSB-DEFTooltipContainer', zIndex: 20});
+
+    if (getEl('singleProjectreasonForBuildDSB-DEF'))
+    {
+        getEl('singleProjectreasonForBuildDSB-DEF').addClass('evented');
+    }
+
+    if (getEl('singleProjectreasonForBuildDSB-DEFTooltip'))
+    {
+        getEl('singleProjectreasonForBuildDSB-DEFTooltip').addClass('evented');
+        getEl('singleProjectreasonForBuildDSB-DEFTooltip').addClass('yuiTooltips');
+    }
+</script>
+        </li>
+
+        <!-- Duration -->
+        <li>
+            Duration:
+            <span id="durationSummaryDSB-DEF">
+8 minutes            </span>
+        </li>
+
+        <!-- test count summary -->
+        <li class="last" >
+            Tests:
+            <span id="testSummaryDSB-DEF">
+1444 passed            </span>
+        </li>
+    </ul>
+
+    <!-- summary icon -->
+    <div id="statusSectionDSB-DEF"class="statusIcon">
+<a href="/byggmesterbob/browse/DSB-DEF/log" class="Link"> <img src="/byggmesterbob/images/jt/icn_building.gif" alt="Build in progress" title="Build in progress" ></a>    </div>
+
+    <div class="planKeySection Successful">
+    <!-- plan -->
+        <a id="singleProjectviewBuild:DSB-DEF"
+           href="/byggmesterbob/browse/DSB-DEF" title="Plan Summary">Default</a>
+    <!-- latest build -->
+        >
+        <a id="singleProjectlatestBuild:DSB-DEF:6727"
+           href="/byggmesterbob/browse/DSB-DEF/latest"  title="Latest Build">DSB-DEF-<span id="latestBuildNumberDSB-DEF">6727</span></a>
+    </div>
+    <div class="clearer"></div>
+</li>
+
+
+<li id="buildPlan4" class="buildPlan ">
+    <div class="planOperations">
+        <!-- operations -->
+                <a id="singleProjectstopBuild:DSB-DEPSNAP" style="display:none;" href="/byggmesterbob/build/admin/stopBuild.action?buildKey=DSB-DEPSNAP"><img src="/byggmesterbob/images/jt/icn_stop.gif" border="0" hspace="2" alt="Stop Build" title="Stop 'Direktoratet for samfunnssikkerhet og beredskap - Deploy Snapshot'"></a>
+                <a id="singleProjectbuildBuild:DSB-DEPSNAP"  href="/byggmesterbob/build/admin/triggerManualBuild.action?buildKey=DSB-DEPSNAP"><img src="/byggmesterbob/images/jt/icn_run.gif" border="0" hspace="2" alt="Checkout & Build" title="Build 'Direktoratet for samfunnssikkerhet og beredskap - Deploy Snapshot'"></a>
+            <a id="singleProjecteditBuild:DSB-DEPSNAP" accesskey="E" href="/byggmesterbob/build/admin/edit/editBuildConfiguration.action?buildKey=DSB-DEPSNAP"><img src="/byggmesterbob/images/jt/icn_edit.gif" border="0" hspace="2" alt="Edit Build" title="Edit 'Direktoratet for samfunnssikkerhet og beredskap - Deploy Snapshot'"></a>
+        <a id="singleProjectbuildLog:DSB-DEPSNAP" accesskey="L" href="/byggmesterbob/browse/DSB-DEPSNAP/log"><img src="/byggmesterbob/images/jt/icn_log.gif" border="0" hspace="2" alt="View Build Activity Log" title="View Build Activity Log for 'Direktoratet for samfunnssikkerhet og beredskap - Deploy Snapshot'"></a>
+<a href="#" class="internalLink" id="toggleFavourite_DSB-DEPSNAP" onclick="toggleFavourite('/byggmesterbob/build/label/setFavourite.action?returnUrl=%2Fproject%2FviewProject.action%3FprojectKey%3DDSB&amp;buildKey=DSB-DEPSNAP'); return false;"><img src="/byggmesterbob/images/jt/icn_favourites_off.gif" class="evented" id="singleProject_favouriteIconFor_DSB-DEPSNAP" title="Toggle 'Direktoratet for samfunnssikkerhet og beredskap - Deploy Snapshot' to/from your favourites" /></a>            <script type="text/javascript">
+                YAHOO.ext.EventManager.addListener('singleProject_favouriteIconFor_DSB-DEPSNAP', 'click', toggleIcon);
+            </script>
+    </div>
+
+    <ul class="latestBuildResults">
+        <!-- Last Build Time-->
+        <li>Ran: <span id="lastBuiltSummaryDSB-DEPSNAP">6 hours ago</span></li>
+
+        <!-- Reason -->
+        <li id="singleProjectreasonForBuildDSB-DEPSNAP">
+            <span  id="reasonSummaryDSB-DEPSNAP">
+                Scheduled build
+            </span>
+        </li>
+
+        <!-- Duration -->
+        <li>
+            Duration:
+            <span id="durationSummaryDSB-DEPSNAP">
+39 seconds            </span>
+        </li>
+
+        <!-- test count summary -->
+        <li class="last" >
+            Tests:
+            <span id="testSummaryDSB-DEPSNAP">
+Testless build            </span>
+        </li>
+    </ul>
+
+    <!-- summary icon -->
+    <div id="statusSectionDSB-DEPSNAP"class="statusIcon">
+<a href="/byggmesterbob/browse/DSB-DEPSNAP/log" class="Link"> <img src="/byggmesterbob/images/jt/icn_plan_passed.gif" alt="Last build was successful" title="Last build was successful" ></a>    </div>
+
+    <div class="planKeySection Successful">
+    <!-- plan -->
+        <a id="singleProjectviewBuild:DSB-DEPSNAP"
+           href="/byggmesterbob/browse/DSB-DEPSNAP" title="Plan Summary">Deploy Snapshot</a>
+    <!-- latest build -->
+        >
+        <a id="singleProjectlatestBuild:DSB-DEPSNAP:103"
+           href="/byggmesterbob/browse/DSB-DEPSNAP/latest"  title="Latest Build">DSB-DEPSNAP-<span id="latestBuildNumberDSB-DEPSNAP">103</span></a>
+    </div>
+    <div class="clearer"></div>
+</li>
+
+
+<li id="buildPlan5" class="buildPlan ">
+    <div class="planOperations">
+        <!-- operations -->
+                <a id="singleProjectstopBuild:DSB-DEPSYS" style="display:none;" href="/byggmesterbob/build/admin/stopBuild.action?buildKey=DSB-DEPSYS"><img src="/byggmesterbob/images/jt/icn_stop.gif" border="0" hspace="2" alt="Stop Build" title="Stop 'Direktoratet for samfunnssikkerhet og beredskap - Deploy Systest st4'"></a>
+                <a id="singleProjectbuildBuild:DSB-DEPSYS"  href="/byggmesterbob/build/admin/triggerManualBuild.action?buildKey=DSB-DEPSYS"><img src="/byggmesterbob/images/jt/icn_run.gif" border="0" hspace="2" alt="Checkout & Build" title="Build 'Direktoratet for samfunnssikkerhet og beredskap - Deploy Systest st4'"></a>
+            <a id="singleProjecteditBuild:DSB-DEPSYS" accesskey="E" href="/byggmesterbob/build/admin/edit/editBuildConfiguration.action?buildKey=DSB-DEPSYS"><img src="/byggmesterbob/images/jt/icn_edit.gif" border="0" hspace="2" alt="Edit Build" title="Edit 'Direktoratet for samfunnssikkerhet og beredskap - Deploy Systest st4'"></a>
+        <a id="singleProjectbuildLog:DSB-DEPSYS" accesskey="L" href="/byggmesterbob/browse/DSB-DEPSYS/log"><img src="/byggmesterbob/images/jt/icn_log.gif" border="0" hspace="2" alt="View Build Activity Log" title="View Build Activity Log for 'Direktoratet for samfunnssikkerhet og beredskap - Deploy Systest st4'"></a>
+<a href="#" class="internalLink" id="toggleFavourite_DSB-DEPSYS" onclick="toggleFavourite('/byggmesterbob/build/label/setFavourite.action?returnUrl=%2Fproject%2FviewProject.action%3FprojectKey%3DDSB&amp;buildKey=DSB-DEPSYS'); return false;"><img src="/byggmesterbob/images/jt/icn_favourites_on.gif" class="evented" id="singleProject_favouriteIconFor_DSB-DEPSYS" title="Toggle 'Direktoratet for samfunnssikkerhet og beredskap - Deploy Systest st4' to/from your favourites" /></a>            <script type="text/javascript">
+                YAHOO.ext.EventManager.addListener('singleProject_favouriteIconFor_DSB-DEPSYS', 'click', toggleIcon);
+            </script>
+    </div>
+
+    <ul class="latestBuildResults">
+        <!-- Last Build Time-->
+        <li>Ran: <span id="lastBuiltSummaryDSB-DEPSYS">2 hours ago</span></li>
+
+        <!-- Reason -->
+        <li id="singleProjectreasonForBuildDSB-DEPSYS">
+            <span  id="reasonSummaryDSB-DEPSYS">
+                Manual build by
+<a href="/byggmesterbob/browse/user/fredrikd">Fredrik Danielsen</a>
+            </span>
+<span id="singleProjectreasonForBuildDSB-DEPSYSTooltipContainer"></span>
+<script type="text/javascript">
+        YAHOO.bamboo.tooltips['singleProjectreasonForBuildDSB-DEPSYSTooltip'] = new YAHOO.widget.Tooltip("singleProjectreasonForBuildDSB-DEPSYSTooltip", { context:"singleProjectreasonForBuildDSB-DEPSYS", text: '<strong>Who:</strong> Fredrik Danielsen<br /><strong>Why:</strong> DSBFS-1188 Produkt - Type-ahead p&aring; rettsregel virker ikke alltid<br>DSBFS-1175 Hjelpetekster - utvidelse av funksjonalitet<br /><hr /><br /><strong>Who:</strong> Alf Kristian St&oslash;yle<br /><strong>Why:</strong> DSB-2057 Denne teksten skulle ogsaa vaert oversatt.<br />', container: 'singleProjectreasonForBuildDSB-DEPSYSTooltipContainer', zIndex: 20});
+
+    if (getEl('singleProjectreasonForBuildDSB-DEPSYS'))
+    {
+        getEl('singleProjectreasonForBuildDSB-DEPSYS').addClass('evented');
+    }
+
+    if (getEl('singleProjectreasonForBuildDSB-DEPSYSTooltip'))
+    {
+        getEl('singleProjectreasonForBuildDSB-DEPSYSTooltip').addClass('evented');
+        getEl('singleProjectreasonForBuildDSB-DEPSYSTooltip').addClass('yuiTooltips');
+    }
+</script>
+        </li>
+
+        <!-- Duration -->
+        <li>
+            Duration:
+            <span id="durationSummaryDSB-DEPSYS">
+18 minutes            </span>
+        </li>
+
+        <!-- test count summary -->
+        <li class="last" >
+            Tests:
+            <span id="testSummaryDSB-DEPSYS">
+Testless build            </span>
+        </li>
+    </ul>
+
+    <!-- summary icon -->
+    <div id="statusSectionDSB-DEPSYS"class="statusIcon">
+<a href="/byggmesterbob/browse/DSB-DEPSYS/log" class="Link"> <img src="/byggmesterbob/images/jt/icn_plan_passed.gif" alt="Last build was successful" title="Last build was successful" ></a>    </div>
+
+    <div class="planKeySection Successful">
+    <!-- plan -->
+        <a id="singleProjectviewBuild:DSB-DEPSYS"
+           href="/byggmesterbob/browse/DSB-DEPSYS" title="Plan Summary">Deploy Systest st4</a>
+    <!-- latest build -->
+        >
+        <a id="singleProjectlatestBuild:DSB-DEPSYS:330"
+           href="/byggmesterbob/browse/DSB-DEPSYS/latest"  title="Latest Build">DSB-DEPSYS-<span id="latestBuildNumberDSB-DEPSYS">330</span></a>
+    </div>
+    <div class="clearer"></div>
+</li>
+
+
+<li id="buildPlan6" class="buildPlan ">
+    <div class="planOperations">
+        <!-- operations -->
+                <a id="singleProjectstopBuild:DSB-SYSTESTSMW" style="display:none;" href="/byggmesterbob/build/admin/stopBuild.action?buildKey=DSB-SYSTESTSMW"><img src="/byggmesterbob/images/jt/icn_stop.gif" border="0" hspace="2" alt="Stop Build" title="Stop 'Direktoratet for samfunnssikkerhet og beredskap - Deploy Systest trunk (Smitherwick)'"></a>
+                <a id="singleProjectbuildBuild:DSB-SYSTESTSMW"  href="/byggmesterbob/build/admin/triggerManualBuild.action?buildKey=DSB-SYSTESTSMW"><img src="/byggmesterbob/images/jt/icn_run.gif" border="0" hspace="2" alt="Checkout & Build" title="Build 'Direktoratet for samfunnssikkerhet og beredskap - Deploy Systest trunk (Smitherwick)'"></a>
+            <a id="singleProjecteditBuild:DSB-SYSTESTSMW" accesskey="E" href="/byggmesterbob/build/admin/edit/editBuildConfiguration.action?buildKey=DSB-SYSTESTSMW"><img src="/byggmesterbob/images/jt/icn_edit.gif" border="0" hspace="2" alt="Edit Build" title="Edit 'Direktoratet for samfunnssikkerhet og beredskap - Deploy Systest trunk (Smitherwick)'"></a>
+        <a id="singleProjectbuildLog:DSB-SYSTESTSMW" accesskey="L" href="/byggmesterbob/browse/DSB-SYSTESTSMW/log"><img src="/byggmesterbob/images/jt/icn_log.gif" border="0" hspace="2" alt="View Build Activity Log" title="View Build Activity Log for 'Direktoratet for samfunnssikkerhet og beredskap - Deploy Systest trunk (Smitherwick)'"></a>
+<a href="#" class="internalLink" id="toggleFavourite_DSB-SYSTESTSMW" onclick="toggleFavourite('/byggmesterbob/build/label/setFavourite.action?returnUrl=%2Fproject%2FviewProject.action%3FprojectKey%3DDSB&amp;buildKey=DSB-SYSTESTSMW'); return false;"><img src="/byggmesterbob/images/jt/icn_favourites_on.gif" class="evented" id="singleProject_favouriteIconFor_DSB-SYSTESTSMW" title="Toggle 'Direktoratet for samfunnssikkerhet og beredskap - Deploy Systest trunk (Smitherwick)' to/from your favourites" /></a>            <script type="text/javascript">
+                YAHOO.ext.EventManager.addListener('singleProject_favouriteIconFor_DSB-SYSTESTSMW', 'click', toggleIcon);
+            </script>
+    </div>
+
+    <ul class="latestBuildResults">
+        <!-- Last Build Time-->
+        <li>Ran: <span id="lastBuiltSummaryDSB-SYSTESTSMW">3 weeks ago</span></li>
+
+        <!-- Reason -->
+        <li id="singleProjectreasonForBuildDSB-SYSTESTSMW">
+            <span  id="reasonSummaryDSB-SYSTESTSMW">
+                Manual build by
+<a href="/byggmesterbob/browse/user/fto">Frode Torvund</a>
+            </span>
+<span id="singleProjectreasonForBuildDSB-SYSTESTSMWTooltipContainer"></span>
+<script type="text/javascript">
+        YAHOO.bamboo.tooltips['singleProjectreasonForBuildDSB-SYSTESTSMWTooltip'] = new YAHOO.widget.Tooltip("singleProjectreasonForBuildDSB-SYSTESTSMWTooltip", { context:"singleProjectreasonForBuildDSB-SYSTESTSMW", text: '<strong>Who:</strong> Raymond Koteng<br /><strong>Why:</strong> DSBFS-1046 fra branch til trunk<br /><hr /><br /><strong>Who:</strong> Fredrik Danielsen<br /><strong>Why:</strong> DSBFS-967 merge. S&oslash;k - Uhell med eksplosiv vare p&aring; avveie: Hovedslag vises feil i resultatlisten<br /><hr /><br /><strong>Who:</strong> Marte Skarstein Bjanger<br /><strong>Why:</strong> DSB-2036&nbsp; Saksbehandling av bekymringsmelding og meldepliktsmelding - knytte meldingen til klient<br /><hr /><br /><strong>Who:</strong> Alf Kristian St&oslash;yle<br /><strong>Why:</strong> DSB-2048 merge 8284 fra st4. Fjernet unoedvendig koblingstabell mellom TransportAvFarligGodsUhell og VaretypeProduktInvolvert. Ogsaa fjernet ubrukt import.<br /><hr /><br /><strong>Who:</strong> Raymond Koteng<br /><strong>Why:</strong> DSBFS-1190 fra branch til trunk<br /><hr /><br />... ', container: 'singleProjectreasonForBuildDSB-SYSTESTSMWTooltipContainer', zIndex: 20});
+
+    if (getEl('singleProjectreasonForBuildDSB-SYSTESTSMW'))
+    {
+        getEl('singleProjectreasonForBuildDSB-SYSTESTSMW').addClass('evented');
+    }
+
+    if (getEl('singleProjectreasonForBuildDSB-SYSTESTSMWTooltip'))
+    {
+        getEl('singleProjectreasonForBuildDSB-SYSTESTSMWTooltip').addClass('evented');
+        getEl('singleProjectreasonForBuildDSB-SYSTESTSMWTooltip').addClass('yuiTooltips');
+    }
+</script>
+        </li>
+
+        <!-- Duration -->
+        <li>
+            Duration:
+            <span id="durationSummaryDSB-SYSTESTSMW">
+12 minutes            </span>
+        </li>
+
+        <!-- test count summary -->
+        <li class="last" >
+            Tests:
+            <span id="testSummaryDSB-SYSTESTSMW">
+Testless build            </span>
+        </li>
+    </ul>
+
+    <!-- summary icon -->
+    <div id="statusSectionDSB-SYSTESTSMW"class="statusIcon">
+<a href="/byggmesterbob/browse/DSB-SYSTESTSMW/log" class="Link"> <img src="/byggmesterbob/images/jt/icn_plan_passed.gif" alt="Last build was successful" title="Last build was successful" ></a>    </div>
+
+    <div class="planKeySection Successful">
+    <!-- plan -->
+        <a id="singleProjectviewBuild:DSB-SYSTESTSMW"
+           href="/byggmesterbob/browse/DSB-SYSTESTSMW" title="Plan Summary">Deploy Systest trunk (Smitherwick)</a>
+    <!-- latest build -->
+        >
+        <a id="singleProjectlatestBuild:DSB-SYSTESTSMW:69"
+           href="/byggmesterbob/browse/DSB-SYSTESTSMW/latest"  title="Latest Build">DSB-SYSTESTSMW-<span id="latestBuildNumberDSB-SYSTESTSMW">69</span></a>
+    </div>
+    <div class="clearer"></div>
+</li>
+
+
+<li id="buildPlan7" class="buildPlan ">
+    <div class="planOperations">
+        <!-- operations -->
+                <a id="singleProjectstopBuild:DSB-EXTIT" style="display:none;" href="/byggmesterbob/build/admin/stopBuild.action?buildKey=DSB-EXTIT"><img src="/byggmesterbob/images/jt/icn_stop.gif" border="0" hspace="2" alt="Stop Build" title="Stop 'Direktoratet for samfunnssikkerhet og beredskap - Integration tests - external'"></a>
+                <a id="singleProjectbuildBuild:DSB-EXTIT"  href="/byggmesterbob/build/admin/triggerManualBuild.action?buildKey=DSB-EXTIT"><img src="/byggmesterbob/images/jt/icn_run.gif" border="0" hspace="2" alt="Checkout & Build" title="Build 'Direktoratet for samfunnssikkerhet og beredskap - Integration tests - external'"></a>
+        <a id="singleProjectbuildLog:DSB-EXTIT" accesskey="L" href="/byggmesterbob/browse/DSB-EXTIT/log"><img src="/byggmesterbob/images/jt/icn_log.gif" border="0" hspace="2" alt="View Build Activity Log" title="View Build Activity Log for 'Direktoratet for samfunnssikkerhet og beredskap - Integration tests - external'"></a>
+<a href="#" class="internalLink" id="toggleFavourite_DSB-EXTIT" onclick="toggleFavourite('/byggmesterbob/build/label/setFavourite.action?returnUrl=%2Fproject%2FviewProject.action%3FprojectKey%3DDSB&amp;buildKey=DSB-EXTIT'); return false;"><img src="/byggmesterbob/images/jt/icn_favourites_on.gif" class="evented" id="singleProject_favouriteIconFor_DSB-EXTIT" title="Toggle 'Direktoratet for samfunnssikkerhet og beredskap - Integration tests - external' to/from your favourites" /></a>            <script type="text/javascript">
+                YAHOO.ext.EventManager.addListener('singleProject_favouriteIconFor_DSB-EXTIT', 'click', toggleIcon);
+            </script>
+    </div>
+
+    <ul class="latestBuildResults">
+        <!-- Last Build Time-->
+        <li>Ran: <span id="lastBuiltSummaryDSB-EXTIT">6 hours ago</span></li>
+
+        <!-- Reason -->
+        <li id="singleProjectreasonForBuildDSB-EXTIT">
+            <span  id="reasonSummaryDSB-EXTIT">
+                Scheduled build
+            </span>
+        </li>
+
+        <!-- Duration -->
+        <li>
+            Duration:
+            <span id="durationSummaryDSB-EXTIT">
+6 minutes            </span>
+        </li>
+
+        <!-- test count summary -->
+        <li class="last" >
+            Tests:
+            <span id="testSummaryDSB-EXTIT">
+18 passed            </span>
+        </li>
+    </ul>
+
+    <!-- summary icon -->
+    <div id="statusSectionDSB-EXTIT"class="statusIcon">
+<a href="/byggmesterbob/browse/DSB-EXTIT/log" class="Link"> <img src="/byggmesterbob/images/jt/icn_plan_passed.gif" alt="Last build was successful" title="Last build was successful" ></a>    </div>
+
+    <div class="planKeySection Successful">
+    <!-- plan -->
+        <a id="singleProjectviewBuild:DSB-EXTIT"
+           href="/byggmesterbob/browse/DSB-EXTIT" title="Plan Summary">Integration tests - external</a>
+    <!-- latest build -->
+        >
+        <a id="singleProjectlatestBuild:DSB-EXTIT:809"
+           href="/byggmesterbob/browse/DSB-EXTIT/latest"  title="Latest Build">DSB-EXTIT-<span id="latestBuildNumberDSB-EXTIT">809</span></a>
+    </div>
+    <div class="clearer"></div>
+</li>
+
+
+<li id="buildPlan8" class="buildPlan ">
+    <div class="planOperations">
+        <!-- operations -->
+                <a id="singleProjectstopBuild:DSB-MVNSITE" style="display:none;" href="/byggmesterbob/build/admin/stopBuild.action?buildKey=DSB-MVNSITE"><img src="/byggmesterbob/images/jt/icn_stop.gif" border="0" hspace="2" alt="Stop Build" title="Stop 'Direktoratet for samfunnssikkerhet og beredskap - Maven site'"></a>
+                <a id="singleProjectbuildBuild:DSB-MVNSITE"  href="/byggmesterbob/build/admin/triggerManualBuild.action?buildKey=DSB-MVNSITE"><img src="/byggmesterbob/images/jt/icn_run.gif" border="0" hspace="2" alt="Checkout & Build" title="Build 'Direktoratet for samfunnssikkerhet og beredskap - Maven site'"></a>
+        <a id="singleProjectbuildLog:DSB-MVNSITE" accesskey="L" href="/byggmesterbob/browse/DSB-MVNSITE/log"><img src="/byggmesterbob/images/jt/icn_log.gif" border="0" hspace="2" alt="View Build Activity Log" title="View Build Activity Log for 'Direktoratet for samfunnssikkerhet og beredskap - Maven site'"></a>
+<a href="#" class="internalLink" id="toggleFavourite_DSB-MVNSITE" onclick="toggleFavourite('/byggmesterbob/build/label/setFavourite.action?returnUrl=%2Fproject%2FviewProject.action%3FprojectKey%3DDSB&amp;buildKey=DSB-MVNSITE'); return false;"><img src="/byggmesterbob/images/jt/icn_favourites_on.gif" class="evented" id="singleProject_favouriteIconFor_DSB-MVNSITE" title="Toggle 'Direktoratet for samfunnssikkerhet og beredskap - Maven site' to/from your favourites" /></a>            <script type="text/javascript">
+                YAHOO.ext.EventManager.addListener('singleProject_favouriteIconFor_DSB-MVNSITE', 'click', toggleIcon);
+            </script>
+    </div>
+
+    <ul class="latestBuildResults">
+        <!-- Last Build Time-->
+        <li>Ran: <span id="lastBuiltSummaryDSB-MVNSITE">8 hours ago</span></li>
+
+        <!-- Reason -->
+        <li id="singleProjectreasonForBuildDSB-MVNSITE">
+            <span  id="reasonSummaryDSB-MVNSITE">
+                Scheduled build
+            </span>
+        </li>
+
+        <!-- Duration -->
+        <li>
+            Duration:
+            <span id="durationSummaryDSB-MVNSITE">
+141 minutes            </span>
+        </li>
+
+        <!-- test count summary -->
+        <li class="last" >
+            Tests:
+            <span id="testSummaryDSB-MVNSITE">
+1444 passed            </span>
+        </li>
+    </ul>
+
+    <!-- summary icon -->
+    <div id="statusSectionDSB-MVNSITE"class="statusIcon">
+<a href="/byggmesterbob/browse/DSB-MVNSITE/log" class="Link"> <img src="/byggmesterbob/images/jt/icn_plan_passed.gif" alt="Last build was successful" title="Last build was successful" ></a>    </div>
+
+    <div class="planKeySection Successful">
+    <!-- plan -->
+        <a id="singleProjectviewBuild:DSB-MVNSITE"
+           href="/byggmesterbob/browse/DSB-MVNSITE" title="Plan Summary">Maven site</a>
+    <!-- latest build -->
+        >
+        <a id="singleProjectlatestBuild:DSB-MVNSITE:920"
+           href="/byggmesterbob/browse/DSB-MVNSITE/latest"  title="Latest Build">DSB-MVNSITE-<span id="latestBuildNumberDSB-MVNSITE">920</span></a>
+    </div>
+    <div class="clearer"></div>
+</li>
+
+
+<li id="buildPlan9" class="buildPlan ">
+    <div class="planOperations">
+        <!-- operations -->
+                <a id="singleProjectstopBuild:DSB-PROD" style="display:none;" href="/byggmesterbob/build/admin/stopBuild.action?buildKey=DSB-PROD"><img src="/byggmesterbob/images/jt/icn_stop.gif" border="0" hspace="2" alt="Stop Build" title="Stop 'Direktoratet for samfunnssikkerhet og beredskap - Produksjon Bygg'"></a>
+                <a id="singleProjectbuildBuild:DSB-PROD"  href="/byggmesterbob/build/admin/triggerManualBuild.action?buildKey=DSB-PROD"><img src="/byggmesterbob/images/jt/icn_run.gif" border="0" hspace="2" alt="Checkout & Build" title="Build 'Direktoratet for samfunnssikkerhet og beredskap - Produksjon Bygg'"></a>
+            <a id="singleProjecteditBuild:DSB-PROD" accesskey="E" href="/byggmesterbob/build/admin/edit/editBuildConfiguration.action?buildKey=DSB-PROD"><img src="/byggmesterbob/images/jt/icn_edit.gif" border="0" hspace="2" alt="Edit Build" title="Edit 'Direktoratet for samfunnssikkerhet og beredskap - Produksjon Bygg'"></a>
+        <a id="singleProjectbuildLog:DSB-PROD" accesskey="L" href="/byggmesterbob/browse/DSB-PROD/log"><img src="/byggmesterbob/images/jt/icn_log.gif" border="0" hspace="2" alt="View Build Activity Log" title="View Build Activity Log for 'Direktoratet for samfunnssikkerhet og beredskap - Produksjon Bygg'"></a>
+<a href="#" class="internalLink" id="toggleFavourite_DSB-PROD" onclick="toggleFavourite('/byggmesterbob/build/label/setFavourite.action?returnUrl=%2Fproject%2FviewProject.action%3FprojectKey%3DDSB&amp;buildKey=DSB-PROD'); return false;"><img src="/byggmesterbob/images/jt/icn_favourites_on.gif" class="evented" id="singleProject_favouriteIconFor_DSB-PROD" title="Toggle 'Direktoratet for samfunnssikkerhet og beredskap - Produksjon Bygg' to/from your favourites" /></a>            <script type="text/javascript">
+                YAHOO.ext.EventManager.addListener('singleProject_favouriteIconFor_DSB-PROD', 'click', toggleIcon);
+            </script>
+    </div>
+
+    <ul class="latestBuildResults">
+        <!-- Last Build Time-->
+        <li>Ran: <span id="lastBuiltSummaryDSB-PROD">1 week ago</span></li>
+
+        <!-- Reason -->
+        <li id="singleProjectreasonForBuildDSB-PROD">
+            <span  id="reasonSummaryDSB-PROD">
+                Manual build by
+<a href="/byggmesterbob/browse/user/fredrikd">Fredrik Danielsen</a>
+            </span>
+        </li>
+
+        <!-- Duration -->
+        <li>
+            Duration:
+            <span id="durationSummaryDSB-PROD">
+9 minutes            </span>
+        </li>
+
+        <!-- test count summary -->
+        <li class="last" >
+            Tests:
+            <span id="testSummaryDSB-PROD">
+Testless build            </span>
+        </li>
+    </ul>
+
+    <!-- summary icon -->
+    <div id="statusSectionDSB-PROD"class="statusIcon">
+<a href="/byggmesterbob/browse/DSB-PROD/log" class="Link"> <img src="/byggmesterbob/images/jt/icn_plan_passed.gif" alt="Last build was successful" title="Last build was successful" ></a>    </div>
+
+    <div class="planKeySection Successful">
+    <!-- plan -->
+        <a id="singleProjectviewBuild:DSB-PROD"
+           href="/byggmesterbob/browse/DSB-PROD" title="Plan Summary">Produksjon Bygg</a>
+    <!-- latest build -->
+        >
+        <a id="singleProjectlatestBuild:DSB-PROD:32"
+           href="/byggmesterbob/browse/DSB-PROD/latest"  title="Latest Build">DSB-PROD-<span id="latestBuildNumberDSB-PROD">32</span></a>
+    </div>
+    <div class="clearer"></div>
+</li>
+
+
+<li id="buildPlan10" class="buildPlan ">
+    <div class="planOperations">
+        <!-- operations -->
+                <a id="singleProjectresumeBuild:DSB-DEPST3" href="/byggmesterbob/build/admin/resumeBuild.action?buildKey=DSB-DEPST3"><img src="/byggmesterbob/images/jt/icn_enable.gif" border="0" hspace="2" alt="Enable Build" title="Enable 'Direktoratet for samfunnssikkerhet og beredskap - Systest deploy ST3_1'"></a>
+            <a id="singleProjecteditBuild:DSB-DEPST3" accesskey="E" href="/byggmesterbob/build/admin/edit/editBuildConfiguration.action?buildKey=DSB-DEPST3"><img src="/byggmesterbob/images/jt/icn_edit.gif" border="0" hspace="2" alt="Edit Build" title="Edit 'Direktoratet for samfunnssikkerhet og beredskap - Systest deploy ST3_1'"></a>
+        <a id="singleProjectbuildLog:DSB-DEPST3" accesskey="L" href="/byggmesterbob/browse/DSB-DEPST3/log"><img src="/byggmesterbob/images/jt/icn_log.gif" border="0" hspace="2" alt="View Build Activity Log" title="View Build Activity Log for 'Direktoratet for samfunnssikkerhet og beredskap - Systest deploy ST3_1'"></a>
+<a href="#" class="internalLink" id="toggleFavourite_DSB-DEPST3" onclick="toggleFavourite('/byggmesterbob/build/label/setFavourite.action?returnUrl=%2Fproject%2FviewProject.action%3FprojectKey%3DDSB&amp;buildKey=DSB-DEPST3'); return false;"><img src="/byggmesterbob/images/jt/icn_favourites_on.gif" class="evented" id="singleProject_favouriteIconFor_DSB-DEPST3" title="Toggle 'Direktoratet for samfunnssikkerhet og beredskap - Systest deploy ST3_1' to/from your favourites" /></a>            <script type="text/javascript">
+                YAHOO.ext.EventManager.addListener('singleProject_favouriteIconFor_DSB-DEPST3', 'click', toggleIcon);
+            </script>
+    </div>
+
+    <ul class="latestBuildResults">
+        <!-- Last Build Time-->
+        <li>Ran: <span id="lastBuiltSummaryDSB-DEPST3">4 months ago</span></li>
+
+        <!-- Reason -->
+        <li id="singleProjectreasonForBuildDSB-DEPST3">
+            <span  id="reasonSummaryDSB-DEPST3">
+                Manual build by
+<a href="/byggmesterbob/browse/user/olejg">Ole Jan Gavelstad</a>
+            </span>
+<span id="singleProjectreasonForBuildDSB-DEPST3TooltipContainer"></span>
+<script type="text/javascript">
+        YAHOO.bamboo.tooltips['singleProjectreasonForBuildDSB-DEPST3Tooltip'] = new YAHOO.widget.Tooltip("singleProjectreasonForBuildDSB-DEPST3Tooltip", { context:"singleProjectreasonForBuildDSB-DEPST3", text: '<strong>Who:</strong> Alf Kristian St&oslash;yle<br /><strong>Why:</strong> DSB-1756 Forsoek paa aa rette logout feil med altinn.<br /><hr /><br /><strong>Who:</strong> Ole Jan Gavelstad<br /><strong>Why:</strong> Fix for start/stopp verdier av referansenr/id som brukes i ePhorte<br /><hr /><br /><strong>Who:</strong> Kjersti Bj&oslash;rnestad Berg<br /><strong>Why:</strong> ConcurrentModificationException ved f&oslash;rste test i prod.<br /><hr /><br /><strong>Who:</strong> Kjersti Bj&oslash;rnestad Berg<br /><strong>Why:</strong> Lagt p&aring; dependency til jstl.<br /><hr /><br /><strong>Who:</strong> Kjersti Bj&oslash;rnestad Berg<br /><strong>Why:</strong> ConcurrentModificationException ved f&oslash;rste test i prod. Lagt p&aring; en test som fanger situasjonen.<br /><hr /><br />... ', container: 'singleProjectreasonForBuildDSB-DEPST3TooltipContainer', zIndex: 20});
+
+    if (getEl('singleProjectreasonForBuildDSB-DEPST3'))
+    {
+        getEl('singleProjectreasonForBuildDSB-DEPST3').addClass('evented');
+    }
+
+    if (getEl('singleProjectreasonForBuildDSB-DEPST3Tooltip'))
+    {
+        getEl('singleProjectreasonForBuildDSB-DEPST3Tooltip').addClass('evented');
+        getEl('singleProjectreasonForBuildDSB-DEPST3Tooltip').addClass('yuiTooltips');
+    }
+</script>
+        </li>
+
+        <!-- Duration -->
+        <li>
+            Duration:
+            <span id="durationSummaryDSB-DEPST3">
+14 minutes            </span>
+        </li>
+
+        <!-- test count summary -->
+        <li class="last" >
+            Tests:
+            <span id="testSummaryDSB-DEPST3">
+Testless build            </span>
+        </li>
+    </ul>
+
+    <!-- summary icon -->
+    <div id="statusSectionDSB-DEPST3"class="statusIcon">
+<a href="/byggmesterbob/browse/DSB-DEPST3/log" class="Link"> <img src="/byggmesterbob/images/jt/icn_plan_disabled.gif" title="Plan Disabled"/></a>    </div>
+
+    <div class="planKeySection Suspended">
+    <!-- plan -->
+        <a id="singleProjectviewBuild:DSB-DEPST3"
+           href="/byggmesterbob/browse/DSB-DEPST3" title="Plan Summary">Systest deploy ST3_1</a>
+    <!-- latest build -->
+        >
+        <a id="singleProjectlatestBuild:DSB-DEPST3:50"
+           href="/byggmesterbob/browse/DSB-DEPST3/latest"  title="Latest Build">DSB-DEPST3-<span id="latestBuildNumberDSB-DEPST3">50</span></a>
+    </div>
+    <div class="clearer"></div>
+</li>
+
+
+<li id="buildPlan11" class="buildPlan  lastBuildInProject">
+    <div class="planOperations">
+        <!-- operations -->
+                <a id="singleProjectstopBuild:DSB-TESTPROD" style="display:none;" href="/byggmesterbob/build/admin/stopBuild.action?buildKey=DSB-TESTPROD"><img src="/byggmesterbob/images/jt/icn_stop.gif" border="0" hspace="2" alt="Stop Build" title="Stop 'Direktoratet for samfunnssikkerhet og beredskap - Testprod Bygg '"></a>
+                <a id="singleProjectbuildBuild:DSB-TESTPROD"  href="/byggmesterbob/build/admin/triggerManualBuild.action?buildKey=DSB-TESTPROD"><img src="/byggmesterbob/images/jt/icn_run.gif" border="0" hspace="2" alt="Checkout & Build" title="Build 'Direktoratet for samfunnssikkerhet og beredskap - Testprod Bygg '"></a>
+            <a id="singleProjecteditBuild:DSB-TESTPROD" accesskey="E" href="/byggmesterbob/build/admin/edit/editBuildConfiguration.action?buildKey=DSB-TESTPROD"><img src="/byggmesterbob/images/jt/icn_edit.gif" border="0" hspace="2" alt="Edit Build" title="Edit 'Direktoratet for samfunnssikkerhet og beredskap - Testprod Bygg '"></a>
+        <a id="singleProjectbuildLog:DSB-TESTPROD" accesskey="L" href="/byggmesterbob/browse/DSB-TESTPROD/log"><img src="/byggmesterbob/images/jt/icn_log.gif" border="0" hspace="2" alt="View Build Activity Log" title="View Build Activity Log for 'Direktoratet for samfunnssikkerhet og beredskap - Testprod Bygg '"></a>
+<a href="#" class="internalLink" id="toggleFavourite_DSB-TESTPROD" onclick="toggleFavourite('/byggmesterbob/build/label/setFavourite.action?returnUrl=%2Fproject%2FviewProject.action%3FprojectKey%3DDSB&amp;buildKey=DSB-TESTPROD'); return false;"><img src="/byggmesterbob/images/jt/icn_favourites_off.gif" class="evented" id="singleProject_favouriteIconFor_DSB-TESTPROD" title="Toggle 'Direktoratet for samfunnssikkerhet og beredskap - Testprod Bygg ' to/from your favourites" /></a>            <script type="text/javascript">
+                YAHOO.ext.EventManager.addListener('singleProject_favouriteIconFor_DSB-TESTPROD', 'click', toggleIcon);
+            </script>
+    </div>
+
+    <ul class="latestBuildResults">
+        <!-- Last Build Time-->
+        <li>Ran: <span id="lastBuiltSummaryDSB-TESTPROD">1 week ago</span></li>
+
+        <!-- Reason -->
+        <li id="singleProjectreasonForBuildDSB-TESTPROD">
+            <span  id="reasonSummaryDSB-TESTPROD">
+                Manual build by
+<a href="/byggmesterbob/browse/user/aks">Alf Kristian Støyle</a>
+            </span>
+        </li>
+
+        <!-- Duration -->
+        <li>
+            Duration:
+            <span id="durationSummaryDSB-TESTPROD">
+12 minutes            </span>
+        </li>
+
+        <!-- test count summary -->
+        <li class="last" >
+            Tests:
+            <span id="testSummaryDSB-TESTPROD">
+Testless build            </span>
+        </li>
+    </ul>
+
+    <!-- summary icon -->
+    <div id="statusSectionDSB-TESTPROD"class="statusIcon">
+<a href="/byggmesterbob/browse/DSB-TESTPROD/log" class="Link"> <img src="/byggmesterbob/images/jt/icn_plan_passed.gif" alt="Last build was successful" title="Last build was successful" ></a>    </div>
+
+    <div class="planKeySection Successful">
+    <!-- plan -->
+        <a id="singleProjectviewBuild:DSB-TESTPROD"
+           href="/byggmesterbob/browse/DSB-TESTPROD" title="Plan Summary">Testprod Bygg </a>
+    <!-- latest build -->
+        >
+        <a id="singleProjectlatestBuild:DSB-TESTPROD:2"
+           href="/byggmesterbob/browse/DSB-TESTPROD/latest"  title="Latest Build">DSB-TESTPROD-<span id="latestBuildNumberDSB-TESTPROD">2</span></a>
+    </div>
+    <div class="clearer"></div>
+</li>
+
+    </ul>
+     </div>
+      <style type="text/css">
+          .buildPlan11
+          {
+            border-bottom: none!important;
+          }
+
+          #singleProject_project_196609_section
+          {
+            border-bottom: 1px solid #98B9CD!important;
+          }
+      </style>
+</div>
+<div class="clearer"></div>
+</div>
+</div>
+	</div> <!-- END #nonFooter -->
+    <div id="ft">
+        <div id="footer">
+            <p>
+                Powered by <a href="http://www.atlassian.com/software/bamboo/">Atlassian Bamboo</a> version 2.0 build 801 -
+
+                <span title="12:49:23 14 Apr 2008">14 Apr 08</span>
+            </p>
+            <ul>
+                <li class="first">
+                    <a href="https://support.atlassian.com/secure/CreateIssue.jspa?pid=10060&issuetype=1">Report a problem</a>
+                </li>
+                <li>
+                    <a href="http://jira.atlassian.com/secure/CreateIssue.jspa?pid=11011&issuetype=4">Request a feature</a>
+                </li>
+                <li>
+                    <a href="http://forums.atlassian.com/forum.jspa?forumID=103">Contact Atlassian</a>
+                </li>
+                <li>
+                    <a href="/byggmesterbob/viewAdministrators.action">Contact Administrators</a>
+                </li>
+            </ul>
+        </div> <!-- END #footer -->
+    </div> <!-- END #ft -->
+</body>
+</html>
