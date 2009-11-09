@@ -1,10 +1,13 @@
 package no.teamjava.byggbrekker.phidget;
 
+import java.util.List;
+
 import com.phidgets.event.AttachEvent;
 import com.phidgets.event.AttachListener;
 
 import no.teamjava.byggbrekker.entities.Build;
 import no.teamjava.byggbrekker.entities.BuildCategory;
+import no.teamjava.byggbrekker.entities.BuildUtil;
 import no.teamjava.byggbrekker.entities.Settings;
 import no.teamjava.byggbrekker.phidget.outputhandlers.ConstantFlasher;
 import no.teamjava.byggbrekker.phidget.outputhandlers.ConstantLight;
@@ -29,7 +32,7 @@ class PhidgetThread extends Thread {
 	public PhidgetThread(PhidgetThreadListener listener) {
 		this.listener = listener;
 
-		kit = new InterfaceKitPhidgetMockable(false);
+		kit = new InterfaceKitPhidgetMockable(true);
 
 		importantHandler0 = new ConstantFlasher(kit, Settings.OUTPUTS_IMPORTANT0, 2, 0);
 		importantHandler1 = new ConstantFlasher(kit, Settings.OUTPUTS_IMPORTANT1, 2, 1);
@@ -78,22 +81,15 @@ class PhidgetThread extends Thread {
 			return;
 		}
 
-		boolean importantBroken = isBroken(BuildCategory.IMPORTANT);
-		boolean minorBroken = isBroken(BuildCategory.MINOR);
+		List<Build> failedBuilds = listener.getFailedBuilds();
+		
+		boolean importantBroken = BuildUtil.isBroken(BuildCategory.IMPORTANT, failedBuilds);
+		boolean minorBroken = BuildUtil.isBroken(BuildCategory.MINOR, failedBuilds);
 		boolean someBroken = importantBroken || minorBroken;
 
 		importantHandler0.update(importantBroken);
 		importantHandler1.update(importantBroken);
 		minorHandler.update(minorBroken);
 		okHandler.update(someBroken);
-	}
-
-	private boolean isBroken(BuildCategory category) {
-		for (Build build : listener.getFailedBuilds()) {
-			if (category.equals(build.getType().getCategory())) {
-				return true;
-			}
-		}
-		return false;
 	}
 }
