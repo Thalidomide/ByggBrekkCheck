@@ -1,7 +1,9 @@
 package no.teamjava.byggbrekker.gui;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -130,17 +132,16 @@ class BuildRow extends JPanel {
 	}
 
 	private void drawBuildingGui(Graphics g) {
-		g.setColor(Color.yellow);
 		int topBottomSpace = borderThickness + 5;
 		int width = getWidth();
 
 		int x = 20;
-		int elements = 4;
-		int elementWidth = 15;
-		int elementSpace = 30;
-		int shift = 30;
 		int yTop = topBottomSpace;
 		int yBottom = getHeight() - topBottomSpace;
+		int shift = yBottom - yTop;
+		int elements = 3;
+		int elementWidth = (int) (shift * 0.5);
+		int elementSpace = elementWidth * 2;
 
 		for (int i = 0; i < elements; i++) {
 			drawBuildingElement(g, x, elementWidth, shift, yTop, yBottom);
@@ -153,7 +154,14 @@ class BuildRow extends JPanel {
 	private void drawBuildingElement(Graphics g, int x, int width, int shift, int yTop, int yBottom) {
 		int[] xPoints = new int[]{x, x + width, x + width + shift, x + shift};
 		int[] yPoints = new int[]{yBottom, yBottom, yTop, yTop};
+
+		g.setColor(Color.yellow);
 		g.fillPolygon(xPoints, yPoints, 4);
+
+		Graphics2D g2D = (Graphics2D) g;
+		g2D.setStroke(new BasicStroke(2));
+		g.setColor(Color.BLACK);
+		g.drawPolygon(xPoints, yPoints, 4);
 	}
 
 	public void reset() {
