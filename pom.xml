@@ -19,6 +19,13 @@
         <maven>2.0.9</maven>
     </prerequisites>
 
+    <repositories>
+        <repository>
+            <id>nexus-3rd-party</id>
+            <url>http://projects.knowit.no/nexus/content/repositories/thirdparty/</url>
+        </repository>
+    </repositories>
+
     <developers>
         <developer>
             <id>rak</id>
@@ -62,8 +69,6 @@
             <groupId>com.phidgets</groupId>
             <artifactId>phidget</artifactId>
             <version>2.1</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/phidget21.jar</systemPath>
         </dependency>
         
     </dependencies>
