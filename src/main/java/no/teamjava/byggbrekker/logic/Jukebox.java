@@ -31,7 +31,6 @@ public class Jukebox {
 
 		if (files.size() != 0) {
 			int randomIndex = randomFile.nextInt(files.size());
-			System.out.println("Random = " + randomIndex);
 			mp3ToBePlayed =  files.get(randomIndex);
 
 		} else {
