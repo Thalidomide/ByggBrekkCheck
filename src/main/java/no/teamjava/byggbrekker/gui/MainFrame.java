@@ -4,15 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import no.teamjava.byggbrekker.entities.Build;
+import no.teamjava.byggbrekker.entities.BuildCategory;
 import no.teamjava.byggbrekker.entities.BuildCheckResult;
 import no.teamjava.byggbrekker.entities.BuildCheckStatus;
 import no.teamjava.byggbrekker.entities.BuildStatus;
 import no.teamjava.byggbrekker.entities.BuildType;
+import no.teamjava.byggbrekker.entities.BuildUtil;
 import no.teamjava.byggbrekker.entities.Credentials;
 import no.teamjava.byggbrekker.logic.BuildChecker;
 import no.teamjava.byggbrekker.logic.ByggBrekkListener;
@@ -104,8 +105,9 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 			ArrayList<Build> builds = new ArrayList<Build>();
 
 			for (BuildType buildType : BuildType.values()) {
-				BuildStatus status = BuildType.DEFAULT.equals(buildType) ? BuildStatus.FAILED : BuildStatus.SUCCESSFUL;
-				builds.add(new Build(buildType, status));
+				boolean isDefault = BuildType.DEFAULT.equals(buildType);
+				BuildStatus status = isDefault ? BuildStatus.FAILED : BuildStatus.SUCCESSFUL;
+				builds.add(new Build(buildType, status, isDefault));
 			}
 
 			result.setBuilds(builds);
@@ -142,8 +144,7 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	}
 
 	private void presentResult(BuildCheckResult result) {
-		List<Build> failedBuilds = result.getFailedBuilds();
-		if (!failedBuilds.isEmpty()) {
+		if (BuildUtil.isBroken(BuildCategory.IMPORTANT, result.getFailedBuilds())) {
 			startPlayer();
 		}
 		statusPanel.displayBuilds(result.getBuilds());

@@ -8,10 +8,12 @@ public class Build {
 
 	private final BuildType type;
 	private final BuildStatus status;
+	private final boolean building;
 
-	public Build(BuildType type, BuildStatus status) {
+	public Build(BuildType type, BuildStatus status, boolean building) {
 		this.type = type;
 		this.status = status;
+		this.building = building;
 	}
 
 	public BuildType getType() {
@@ -20,5 +22,9 @@ public class Build {
 
 	public BuildStatus getStatus() {
 		return status;
+	}
+
+	public boolean isBuilding() {
+		return building;
 	}
 }

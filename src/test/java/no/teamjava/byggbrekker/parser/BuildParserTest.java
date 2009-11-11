@@ -37,6 +37,19 @@ public class BuildParserTest extends TestCase {
 		assertEquals(BuildType.MAVEN_SITE, brokenBuildType);
 	}
 
+	public void testParseDefaultIsBuilding() {
+		BuildParser parser = new BuildParser();
+		String buildString = getBuildString("src/main/resources/buildexamples/buildingTrunk.txt");
+
+		List<Build> builds = parser.checkBuilds(buildString);
+
+		for (Build build : builds) {
+			boolean trunk = BuildType.DEFAULT.equals(build.getType());
+
+			assertEquals(trunk, build.isBuilding());
+		}
+	}
+
 	private String getBuildString(String fileName) {
 		File file = new File(fileName);
 		System.out.println(file.getAbsoluteFile());

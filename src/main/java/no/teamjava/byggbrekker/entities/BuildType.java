@@ -16,8 +16,8 @@ public enum BuildType {
 	PRODUKSJONS_BYGG("DSB-PROD", "Produksjon bygg", BuildCategory.MINOR),
 	MAVEN_SITE("DSB-MVNSITE", "Maven site", BuildCategory.MINOR);
 
-	private final static String prefix = "<a href=\"/byggmesterbob/browse/";
-	private final static String postfix = "/log\" class=";
+	private final static String lookupPrefix = "<a href=\"/byggmesterbob/browse/";
+	private final static String lookupPostfix = "/log\" class=";
 
 	private final String lookup;
 	private String text;
@@ -26,11 +26,11 @@ public enum BuildType {
 	private BuildType(String lookup, String text, BuildCategory category) {
 		this.category = category;
 		this.text = text;
-		this.lookup = prefix + lookup + postfix;
+		this.lookup = lookup;
 	}
 
 	public String getLookup() {
-		return lookup;
+		return lookupPrefix + lookup + lookupPostfix;
 	}
 
 	public String getText() {
