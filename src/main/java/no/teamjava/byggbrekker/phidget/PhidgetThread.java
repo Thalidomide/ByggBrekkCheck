@@ -76,10 +76,10 @@ class PhidgetThread extends Thread {
 
 	public void stopAndClearOutputs() {
 		interrupt();
-//		if (attached) {
+		if (attached) {
 			clearOutputs();
 			kit.close();
-//		}
+		}
 	}
 
 	private synchronized void updateOutput() {
