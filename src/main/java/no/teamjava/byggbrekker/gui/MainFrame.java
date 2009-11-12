@@ -3,6 +3,8 @@ package no.teamjava.byggbrekker.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.HeadlessException;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -46,6 +48,12 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	private void initializeGui() {
 		panel = new JPanel(new BorderLayout());
 
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				onExit();
+			}
+		});
 		setSize(800, 700);
 		setLocation(0, 0);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -179,5 +187,13 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 		stopCheckStatus();
 		startCheckPanel.reset();
 		getNewCredentials();
+	}
+
+	private void onExit() {
+		try {
+			phidget.stopAndClearOutputs();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -11,13 +11,18 @@ import no.teamjava.byggbrekker.entities.Build;
  */
 public class Phidget implements PhidgetThreadListener {
 	private List<Build> failedBuilds = new ArrayList<Build>();
+	private PhidgetThread phidgetThread;
 
 	public Phidget() {
-		new PhidgetThread(this);
+		phidgetThread = new PhidgetThread(this);
 	}
 
 	public void resetOutput() {
 		failedBuilds.clear();
+	}
+
+	public void stopAndClearOutputs() {
+		phidgetThread.stopAndClearOutputs();
 	}
 
 	public void setBuildStatus(List<Build> failedBuilds) {
