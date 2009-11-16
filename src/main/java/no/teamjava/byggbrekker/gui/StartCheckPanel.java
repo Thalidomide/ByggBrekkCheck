@@ -55,6 +55,7 @@ public class StartCheckPanel extends JPanel {
 		constraints.gridy = 0;
 		constraints.weightx = 0;
 		add(startOrStopButton, constraints);
+		add(new Button("StopTOODO"), constraints);
 		add(demoDefaultBroken, constraints);
 
 		constraints.weightx = 1;

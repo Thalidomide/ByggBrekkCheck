@@ -3,6 +3,7 @@ package no.teamjava.byggbrekker.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.HeadlessException;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -45,13 +46,13 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 
 	private void initializeGui() {
 		panel = new JPanel(new BorderLayout());
-
-		setSize(800, 700);
+		setSize(Toolkit.getDefaultToolkit().getScreenSize());
 		setLocation(0, 0);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("ByggBrekkSjekker3001 - KnowIT");
 		getContentPane().setBackground(Color.WHITE);
 		getContentPane().add(panel);
+		setUndecorated(true);
 
 		startCheckPanel = new StartCheckPanel(this);
 		statusPanel = new StatusPanel();
