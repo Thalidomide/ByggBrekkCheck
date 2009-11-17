@@ -10,7 +10,6 @@ import java.util.Random;
  * @since : 07.nov.2009
  */
 public class Jukebox {
-	private Long randomSeed = 2342343L;
 	String pathToFolder;
 	private File folder;
 	private File mp3ToBePlayed = null;
@@ -28,7 +27,7 @@ public class Jukebox {
 	private void chooseRandomMp3File() {
 		List<File> files = getAllMp3FilesInDirectory(folder.listFiles());
 
-		Random randomFile = new Random(randomSeed); //random seed
+		Random randomFile = new Random();
 
 		if (files.size() != 0) {
 			int randomIndex = randomFile.nextInt(files.size());

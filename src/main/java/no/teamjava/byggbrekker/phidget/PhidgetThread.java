@@ -62,18 +62,24 @@ class PhidgetThread extends Thread {
 			}
 		}
 
-		while (true) {
+		while (running) {
 			updateOutput();
 
 			try {
 				sleep(Settings.LIGHT_UPDATE_INTERVAL);
 			} catch (InterruptedException e) {
+				running = false;
 				break;
 			}
 		}
+	}
 
-		kit.close();
-		running = false;
+	public void stopAndClearOutputs() {
+		interrupt();
+		if (attached) {
+			clearOutputs();
+			kit.close();
+		}
 	}
 
 	private synchronized void updateOutput() {
@@ -82,7 +88,7 @@ class PhidgetThread extends Thread {
 		}
 
 		List<Build> failedBuilds = listener.getFailedBuilds();
-		
+
 		boolean importantBroken = BuildUtil.isBroken(BuildCategory.IMPORTANT, failedBuilds);
 		boolean minorBroken = BuildUtil.isBroken(BuildCategory.MINOR, failedBuilds);
 		boolean someBroken = importantBroken || minorBroken;
@@ -91,5 +97,11 @@ class PhidgetThread extends Thread {
 		importantHandler1.update(importantBroken);
 		minorHandler.update(minorBroken);
 		okHandler.update(someBroken);
+	}
+
+	private void clearOutputs() {
+		for (int output = 0; output < Settings.OUPUT_COUNT; output++) {
+			kit.setOutputState(output, false);
+		}
 	}
 }

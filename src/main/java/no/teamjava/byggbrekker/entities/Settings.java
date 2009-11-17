@@ -11,7 +11,7 @@ public class Settings {
 
 	public static final long CHECK_INTERVAL = 10000;
 
-	public static final String BROKEN_BUILD_MP3_PATH = "src/main/resources/sounds/";
+	public static final String BROKEN_BUILD_MP3_PATH = "C:/jukebox/";
 
 	public static final String HOST = "projects.knowit.no";
 	public static final String GET_METHOD = "/byggmesterbob/browse/DSB";
@@ -27,6 +27,7 @@ public class Settings {
 
 	public final static long LIGHT_UPDATE_INTERVAL = 1000;
 
+	public final static int OUPUT_COUNT = 16; // The number of outputs. These will be reset on exit
 	public final static int[] OUTPUTS_IMPORTANT0 = new int[]{0};
 	public final static int[] OUTPUTS_IMPORTANT1 = new int[]{1};
 	public final static int[] OUTPUTS_MINOR = new int[]{5};

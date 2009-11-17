@@ -12,7 +12,7 @@ import junit.framework.TestCase;
  * @since : 07.nov.2009
  */
 public class JukeboxTest extends TestCase {
-	private Random randomFile = new Random(2342343L); //random seed
+	private Random randomFile = new Random();
 
 	public void testGetRandomMp3File() {
 		Jukebox jukebox = new Jukebox("src/main/resources/sounds/");
