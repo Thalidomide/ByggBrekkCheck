@@ -56,8 +56,6 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 			}
 		});
 		setSize(Toolkit.getDefaultToolkit().getScreenSize());
-		setLocation(0, 0);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("ByggBrekkSjekker3001 - KnowIT");
 		getContentPane().setBackground(Color.WHITE);
 		getContentPane().add(panel);
