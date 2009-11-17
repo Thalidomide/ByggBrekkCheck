@@ -36,23 +36,26 @@ public class CredentialsPanel extends JPanel {
 		super(null);
 		this.listener = listener;
 
-		initializeGui();
 	}
 
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
+		initializeGui();
+	}
+
+	private void initializeGui() {
+		if (panel != null) {
+			return;
+		}
+		panel = new JPanel(new GridBagLayout());
+		add(panel);
 
 		int width = 400;
 		int height = 200;
 		int x = getWidth() / 2 - width / 2;
 		int y = getHeight() / 2 - height / 2;
 		panel.setBounds(new Rectangle(x, y, width, height));
-	}
-
-	private void initializeGui() {
-		panel = new JPanel(new GridBagLayout());
-		add(panel);
 
 		setBackground(Settings.BACKGROUND);
 		panel.setBackground(Settings.INPUT_PANEL);
@@ -87,7 +90,7 @@ public class CredentialsPanel extends JPanel {
 		constraints.gridwidth = 2;
 		panel.add(header, constraints);
 
-		constraints.weighty = 0.01;
+		constraints.weighty = 0.0;
 		constraints.gridy = gridY++;
 		addLabelAndTextBox("Brukernavn:", usernameWidget, panel, constraints);
 

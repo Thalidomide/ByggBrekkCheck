@@ -44,13 +44,24 @@ public class StartCheckPanel extends InputPanel {
 		constraints.gridy = 0;
 		constraints.weightx = 0;
 		add(startOrStopButton, constraints);
-		add(new Button("StopTOODO"), constraints);
 		add(getToggleDemoButton(), constraints);
 		add(getConfigureDemoButton(), constraints);
+		add(getExitButton(), constraints);
 
 		constraints.weightx = 1;
 
 		updateGui();
+	}
+
+	private Button getExitButton() {
+		Button button = new Button("EXIT");
+		button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				listener.exit();
+			}
+		});
+		return button;
 	}
 
 	private Button getToggleDemoButton() {

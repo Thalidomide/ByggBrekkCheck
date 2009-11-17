@@ -14,4 +14,6 @@ public interface ByggBrekkListener {
 	void stopCheckStatus();
 
 	void setDemoMode(ArrayList<Build> demoBuilds, boolean demoDefault);
+
+	void exit();
 }

@@ -3,9 +3,9 @@ package no.teamjava.byggbrekker.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.HeadlessException;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -79,9 +79,9 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	}
 
 	private void refreshPanel() {
-		validateTree();
-		panel.repaint();
 		panel.validate();
+		panel.repaint();
+		validateTree();
 	}
 
 	@Override
@@ -115,6 +115,12 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 			result.setBuilds(demoBuilds);
 			gotStatus(result);
 		}
+	}
+
+	@Override
+	public void exit() {
+		onExit();
+		System.exit(0);
 	}
 
 	private void checkStatus() {
