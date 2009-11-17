@@ -12,26 +12,24 @@ import java.util.Random;
 public class Jukebox {
 	String pathToFolder;
 	private File folder;
-	private File mp3ToBePlayed = null;
 
 	public Jukebox(String pathToFolder) {
 		this.pathToFolder = pathToFolder;
 		initFolder(pathToFolder);
-		chooseRandomMp3File();
 	}
 
 	public File getMp3ToBePlayed() {
-		return mp3ToBePlayed;
+		return chooseRandomMp3File();
 	}
 
-	private void chooseRandomMp3File() {
+	private File chooseRandomMp3File() {
 		List<File> files = getAllMp3FilesInDirectory(folder.listFiles());
 
 		Random randomFile = new Random();
 
 		if (files.size() != 0) {
 			int randomIndex = randomFile.nextInt(files.size());
-			mp3ToBePlayed =  files.get(randomIndex);
+			return files.get(randomIndex);
 
 		} else {
 			throw new RuntimeException("Folder does not contains mp3 files!");

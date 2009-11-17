@@ -6,45 +6,34 @@ import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
 
-import no.teamjava.byggbrekker.entities.Settings;
 import no.teamjava.byggbrekker.gui.widgets.Button;
+import no.teamjava.byggbrekker.gui.widgets.InputPanel;
 import no.teamjava.byggbrekker.logic.ByggBrekkListener;
 
 /**
  * @author : Raymond Koteng
  * @since : 20.okt.2009
  */
-public class StartCheckPanel extends JPanel {
-	boolean running = false;
-	Button startOrStopButton;
-	Button demoDefaultBroken;
+public class StartCheckPanel extends InputPanel {
+
+	private boolean running = false;
+	private Button startOrStopButton;
 	private final ByggBrekkListener listener;
+	private ConfigureDemoFrame configureDemoFrame;
 
 
 	public StartCheckPanel(ByggBrekkListener listener) throws HeadlessException {
 		super(new GridBagLayout());
 		this.listener = listener;
 
-		setBackground(Settings.INPUT_PANEL);
-		setBorder(new BevelBorder(BevelBorder.LOWERED));
-		
-		startOrStopButton = new Button("");
+		configureDemoFrame = new ConfigureDemoFrame();
 
+		startOrStopButton = new Button("");
 		startOrStopButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				startOrStopAction();
-			}
-		});
-
-		demoDefaultBroken = new Button("Demo: Default brukket");
-		demoDefaultBroken.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				demoDefault();
 			}
 		});
 
@@ -56,11 +45,34 @@ public class StartCheckPanel extends JPanel {
 		constraints.weightx = 0;
 		add(startOrStopButton, constraints);
 		add(new Button("StopTOODO"), constraints);
-		add(demoDefaultBroken, constraints);
+		add(getToggleDemoButton(), constraints);
+		add(getConfigureDemoButton(), constraints);
 
 		constraints.weightx = 1;
 
 		updateGui();
+	}
+
+	private Button getToggleDemoButton() {
+		Button button = new Button("Start/stop demo");
+		button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				toggleDemo();
+			}
+		});
+		return button;
+	}
+
+	private Button getConfigureDemoButton() {
+		Button button = new Button("Demo innstillinger");
+		button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				configureDemo();
+			}
+		});
+		return button;
 	}
 
 	public void reset() {
@@ -82,11 +94,16 @@ public class StartCheckPanel extends JPanel {
 		startOrStopButton.setText(running ? "Stop" : "Start");
 	}
 
-	private boolean demoDefault = false;
-	private void demoDefault() {
-		demoDefault = !demoDefault;
+	private boolean runningDemo = false;
 
-		listener.setDemoDefault(demoDefault);
+	private void toggleDemo() {
+		runningDemo = !runningDemo;
+
+		listener.setDemoMode(configureDemoFrame.getDemoBuilds(), runningDemo);
+	}
+
+	private void configureDemo() {
+		configureDemoFrame.configureBuilds();
 	}
 }
 

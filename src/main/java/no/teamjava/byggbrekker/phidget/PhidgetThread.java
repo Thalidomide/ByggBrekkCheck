@@ -38,8 +38,6 @@ class PhidgetThread extends Thread {
 		importantHandler1 = new ConstantFlasher(kit, Settings.OUTPUTS_IMPORTANT1, 2, 1);
 		minorHandler = new ConstantFlasher(kit, Settings.OUTPUTS_MINOR, 1, 0);
 		okHandler = new ConstantLight(kit, Settings.OUTPUTS_OK, ConstantLight.LightWhenCondition.OK);
-
-		start();
 	}
 
 	@Override

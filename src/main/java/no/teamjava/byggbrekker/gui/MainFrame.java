@@ -14,8 +14,6 @@ import no.teamjava.byggbrekker.entities.Build;
 import no.teamjava.byggbrekker.entities.BuildCategory;
 import no.teamjava.byggbrekker.entities.BuildCheckResult;
 import no.teamjava.byggbrekker.entities.BuildCheckStatus;
-import no.teamjava.byggbrekker.entities.BuildStatus;
-import no.teamjava.byggbrekker.entities.BuildType;
 import no.teamjava.byggbrekker.entities.BuildUtil;
 import no.teamjava.byggbrekker.entities.Credentials;
 import no.teamjava.byggbrekker.logic.BuildChecker;
@@ -41,6 +39,7 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 
 	public MainFrame() throws HeadlessException {
 		phidget = new Phidget();
+
 		initializeGui();
 		getNewCredentials();
 		this.setVisible(true);
@@ -93,6 +92,7 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 
 	@Override
 	public void startCheckStatus() {
+		phidget.start();
 		checkStatus();
 	}
 
@@ -102,30 +102,24 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 			buildChecker.stopChecking();
 			buildChecker = null;
 		}
+		phidget.stopAndClearOutputs();
 	}
 
 	@Override
-	public void setDemoDefault(boolean demoDefault) {
+	public void setDemoMode(ArrayList<Build> demoBuilds, boolean runningDemo) {
 		stop();
-		if (demoDefault) {
+		if (runningDemo) {
 			BuildCheckResult result = new BuildCheckResult();
 			result.setBuildCheckStatus(BuildCheckStatus.OK);
-			ArrayList<Build> builds = new ArrayList<Build>();
 
-			for (BuildType buildType : BuildType.values()) {
-				boolean isDefault = BuildType.DEFAULT.equals(buildType);
-				BuildStatus status = isDefault ? BuildStatus.FAILED : BuildStatus.SUCCESSFUL;
-				builds.add(new Build(buildType, status, isDefault));
-			}
-
-			result.setBuilds(builds);
+			result.setBuilds(demoBuilds);
 			gotStatus(result);
 		}
 	}
 
 	private void checkStatus() {
 		if (buildChecker != null) {
-			return;
+			buildChecker.stopChecking();
 		}
 		buildChecker = new BuildChecker(this);
 		buildChecker.start();
@@ -170,17 +164,18 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	}
 
 	private void startPlayer() {
-		if (playerThread == null) {
-			playerThread = new PlayerThread();
-			playerThread.start();
+		if (playerThread != null) {
+			playerThread.stopPlayer();
 		}
+		playerThread = new PlayerThread();
+		playerThread.start();
 	}
 
 	private void stopPlayer() {
-		if (playerThread != null) {
-			playerThread.stopPlayer();
-			playerThread = null;
+		if (playerThread == null) {
+			return;
 		}
+		playerThread.stopPlayer();
 	}
 
 	private void authorizationFailed() {

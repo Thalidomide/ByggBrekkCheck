@@ -13,16 +13,24 @@ public class Phidget implements PhidgetThreadListener {
 	private List<Build> failedBuilds = new ArrayList<Build>();
 	private PhidgetThread phidgetThread;
 
-	public Phidget() {
-		phidgetThread = new PhidgetThread(this);
-	}
-
 	public void resetOutput() {
 		failedBuilds.clear();
 	}
 
+	public void start() {
+		if (phidgetThread != null) {
+			stopAndClearOutputs();
+		}
+		phidgetThread = new PhidgetThread(this);
+		phidgetThread.start();
+	}
+
 	public void stopAndClearOutputs() {
+		if (phidgetThread == null) {
+			return;
+		}
 		phidgetThread.stopAndClearOutputs();
+		phidgetThread = null;
 	}
 
 	public void setBuildStatus(List<Build> failedBuilds) {

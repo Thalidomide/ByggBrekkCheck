@@ -1,6 +1,5 @@
 package no.teamjava.byggbrekker.logic;
 
-import java.io.File;
 import java.io.FileInputStream;
 
 import javazoom.jl.player.Player;
@@ -15,13 +14,13 @@ public class PlayerThread extends Thread {
 	private Player player;
 	private Jukebox jukebox;
 
+	public PlayerThread() {
+		jukebox = new Jukebox(Settings.BROKEN_BUILD_MP3_PATH);
+	}
+
 	@Override
 	public void run() {
-		jukebox = null;
-		player = null;
-
 		try {
-			jukebox = new Jukebox(Settings.BROKEN_BUILD_MP3_PATH);
 			player = new Player(new FileInputStream(jukebox.getMp3ToBePlayed()));
 			player.play();
 		} catch (Exception e1) {
