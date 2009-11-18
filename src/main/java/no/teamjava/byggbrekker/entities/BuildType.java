@@ -7,11 +7,11 @@ package no.teamjava.byggbrekker.entities;
 public enum BuildType {
 
 	DEFAULT("DSB-DEF", "Default",  BuildCategory.IMPORTANT),
-	DEPLOY_SNAPSHOT("DSB-DEPSNAP", "Deploy snapshot", BuildCategory.IMPORTANT),
-	DEPLOY_SYSTEST("DSB-DEPSYS", "Deploy systest", BuildCategory.IMPORTANT),
-	SMITHERWICK("DSB-SYSTESTSMW", "Deploy Smitherwick", BuildCategory.IMPORTANT),
-	BRANCH_ST3("DSB-ST3", "Branch ST3", BuildCategory.IMPORTANT),
 	BRANCH_ST4("DSB-ST4", "Branch ST4", BuildCategory.IMPORTANT),
+	BRANCH_ST3("DSB-ST3", "Branch ST3", BuildCategory.IMPORTANT),
+	DEPLOY_SNAPSHOT("DSB-DEPSNAP", "Deploy snapshot", BuildCategory.IMPORTANT),
+	SMITHERWICK("DSB-SYSTESTSMW", "Deploy Smitherwick", BuildCategory.IMPORTANT),
+	DEPLOY_SYSTEST("DSB-DEPSYS", "Deploy systest", BuildCategory.IMPORTANT),
 	INTEGRATION_TESTS("DSB-EXTIT", "Integration tests", BuildCategory.MINOR),
 	PRODUKSJONS_BYGG("DSB-PROD", "Produksjon bygg", BuildCategory.MINOR),
 	MAVEN_SITE("DSB-MVNSITE", "Maven site", BuildCategory.MINOR);
