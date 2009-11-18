@@ -109,6 +109,7 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	public void setDemoMode(ArrayList<Build> demoBuilds, boolean runningDemo) {
 		stop();
 		if (runningDemo) {
+			phidget.start();
 			BuildCheckResult result = new BuildCheckResult();
 			result.setBuildCheckStatus(BuildCheckStatus.OK);
 
