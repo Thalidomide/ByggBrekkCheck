@@ -1,5 +1,6 @@
 package no.teamjava.byggbrekker.logic;
 
+import java.io.File;
 import java.io.FileInputStream;
 
 import javazoom.jl.player.Player;
@@ -21,8 +22,13 @@ public class PlayerThread extends Thread {
 	@Override
 	public void run() {
 		try {
-			player = new Player(new FileInputStream(jukebox.getMp3ToBePlayed()));
+			System.out.println("Starte med å spille musikk..");
+			File toBePlayed = jukebox.getMp3ToBePlayed();
+			System.out.println("Skal spille: " + toBePlayed.getName());
+			player = new Player(new FileInputStream(toBePlayed));
+			System.out.println("Lager player, skal spille");
 			player.play();
+			System.out.println("Nå skal sangen være i gang");
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
