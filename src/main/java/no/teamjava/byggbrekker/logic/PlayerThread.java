@@ -22,7 +22,6 @@ public class PlayerThread extends Thread {
 	public void run() {
 		try {
 			player = new Player(new FileInputStream(jukebox.getMp3ToBePlayed()));
-			sleep(500);
 			player.play();
 		} catch (Exception e1) {
 			e1.printStackTrace();
