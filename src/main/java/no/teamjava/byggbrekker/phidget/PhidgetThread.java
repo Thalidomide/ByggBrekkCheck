@@ -48,13 +48,18 @@ class PhidgetThread extends Thread {
 		running = true;
 
 		if (!attached) {
+			System.out.println("Phidget er ikke tilkoblet, koble til..");
 			kit.addAttachListener(new AttachListener() {
 				@Override
 				public void attached(AttachEvent attachEvent) {
+					System.out.println("onAttach!");
 					attached = true;
 				}
 			});
+			System.out.println("Vente på attachement...");
 			kit.openAndWaitForAttachment();
+			System.out.println("Ferdig med å vente på attach :)");
+
 			if (!attached) {
 				throw new RuntimeException("Should be attached by now!");
 			}
