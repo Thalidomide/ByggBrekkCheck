@@ -24,9 +24,11 @@ public class PlayerThread extends Thread {
 		try {
 			System.out.println("Starte med å spille musikk..");
 			File toBePlayed = jukebox.getMp3ToBePlayed();
-			System.out.println("Skal spille: " + toBePlayed.getName());
-			player = new Player(new FileInputStream(toBePlayed));
-			System.out.println("Lager player, skal spille");
+			System.out.println("Skal spille: " + toBePlayed.getName() + ". Lage file input stream");
+			FileInputStream inputStream = new FileInputStream(toBePlayed);
+			System.out.println("Laget FileInputStream, lage player..");
+			player = new Player(inputStream);
+			System.out.println("Laget player, skal spille");
 			player.play();
 			System.out.println("Nå skal sangen være i gang");
 		} catch (Exception e1) {

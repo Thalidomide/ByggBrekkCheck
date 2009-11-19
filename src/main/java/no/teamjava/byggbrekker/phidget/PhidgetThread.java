@@ -59,10 +59,6 @@ class PhidgetThread extends Thread {
 			System.out.println("Vente på attachement...");
 			kit.openAndWaitForAttachment();
 			System.out.println("Ferdig med å vente på attach :)");
-
-			if (!attached) {
-				throw new RuntimeException("Should be attached by now!");
-			}
 		}
 
 		while (running) {
