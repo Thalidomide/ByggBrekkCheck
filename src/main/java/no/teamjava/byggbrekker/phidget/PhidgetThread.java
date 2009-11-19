@@ -21,8 +21,9 @@ class PhidgetThread extends Thread {
 
 	private final PhidgetThreadListener listener;
 	private InterfaceKitPhidgetMockable kit;
-	private boolean attached;
 	private boolean running;
+	private boolean stop;
+	private boolean attached;
 
 	private OutputHandler importantHandler0;
 	private OutputHandler importantHandler1;
@@ -33,35 +34,32 @@ class PhidgetThread extends Thread {
 		this.listener = listener;
 
 		kit = new InterfaceKitPhidgetMockable(false);
-
 		importantHandler0 = new ConstantFlasher(kit, Settings.OUTPUTS_IMPORTANT0, 2, 0);
 		importantHandler1 = new ConstantFlasher(kit, Settings.OUTPUTS_IMPORTANT1, 2, 1);
 		minorHandler = new ConstantLight(kit, Settings.OUTPUTS_MINOR, ConstantLight.LightWhenCondition.BROKEN);
 		okHandler = new ConstantLight(kit, Settings.OUTPUTS_OK, ConstantLight.LightWhenCondition.OK);
+
+		kit.addAttachListener(new AttachListener() {
+			@Override
+			public void attached(AttachEvent attachEvent) {
+				attached = true;
+				System.out.println("Phidget er attached! Starte phidget-tråden hvis den ikke er stoppet");
+				start();
+			}
+		});
 	}
 
 	@Override
 	public void run() {
-		if (running) {
+		if (running || stop) {
 			return;
 		}
 		running = true;
+		System.out.println("Phidget - openAndWaitForAttachment");
+		kit.openAndWaitForAttachment();
+		System.out.println("Phidget - done openAndWaitForAttachment! Kjøre..");
 
-		if (!attached) {
-			System.out.println("Phidget er ikke tilkoblet, koble til..");
-			kit.addAttachListener(new AttachListener() {
-				@Override
-				public void attached(AttachEvent attachEvent) {
-					System.out.println("onAttach!");
-					attached = true;
-				}
-			});
-			System.out.println("Vente på attachement...");
-			kit.openAndWaitForAttachment();
-			System.out.println("Ferdig med å vente på attach :)");
-		}
-
-		while (running) {
+		while (running && !stop) {
 			updateOutput();
 
 			try {
@@ -74,6 +72,7 @@ class PhidgetThread extends Thread {
 	}
 
 	public void stopAndClearOutputs() {
+		stop = true;
 		interrupt();
 		if (attached) {
 			clearOutputs();
