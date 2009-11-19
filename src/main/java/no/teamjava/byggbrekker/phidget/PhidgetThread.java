@@ -39,18 +39,19 @@ class PhidgetThread extends Thread {
 		minorHandler = new ConstantLight(kit, Settings.OUTPUTS_MINOR, ConstantLight.LightWhenCondition.BROKEN);
 		okHandler = new ConstantLight(kit, Settings.OUTPUTS_OK, ConstantLight.LightWhenCondition.OK);
 
+		System.out.println("Phidget - legge til AttachListener og vente på attach..");
 		kit.addAttachListener(new AttachListener() {
 			@Override
 			public void attached(AttachEvent attachEvent) {
 				attached = true;
-				System.out.println("Phidget er attached! Starte phidget-tråden hvis den ikke er stoppet");
-				start();
+				System.out.println("Phidget - attached!");
 			}
 		});
 	}
 
 	@Override
 	public void run() {
+		System.out.println("Phidget - kjøre.. Running = " + running + ", stop = " + stop);
 		if (running || stop) {
 			return;
 		}

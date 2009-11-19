@@ -22,6 +22,7 @@ public class Phidget implements PhidgetThreadListener {
 			stopAndClearOutputs();
 		}
 		phidgetThread = new PhidgetThread(this);
+		phidgetThread.start();
 	}
 
 	public void stopAndClearOutputs() {
