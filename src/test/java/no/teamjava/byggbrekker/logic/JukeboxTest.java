@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import junit.framework.TestCase;
+import no.teamjava.byggbrekker.entities.Settings;
 
 /**
  * @author : Raymond Koteng
@@ -15,7 +16,7 @@ public class JukeboxTest extends TestCase {
 	private Random randomFile = new Random();
 
 	public void testGetRandomMp3File() {
-		Jukebox jukebox = new Jukebox("src/main/resources/sounds/");
+		Jukebox jukebox = new Jukebox(Settings.BROKEN_BUILD_MP3_PATH);
 		File fileToBePlayed = jukebox.getMp3ToBePlayed();
 
 		assertNotNull(fileToBePlayed);

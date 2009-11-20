@@ -18,8 +18,8 @@ public class ConstantFlasherTest extends TestCase {
 		assertEquals(false, flasher0.getConditionAtBrokenTime(1));
 		assertEquals(true, flasher1.getConditionAtBrokenTime(1));
 
-		flasher0 = new ConstantFlasher(null, new int[]{1}, 3, 1, 0);
-		flasher1 = new ConstantFlasher(null, new int[]{1}, 3, 1, 1);
+		flasher0 = new ConstantFlasher(null, new int[]{1}, 3, 3, 0);
+		flasher1 = new ConstantFlasher(null, new int[]{1}, 3, 3, 1);
 
 		assertEquals(true, flasher0.getConditionAtBrokenTime(0));
 		assertEquals(true, flasher1.getConditionAtBrokenTime(0));
