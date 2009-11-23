@@ -172,7 +172,7 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 
 	private void startPlayer() {
 		if (playerThread != null) {
-			playerThread.stopPlayer();
+			return;
 		}
 		playerThread = new PlayerThread();
 		playerThread.start();
