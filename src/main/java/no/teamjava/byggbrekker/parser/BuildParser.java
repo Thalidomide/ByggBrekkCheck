@@ -27,7 +27,7 @@ public class BuildParser {
 			String[] lines = buildText.split(buildType.getLookup().toUpperCase());
 			boolean building = false;
 
-			if (lines.length > 0) {
+			if (lines.length > 1) {
 				String line = lines[1];
 				int successIndex = line.indexOf(successfulString);
 				int failedIndex = line.indexOf(failedString);
