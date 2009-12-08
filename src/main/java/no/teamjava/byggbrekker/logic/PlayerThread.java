@@ -30,14 +30,21 @@ public class PlayerThread extends Thread {
 			while (play) {
 				if (player == null || player.isComplete()) {
 					System.out.println("Spille ny sang..");
+					if (player != null) {
+						player.close();
+					}
 					File toBePlayed = jukebox.getMp3ToBePlayed();
 					playMp3(toBePlayed);
 				}
-				sleep(1000);
+				try {
+					sleep(1000);
+				} catch (InterruptedException e) {
+					play = false;
+					break;
+				}
 			}
 		} catch (Exception e1) {
 			e1.printStackTrace();
-			play = false;
 		}
 	}
 
@@ -48,14 +55,14 @@ public class PlayerThread extends Thread {
 		player = new Player(inputStream);
 		System.out.println("Laget player, skal spille");
 		player.play();
-		System.out.println("Nå skal sangen være i gang");
 	}
 
 	public void stopPlayer() {
+		play = false;
 		if (player == null) {
 			return;
 		}
-		play = false;
+		interrupt();
 		player.close();
 	}
 }

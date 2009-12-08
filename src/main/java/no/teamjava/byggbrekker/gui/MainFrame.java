@@ -183,6 +183,7 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 			return;
 		}
 		playerThread.stopPlayer();
+		playerThread = null;
 	}
 
 	private void authorizationFailed() {
