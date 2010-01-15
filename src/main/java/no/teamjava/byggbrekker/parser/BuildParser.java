@@ -27,7 +27,7 @@ public class BuildParser {
 			String[] lines = buildText.split(buildType.getLookup().toUpperCase());
 			boolean building = false;
 
-			if (lines.length > 0) {
+			if (lines.length > 1) {
 				String line = lines[1];
 				int successIndex = line.indexOf(successfulString);
 				int failedIndex = line.indexOf(failedString);
@@ -37,14 +37,22 @@ public class BuildParser {
 
 				building = buildingIndex > 0 && buildingIndex < 150;
 			} else {
+				printLinesWhenParsingFailed(buildType, lines);
 				status = BuildStatus.UNKNOWN;
 			}
-
 
 			builds.add(new Build(buildType, status, building));
 		}
 
 		return builds;
+	}
+
+	private void printLinesWhenParsingFailed(BuildType buildType, String[] lines) {
+		String msg = "Parsing feilet av bygg " + buildType.getText() + "! Innhold i 'lines':";
+		for (int i = 0; i < lines.length; i++) {
+			msg += "\n" + i + ". line - " + lines[i];
+		}
+		System.out.println(msg);
 	}
 
 
