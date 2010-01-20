@@ -33,7 +33,7 @@ public class Settings {
 	public final static int[] OUTPUTS_IMPORTANT0 = new int[]{0};
 	public final static int[] OUTPUTS_IMPORTANT1 = new int[]{1};
 	public final static int[] OUTPUTS_MINOR = new int[]{5};
-	public final static int[] OUTPUTS_OK = new int[]{6, 7};
+	public final static int[] OUTPUTS_OK = new int[]{6};
 
 	public static final List<BuildType> DEFAULT_BROKEN_DEMO_BUILDS = Arrays.asList(BuildType.DEFAULT);
 	public static final List<BuildType> DEFAULT_BUILDING_DEMO_BUILDS = Arrays.asList(BuildType.DEFAULT);
