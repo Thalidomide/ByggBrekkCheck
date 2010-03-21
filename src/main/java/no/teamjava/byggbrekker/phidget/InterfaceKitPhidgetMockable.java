@@ -1,5 +1,7 @@
 package no.teamjava.byggbrekker.phidget;
 
+import no.teamjava.byggbrekker.entities.Settings;
+
 import com.phidgets.InterfaceKitPhidget;
 import com.phidgets.PhidgetException;
 import com.phidgets.event.AttachListener;
@@ -14,8 +16,9 @@ public class InterfaceKitPhidgetMockable implements CanUpdateOutput {
 
 	private final boolean mock;
 
-	public InterfaceKitPhidgetMockable(boolean mock) {
-		this.mock = mock;
+	public InterfaceKitPhidgetMockable() {
+		this.mock = Settings.PHIDGET_MOCK;
+		log("##### PHIDGET IS MOCKED: " + mock + " #####");
 		if (mock) {
 			return;
 		}
@@ -32,7 +35,7 @@ public class InterfaceKitPhidgetMockable implements CanUpdateOutput {
 			attachListener.attached(null);
 			return;
 		}
-		
+
 		kit.addAttachListener(attachListener);
 	}
 
@@ -64,7 +67,7 @@ public class InterfaceKitPhidgetMockable implements CanUpdateOutput {
 	@Override
 	public void setOutputState(int output, boolean condition) {
 		if (mock) {
-			System.out.println(output + ". utgang: " + condition);
+			log(output + ". utgang: " + condition);
 			return;
 		}
 
@@ -72,6 +75,12 @@ public class InterfaceKitPhidgetMockable implements CanUpdateOutput {
 			kit.setOutputState(output, condition);
 		} catch (PhidgetException e) {
 			throw new RuntimeException("Error ved setting av output status på port " + output, e);
+		}
+	}
+
+	private void log(String text) {
+		if (Settings.PHIDHGET_MOCK_LOGGING) {
+			System.out.println(text);
 		}
 	}
 }

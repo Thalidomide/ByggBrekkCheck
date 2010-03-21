@@ -6,30 +6,32 @@ import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import no.teamjava.byggbrekker.entities.Build;
 import no.teamjava.byggbrekker.entities.BuildCategory;
 import no.teamjava.byggbrekker.entities.BuildCheckResult;
-import no.teamjava.byggbrekker.entities.BuildCheckStatus;
+import no.teamjava.byggbrekker.entities.BuildCheckResultProvider;
 import no.teamjava.byggbrekker.entities.BuildUtil;
 import no.teamjava.byggbrekker.entities.Credentials;
+import no.teamjava.byggbrekker.logic.BobHtmlParser;
 import no.teamjava.byggbrekker.logic.BuildChecker;
 import no.teamjava.byggbrekker.logic.ByggBrekkListener;
 import no.teamjava.byggbrekker.logic.CheckerListener;
+import no.teamjava.byggbrekker.logic.CredentialsProvider;
 import no.teamjava.byggbrekker.logic.PlayerThread;
 import no.teamjava.byggbrekker.phidget.Phidget;
 
 /**
- * @author : Raymond Koteng
- * @since : 20.okt.2009
+ * @author Raymond Koteng, Olav Jensen
+ * @since 20.okt.2009
  */
-public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListener, CredentialsFrameListener {
+public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListener, CredentialsFrameListener, CredentialsProvider {
 	private StatusPanel statusPanel;
 	private StartCheckPanel startCheckPanel;
 	private CredentialsPanel credentialsPanel;
+	private ConfigureDemoFrame configureDemoFrame;
+	private boolean runningDemo = false;
 
 	private BuildChecker buildChecker;
 	private Credentials credentials;
@@ -55,7 +57,7 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 			}
 		});
 		setSize(Toolkit.getDefaultToolkit().getScreenSize());
-		setTitle("ByggBrekkSjekker3001 - KnowIT");
+		setTitle("ByggBrekkSjekker3001 - TeamJava");
 		getContentPane().setBackground(Color.WHITE);
 		getContentPane().add(panel);
 		setUndecorated(true);
@@ -63,6 +65,7 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 		startCheckPanel = new StartCheckPanel(this);
 		statusPanel = new StatusPanel();
 		credentialsPanel = new CredentialsPanel(this);
+		configureDemoFrame = new ConfigureDemoFrame();
 	}
 
 	private void addCheckerGui() {
@@ -92,6 +95,7 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 
 	@Override
 	public void startCheckStatus() {
+		statusPanel.displayCheckMessage(0);
 		phidget.start();
 		checkStatus();
 	}
@@ -103,18 +107,19 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 			buildChecker = null;
 		}
 		phidget.stopAndClearOutputs();
+		statusPanel.resetBuildInfo();
+		statusPanel.displayNotRunningMessage();
 	}
 
 	@Override
-	public void setDemoMode(ArrayList<Build> demoBuilds, boolean runningDemo) {
+	public void setDemoMode(boolean runningDemo) {
 		stop();
+		this.runningDemo = runningDemo;
+		configureDemoFrame.setVisible(runningDemo);
 		if (runningDemo) {
-			phidget.start();
-			BuildCheckResult result = new BuildCheckResult();
-			result.setBuildCheckStatus(BuildCheckStatus.OK);
-
-			result.setBuilds(demoBuilds);
-			gotStatus(result);
+			startCheckStatus();
+		} else {
+			stopCheckStatus();
 		}
 	}
 
@@ -128,12 +133,14 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 		if (buildChecker != null) {
 			buildChecker.stopChecking();
 		}
+
 		buildChecker = new BuildChecker(this);
 		buildChecker.start();
 	}
 
 	@Override
-	public void gotStatus(BuildCheckResult result) {
+	public void updateStatus() {
+		BuildCheckResult result = getNewStatus();
 		phidget.setBuildStatus(result.getFailedBuilds());
 		switch (result.getBuildCheckStatus()) {
 			case OK:
@@ -144,7 +151,8 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 				stopPlayer();
 				break;
 			case CHECK_FAILED:
-				statusPanel.displayFailedCheck();
+				statusPanel.resetBuildInfo();
+				statusPanel.displayCheckErrorMessage();
 				stopPlayer();
 				break;
 			default:
@@ -152,9 +160,21 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 		}
 	}
 
+	@Override
+	public void updateTimeToUpdate(long time) {
+		statusPanel.displayCheckMessage(time);
+	}
+
+	private BuildCheckResult getNewStatus() {
+		BuildCheckResultProvider provider = runningDemo ? configureDemoFrame : new BobHtmlParser(this);
+		return provider.getResult();
+	}
+
 	private void presentResult(BuildCheckResult result) {
 		if (BuildUtil.isBroken(BuildCategory.IMPORTANT, result.getFailedBuilds())) {
 			startPlayer();
+		} else {
+			stopPlayer();
 		}
 		statusPanel.displayBuilds(result.getBuilds());
 	}

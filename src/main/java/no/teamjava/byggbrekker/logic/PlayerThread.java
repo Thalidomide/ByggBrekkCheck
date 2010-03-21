@@ -58,6 +58,7 @@ public class PlayerThread extends Thread {
 	}
 
 	public void stopPlayer() {
+		System.out.println("Skal stoppe musikk, spiller: " + play);
 		play = false;
 		if (player == null) {
 			return;

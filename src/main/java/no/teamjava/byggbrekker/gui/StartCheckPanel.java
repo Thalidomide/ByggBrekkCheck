@@ -20,14 +20,11 @@ public class StartCheckPanel extends InputPanel {
 	private boolean running = false;
 	private Button startOrStopButton;
 	private final ByggBrekkListener listener;
-	private ConfigureDemoFrame configureDemoFrame;
 
 
 	public StartCheckPanel(ByggBrekkListener listener) throws HeadlessException {
 		super(new GridBagLayout());
 		this.listener = listener;
-
-		configureDemoFrame = new ConfigureDemoFrame();
 
 		startOrStopButton = new Button("");
 		startOrStopButton.addActionListener(new ActionListener() {
@@ -45,7 +42,6 @@ public class StartCheckPanel extends InputPanel {
 		constraints.weightx = 0;
 		add(startOrStopButton, constraints);
 		add(getToggleDemoButton(), constraints);
-		add(getConfigureDemoButton(), constraints);
 		add(getExitButton(), constraints);
 
 		constraints.weightx = 1;
@@ -75,17 +71,6 @@ public class StartCheckPanel extends InputPanel {
 		return button;
 	}
 
-	private Button getConfigureDemoButton() {
-		Button button = new Button("Demo innstillinger");
-		button.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				configureDemo();
-			}
-		});
-		return button;
-	}
-
 	public void reset() {
 		running = false;
 		updateGui();
@@ -110,11 +95,7 @@ public class StartCheckPanel extends InputPanel {
 	private void toggleDemo() {
 		runningDemo = !runningDemo;
 
-		listener.setDemoMode(configureDemoFrame.getDemoBuilds(), runningDemo);
-	}
-
-	private void configureDemo() {
-		configureDemoFrame.configureBuilds();
+		listener.setDemoMode(runningDemo);
 	}
 }
 

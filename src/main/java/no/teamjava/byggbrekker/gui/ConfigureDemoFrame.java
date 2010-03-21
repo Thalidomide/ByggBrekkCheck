@@ -4,35 +4,37 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 
 import no.teamjava.byggbrekker.entities.Build;
+import no.teamjava.byggbrekker.entities.BuildCheckResult;
+import no.teamjava.byggbrekker.entities.BuildCheckResultProvider;
+import no.teamjava.byggbrekker.entities.BuildCheckStatus;
 import no.teamjava.byggbrekker.entities.BuildStatus;
 import no.teamjava.byggbrekker.entities.BuildType;
 import no.teamjava.byggbrekker.entities.Settings;
-import no.teamjava.byggbrekker.gui.widgets.Button;
 import no.teamjava.byggbrekker.gui.widgets.CheckBox;
 import no.teamjava.byggbrekker.gui.widgets.InputPanel;
 import no.teamjava.byggbrekker.gui.widgets.Label;
+import no.teamjava.byggbrekker.gui.widgets.LabelType;
 
 /**
  * @author Olav Jensen
  * @since 17.nov.2009
  */
-public class ConfigureDemoFrame extends JFrame {
+public class ConfigureDemoFrame extends JFrame implements BuildCheckResultProvider {
 
 	private List<BuildConfigureRow> rows = new ArrayList<BuildConfigureRow>();
 
 	public ConfigureDemoFrame() throws HeadlessException {
 		setLocation(50, 50);
-		setSize(400, 350);
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setSize(400, 450);
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		setAlwaysOnTop(true);
+		setResizable(false);
 
 		initializeGui();
 	}
@@ -42,14 +44,22 @@ public class ConfigureDemoFrame extends JFrame {
 		getContentPane().add(panel);
 
 		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.insets = new Insets(1, 10, 1, 10);
 
 		int y = 0;
 
+		constraints.gridy = y++;
+		constraints.gridwidth = 3;
+		constraints.weighty = 1;
+		constraints.insets = new Insets(4, 0, 0, 0);
+		panel.add(getInfoLabel(), constraints);
+
+		constraints.gridy = y++;
+		constraints.gridwidth = 1;
+		constraints.anchor = GridBagConstraints.CENTER;
+		constraints.insets = new Insets(10, 10, 1, 10);
 		panel.add(new Label(""), constraints);
 		panel.add(new Label("Brukket"), constraints);
 		panel.add(new Label("Bygger"), constraints);
-		y++;
 
 		for (BuildType type : BuildType.values()) {
 			constraints.gridy = y++;
@@ -61,36 +71,21 @@ public class ConfigureDemoFrame extends JFrame {
 
 			rows.add(row);
 		}
-
-		constraints.gridy = y;
-		constraints.gridwidth = 3;
-		constraints.insets = new Insets(20, 0, 0, 0);
-		panel.add(getOkButton(), constraints);
 	}
 
-	private Button getOkButton() {
-		Button confirmButton = new Button("Lagre");
-		confirmButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-			}
-		});
-		return confirmButton;
+	private Label getInfoLabel() {
+		return new Label("Status oppdateres hvert " + (Settings.CHECK_INTERVAL / 1000) + ". sekund", LabelType.HEADER);
 	}
 
-	public void configureBuilds() {
-		setVisible(true);
-	}
-
-	public ArrayList<Build> getDemoBuilds() {
+	@Override
+	public BuildCheckResult getResult() {
 		ArrayList<Build> list = new ArrayList<Build>(rows.size());
 
 		for (BuildConfigureRow row : rows) {
 			list.add(row.getBuild());
 		}
 
-		return list;
+		return new BuildCheckResult(list, BuildCheckStatus.OK);
 	}
 }
 

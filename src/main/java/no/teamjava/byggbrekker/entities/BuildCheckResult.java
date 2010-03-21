@@ -9,8 +9,13 @@ import java.util.List;
  */
 public class BuildCheckResult {
 
-	private List<Build> builds = new ArrayList<Build>();
-	private BuildCheckStatus buildCheckStatus;
+	private final List<Build> builds;
+	private final BuildCheckStatus buildCheckStatus;
+
+	public BuildCheckResult(List<Build> builds, BuildCheckStatus buildCheckStatus) {
+		this.builds = builds;
+		this.buildCheckStatus = buildCheckStatus;
+	}
 
 	public List<Build> getBuilds() {
 		return builds;
@@ -28,15 +33,7 @@ public class BuildCheckResult {
 		return failedBuilds;
 	}
 
-	public void setBuilds(List<Build> builds) {
-		this.builds = builds;
-	}
-
 	public BuildCheckStatus getBuildCheckStatus() {
 		return buildCheckStatus;
-	}
-
-	public void setBuildCheckStatus(BuildCheckStatus buildCheckStatus) {
-		this.buildCheckStatus = buildCheckStatus;
 	}
 }

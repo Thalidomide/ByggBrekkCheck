@@ -4,7 +4,9 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
@@ -24,17 +26,34 @@ import no.teamjava.byggbrekker.gui.widgets.LabelType;
 public class StatusPanel extends JPanel {
 
 	private List<BuildRow> rows = new ArrayList<BuildRow>();
+	private Label infoLabel;
 
 	public StatusPanel() {
-		int rowCount = BuildType.values().length;
-		setLayout(new GridLayout(rowCount, 1));
+		int buildCount = BuildType.values().length;
+		setLayout(new GridBagLayout());
 
-		for (int i = 0; i < rowCount; i++) {
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.fill = 1;
+		constraints.weightx = 1;
+		constraints.weighty = 0.01;
+
+		infoLabel = new Label("", LabelType.BIG);
+		infoLabel.setForeground(Color.YELLOW);
+		JPanel infoPanel = new JPanel();
+		infoPanel.setBackground(Settings.BACKGROUND);
+		infoPanel.add(infoLabel);
+		add(infoPanel, constraints);
+
+		constraints.weighty = 0.1;
+		int y = 1;
+		for (int i = 0; i < buildCount; i++) {
 			BuildRow row = new BuildRow();
 
+			constraints.gridy = y++;
 			rows.add(row);
-			add(row);
+			add(row, constraints);
 		}
+		displayNotRunningMessage();
 	}
 
 	public void displayBuilds(List<Build> builds) {
@@ -49,15 +68,25 @@ public class StatusPanel extends JPanel {
 		validateTree();
 	}
 
-	public void displayFailedCheck() {
-		reset();
-		Label label = new Label("Noe gikk galt ved sjekking av status!", LabelType.BIG);
-		label.setForeground(Color.YELLOW);
-
-		add(label);
+	public void displayCheckMessage(long time) {
+		DecimalFormat df = new DecimalFormat("#.#");
+		String secsUntilNextUpdate = df.format((double) time / 1000);
+		displayMessage("Sjekker status (neste oppdatering om: " + secsUntilNextUpdate + " s.)..");
 	}
 
-	public void reset() {
+	public void displayCheckErrorMessage() {
+		displayMessage("Noe gikk galt ved sjekking av status!");
+	}
+
+	public void displayNotRunningMessage() {
+		displayMessage("Sjekking av status er ikke startet.");
+	}
+
+	private void displayMessage(String text) {
+		infoLabel.setText(text);
+	}
+
+	public void resetBuildInfo() {
 		for (BuildRow row : rows) {
 			row.reset();
 		}
@@ -165,6 +194,7 @@ class BuildRow extends JPanel {
 	}
 
 	public void reset() {
+		build = null;
 		repaint();
 		setBackground(Settings.BACKGROUND);
 		label.setText("");
