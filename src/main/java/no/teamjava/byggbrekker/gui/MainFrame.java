@@ -46,8 +46,7 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 		phidget = new Phidget();
 
 		initializeGui();
-//		getNewCredentials();
-		gotCredentials(new Credentials("olj", "4950Riso"));//TODO Kun for testing
+		getNewCredentials();
 		this.setVisible(true);
 	}
 
@@ -107,7 +106,6 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	@Override
 	public void stopCheck() {
 		checking = false;
-		System.out.println("STOOOOOOOOOP DER!");
 		if (buildChecker != null) {
 			buildChecker.stopChecking();
 			buildChecker = null;
@@ -140,7 +138,6 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 
 	private void checkStatus() {
 		checking = true;
-		System.out.println("Hente ny status...");
 		if (buildChecker != null) {
 			buildChecker.stopChecking();
 		}
