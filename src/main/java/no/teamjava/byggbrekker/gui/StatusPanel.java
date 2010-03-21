@@ -71,7 +71,7 @@ public class StatusPanel extends JPanel {
 	public void displayCheckMessage(long time) {
 		DecimalFormat df = new DecimalFormat("#.#");
 		String secsUntilNextUpdate = df.format((double) time / 1000);
-		displayMessage("Sjekker status (neste oppdatering om: " + secsUntilNextUpdate + " s.)..");
+		displayMessage("Sjekker status (neste oppdatering om: " + secsUntilNextUpdate + " sekunder)..");
 	}
 
 	public void displayCheckErrorMessage() {

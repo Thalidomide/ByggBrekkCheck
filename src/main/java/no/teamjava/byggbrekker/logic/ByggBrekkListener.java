@@ -5,11 +5,14 @@ package no.teamjava.byggbrekker.logic;
  * @since : 20.okt.2009
  */
 public interface ByggBrekkListener {
-	void startCheckStatus();
 
-	void stopCheckStatus();
+	void startCheck();
 
-	void setDemoMode(boolean demoDefault);
+	void stopCheck();
+
+	void startDemo();
+
+	void stopDemo();
 
 	void exit();
 }

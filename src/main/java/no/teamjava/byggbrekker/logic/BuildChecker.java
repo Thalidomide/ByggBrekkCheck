@@ -20,17 +20,15 @@ public class BuildChecker extends Thread {
 		long lastUpdate = 0;
 
 		while (run) {
-			long timeToNextUpdate;
-
 			if (System.currentTimeMillis() - lastUpdate >= Settings.CHECK_INTERVAL || lastUpdate == 0) {
+				listener.updateTimeToUpdate(0);
 				listener.updateStatus();
-				timeToNextUpdate = 0;
 				lastUpdate = System.currentTimeMillis();
 			} else {
 				long timeSinceLastUpdate = System.currentTimeMillis() - lastUpdate;
-				timeToNextUpdate = Settings.CHECK_INTERVAL - timeSinceLastUpdate;
+				long timeToNextUpdate = Settings.CHECK_INTERVAL - timeSinceLastUpdate;
+				listener.updateTimeToUpdate(timeToNextUpdate);
 			}
-			listener.updateTimeToUpdate(timeToNextUpdate);
 
 			try {
 				sleep(Settings.UPDATE_TIME_TO_CHECK_INTERVAL);

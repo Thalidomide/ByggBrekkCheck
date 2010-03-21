@@ -18,21 +18,15 @@ import no.teamjava.byggbrekker.logic.ByggBrekkListener;
 public class StartCheckPanel extends InputPanel {
 
 	private boolean running = false;
+	private boolean runningDemo = false;
+
 	private Button startOrStopButton;
 	private final ByggBrekkListener listener;
-
+	private Button demoButton;
 
 	public StartCheckPanel(ByggBrekkListener listener) throws HeadlessException {
 		super(new GridBagLayout());
 		this.listener = listener;
-
-		startOrStopButton = new Button("");
-		startOrStopButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				startOrStopAction();
-			}
-		});
 
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.BASELINE_LEADING;
@@ -40,13 +34,36 @@ public class StartCheckPanel extends InputPanel {
 
 		constraints.gridy = 0;
 		constraints.weightx = 0;
-		add(startOrStopButton, constraints);
+		add(getStartButton(), constraints);
 		add(getToggleDemoButton(), constraints);
 		add(getExitButton(), constraints);
 
 		constraints.weightx = 1;
 
-		updateGui();
+		updateStartButtonText();
+		updateDemoButtonText();
+	}
+
+	private Button getStartButton() {
+		startOrStopButton = new Button("");
+		startOrStopButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				startOrStop();
+			}
+		});
+		return startOrStopButton;
+	}
+
+	private Button getToggleDemoButton() {
+		demoButton = new Button("");
+		demoButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				startOrStopDemo();
+			}
+		});
+		return demoButton;
 	}
 
 	private Button getExitButton() {
@@ -60,42 +77,41 @@ public class StartCheckPanel extends InputPanel {
 		return button;
 	}
 
-	private Button getToggleDemoButton() {
-		Button button = new Button("Start/stop demo");
-		button.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				toggleDemo();
-			}
-		});
-		return button;
-	}
-
 	public void reset() {
 		running = false;
-		updateGui();
+		updateStartButtonText();
 	}
 
-	private void startOrStopAction() {
+	private void startOrStop() {
 		running = !running;
-		updateGui();
+		updateStartButtonText();
+		demoButton.setEnabled(!running);
+
 		if (running) {
-			listener.startCheckStatus();
+			listener.startCheck();
 		} else {
-			listener.stopCheckStatus();
+			listener.stopCheck();
 		}
 	}
 
-	private void updateGui() {
+	private void startOrStopDemo() {
+		runningDemo = !runningDemo;
+		updateDemoButtonText();
+		startOrStopButton.setEnabled(!runningDemo);
+
+		if (runningDemo) {
+			listener.startDemo();
+		} else {
+			listener.stopDemo();
+		}
+	}
+
+	private void updateStartButtonText() {
 		startOrStopButton.setText(running ? "Stop" : "Start");
 	}
 
-	private boolean runningDemo = false;
-
-	private void toggleDemo() {
-		runningDemo = !runningDemo;
-
-		listener.setDemoMode(runningDemo);
+	private void updateDemoButtonText() {
+		demoButton.setText((runningDemo ? "Stop" : "Start") + " demo");
 	}
 }
 

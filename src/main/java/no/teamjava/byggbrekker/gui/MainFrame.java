@@ -27,11 +27,14 @@ import no.teamjava.byggbrekker.phidget.Phidget;
  * @since 20.okt.2009
  */
 public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListener, CredentialsFrameListener, CredentialsProvider {
+
+	private boolean checking;
+	private boolean runningDemo;
+
 	private StatusPanel statusPanel;
 	private StartCheckPanel startCheckPanel;
 	private CredentialsPanel credentialsPanel;
 	private ConfigureDemoFrame configureDemoFrame;
-	private boolean runningDemo = false;
 
 	private BuildChecker buildChecker;
 	private Credentials credentials;
@@ -43,7 +46,8 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 		phidget = new Phidget();
 
 		initializeGui();
-		getNewCredentials();
+//		getNewCredentials();
+		gotCredentials(new Credentials("olj", "4950Riso"));//TODO Kun for testing
 		this.setVisible(true);
 	}
 
@@ -94,14 +98,16 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	}
 
 	@Override
-	public void startCheckStatus() {
+	public void startCheck() {
 		statusPanel.displayCheckMessage(0);
 		phidget.start();
 		checkStatus();
 	}
 
 	@Override
-	public void stopCheckStatus() {
+	public void stopCheck() {
+		checking = false;
+		System.out.println("STOOOOOOOOOP DER!");
 		if (buildChecker != null) {
 			buildChecker.stopChecking();
 			buildChecker = null;
@@ -112,15 +118,18 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	}
 
 	@Override
-	public void setDemoMode(boolean runningDemo) {
+	public void startDemo() {
+		runningDemo = true;
+		configureDemoFrame.setVisible(true);
+		startCheck();
+	}
+
+	@Override
+	public void stopDemo() {
+		runningDemo = false;
+		configureDemoFrame.setVisible(false);
 		stop();
-		this.runningDemo = runningDemo;
-		configureDemoFrame.setVisible(runningDemo);
-		if (runningDemo) {
-			startCheckStatus();
-		} else {
-			stopCheckStatus();
-		}
+		stopCheck();
 	}
 
 	@Override
@@ -130,6 +139,8 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	}
 
 	private void checkStatus() {
+		checking = true;
+		System.out.println("Hente ny status...");
 		if (buildChecker != null) {
 			buildChecker.stopChecking();
 		}
@@ -141,6 +152,12 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	@Override
 	public void updateStatus() {
 		BuildCheckResult result = getNewStatus();
+		
+		if (!checking) {
+			/* The checking has been stopped, disregard the result */
+			return;
+		}
+
 		phidget.setBuildStatus(result.getFailedBuilds());
 		switch (result.getBuildCheckStatus()) {
 			case OK:
@@ -207,7 +224,7 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 	}
 
 	private void authorizationFailed() {
-		stopCheckStatus();
+		stopCheck();
 		startCheckPanel.reset();
 		getNewCredentials();
 	}
