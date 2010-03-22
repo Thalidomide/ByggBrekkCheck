@@ -14,7 +14,7 @@ public class Settings {
 	public static final long CHECK_INTERVAL = 10000; //Ms. between each update of the build status when running
 	public static final long UPDATE_TIME_TO_CHECK_INTERVAL = 1000; //Ms. before updating time remaining until next update
 
-	public static final boolean PHIDGET_MOCK = true;
+	public static final boolean PHIDGET_MOCK = false;
 	public static final boolean PHIDHGET_MOCK_LOGGING = true;
 
 	public static final String BROKEN_BUILD_MP3_PATH = "C:/jukebox/";
