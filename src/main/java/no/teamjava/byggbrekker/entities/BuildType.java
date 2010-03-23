@@ -7,8 +7,8 @@ package no.teamjava.byggbrekker.entities;
 public enum BuildType {
 
 	DEFAULT("DSB-DEF", "Default",  BuildCategory.IMPORTANT),
+	BRANCH_ST3("DSB-ST3", "Branch Prod3_x", BuildCategory.IMPORTANT),
 	BRANCH_ST4("DSB-ST4", "Branch ST4", BuildCategory.IMPORTANT),
-	BRANCH_ST3("DSB-ST3", "Branch ST3", BuildCategory.IMPORTANT),
 	DEPLOY_SNAPSHOT("DSB-DEPSNAP", "Deploy snapshot", BuildCategory.IMPORTANT),
 	SMITHERWICK("DSB-SYSTESTSMW", "Deploy Smitherwick", BuildCategory.IMPORTANT),
 	DEPLOY_SYSTEST("DSB-DEPSYS", "Deploy systest", BuildCategory.IMPORTANT),
