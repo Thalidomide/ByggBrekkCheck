@@ -63,6 +63,7 @@ public class MainFrame extends JFrame implements ByggBrekkListener, CheckerListe
 		setTitle("ByggBrekkSjekker3001 - TeamJava");
 		getContentPane().setBackground(Color.WHITE);
 		getContentPane().add(panel);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setUndecorated(true);
 
 		startCheckPanel = new StartCheckPanel(this);

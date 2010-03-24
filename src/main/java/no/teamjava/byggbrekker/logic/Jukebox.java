@@ -2,6 +2,7 @@ package no.teamjava.byggbrekker.logic;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -32,11 +33,15 @@ public class Jukebox {
 			return files.get(randomIndex);
 
 		} else {
-			throw new RuntimeException("Folder does not contains mp3 files!");
+			System.out.printf("Folder %s does not contain any mp3 files!%n", folder.getAbsolutePath());
+			return null;
 		}
 	}
 
 	private List<File> getAllMp3FilesInDirectory(File[] allFilesInDirectory) {
+		if (allFilesInDirectory == null) {
+			return Collections.emptyList();
+		}
 		List<File> mp3List = new ArrayList<File>();
 		for (File file : allFilesInDirectory) {
 			if (file.getName().endsWith(".mp3")) {

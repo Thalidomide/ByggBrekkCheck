@@ -34,7 +34,12 @@ public class PlayerThread extends Thread {
 						player.close();
 					}
 					File toBePlayed = jukebox.getMp3ToBePlayed();
-					playMp3(toBePlayed);
+					if (toBePlayed != null) {
+						playMp3(toBePlayed);
+					} else {
+						play = false;
+						break;
+					}
 				}
 				try {
 					sleep(1000);
