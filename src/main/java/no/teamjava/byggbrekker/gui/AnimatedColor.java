@@ -1,6 +1,8 @@
 package no.teamjava.byggbrekker.gui;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author olj
@@ -9,17 +11,20 @@ import java.awt.Color;
 public class AnimatedColor {
 
 	private final ColorValue red, green, blue;
-	private ColorValue animating;
+	private List<ColorValue> animationSequence = new ArrayList<ColorValue>();
+	private int animating;
 
 	public AnimatedColor(int initialRed, int initialGreen, int initialBlue) {
 		red = new ColorValue(initialRed);
 		green = new ColorValue(initialGreen);
 		blue = new ColorValue(initialBlue);
 
-		red.setNext(green);
-		green.setNext(red);
+		animationSequence.add(red);
+		animationSequence.add(red);
+		animationSequence.add(green);
+		animationSequence.add(green);
 
-		animating = red;
+		animating = 0;
 	}
 
 	public Color getNext() {
@@ -29,20 +34,26 @@ public class AnimatedColor {
 	}
 
 	private void animate() {
-		boolean hitMaxLow = animating.animate();
+		boolean hitMaxLow = animationSequence.get(animating).animate();
 		if (hitMaxLow) {
-			animating = animating.getNext();
+			setNextToAnimate();
+		}
+	}
+
+	private void setNextToAnimate() {
+		animating++;
+		if (animating >= animationSequence.size()) {
+			animating = 0;
 		}
 	}
 }
 class ColorValue {
 	private final int baseValue, minValue, maxValue;
 	private final static int hiLowRange = 100;
-	private final static int step = 2;
+	private final static int step = 1;
 
 	private int value;
 	private boolean up = true;
-	private ColorValue next;
 
 	ColorValue(int baseValue) {
 		this.baseValue = baseValue;
@@ -77,14 +88,6 @@ class ColorValue {
 
 	public int getValue() {
 		return value;
-	}
-
-	public ColorValue getNext() {
-		return next;
-	}
-
-	public void setNext(ColorValue next) {
-		this.next = next;
 	}
 
 	private int getMaxValue() {
