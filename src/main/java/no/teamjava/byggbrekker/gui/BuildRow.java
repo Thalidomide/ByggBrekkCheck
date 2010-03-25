@@ -98,9 +98,10 @@ public class BuildRow extends JPanel {
 		int height = getHeight() - borderThickness * 2;
 		int width = getWidth();
 		int buildingWidth = (int) (height * 3.5);
+		int infoWidth = width - 2 * buildingWidth + 1;
 
 		buildingIndicationLeft.setBounds(0, borderThickness, buildingWidth, height);
-		labelPanel.setBounds(buildingWidth, borderThickness, width - 2 * buildingWidth, height);
+		labelPanel.setBounds(buildingWidth, borderThickness, infoWidth, height);
 		buildingIndicationRight.setBounds(width - buildingWidth, borderThickness, buildingWidth, height);
 	}
 
