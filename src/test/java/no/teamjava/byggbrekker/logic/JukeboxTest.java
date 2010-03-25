@@ -24,14 +24,9 @@ public class JukeboxTest extends TestCase {
 	}
 
 	public void testPathDoesNotContainsMp3Files() {
-
-		try {
-			Jukebox jukebox = new Jukebox("src/main/resources/");
-			File file = jukebox.getMp3ToBePlayed();
-			assertTrue(false); // runtime exeption should be thrown before this stage
-		} catch (RuntimeException e) {
-			assertTrue(true); // expected to fail
-		}
+		Jukebox jukebox = new Jukebox("src/main/resources/");
+		File file = jukebox.getMp3ToBePlayed();
+		assertNull(file);
 	}
 
 	public void testJukeboxWithOneFile() {
