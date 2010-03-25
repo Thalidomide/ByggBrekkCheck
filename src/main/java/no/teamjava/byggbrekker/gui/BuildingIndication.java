@@ -4,6 +4,8 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JPanel;
 
 import no.teamjava.byggbrekker.entities.Settings;
@@ -18,12 +20,18 @@ public class BuildingIndication extends JPanel {
 
 	private PaintTimer timer;
 	private final Style style;
-	private AnimatedColor animatedColor = new AnimatedColor(255, 255, 0);
+	private List<AnimatedColor> animatedColors = new ArrayList<AnimatedColor>();
+	private final int sectionElements = 20;
+
 	private boolean show = false;
 
 	public BuildingIndication(Style style) {
 		this.style = style;
 		setBackground(Settings.BACKGROUND);
+
+		for (int i = 0; i < sectionElements; i++) {
+			animatedColors.add(new AnimatedColor(255, 255, 0, i * 2));
+		}
 		timer = new PaintTimer();
 		timer.start();
 	}
@@ -53,7 +61,6 @@ public class BuildingIndication extends JPanel {
 			return;
 		}
 
-//		int topBottomSpace = borderThickness + 5;
 		int topBottomSpace = 0;
 		int width = getWidth();
 
@@ -61,7 +68,6 @@ public class BuildingIndication extends JPanel {
 		int yTop = topBottomSpace;
 		int yBottom = getHeight() - topBottomSpace;
 		int shift = (int) (width / 3.5);
-//		int shift = yBottom - yTop;
 		int elements = 3;
 		int elementWidth = (int) (shift * 0.5);
 		int elementSpace = elementWidth * 2;
@@ -79,16 +85,30 @@ public class BuildingIndication extends JPanel {
 	}
 
 	private void drawBuildingElement(Graphics g, int x, int width, int shift, int yTop, int yBottom) {
+		int sectionHeight = yBottom - yTop;
+		int sectionShift = shift / sectionElements;
+		for (int i = 0; i < sectionElements; i++) {
+			int curX = (int) Math.round(x + (double) shift * i / sectionElements);
+			int curYTop = (int) Math.round((double) sectionHeight * (sectionElements - i - 1) / sectionElements);
+			int curYBottom = (int) Math.round((double) sectionHeight * (sectionElements - i) / sectionElements);
+
+			drawSection(i, g, curX, width, sectionShift, curYTop, curYBottom);
+		}
+
 		int[] xPoints = new int[]{x, x + width, x + width + shift, x + shift};
 		int[] yPoints = new int[]{yBottom, yBottom, yTop, yTop};
-
-		g.setColor(animatedColor.getNext());
-		g.fillPolygon(xPoints, yPoints, 4);
-
 		Graphics2D g2D = (Graphics2D) g;
 		g2D.setStroke(new BasicStroke(2));
 		g.setColor(Color.BLACK);
 		g.drawPolygon(xPoints, yPoints, 4);
+	}
+
+	private void drawSection(int sectionNr, Graphics g, int x, int width, int shift, int yTop, int yBottom) {
+		int[] xPoints = new int[]{x, x + width, x + width + shift, x + shift};
+		int[] yPoints = new int[]{yBottom, yBottom, yTop, yTop};
+		
+		g.setColor(animatedColors.get(sectionNr).getNext());
+		g.fillPolygon(xPoints, yPoints, 4);
 	}
 
 	class PaintTimer extends Thread {

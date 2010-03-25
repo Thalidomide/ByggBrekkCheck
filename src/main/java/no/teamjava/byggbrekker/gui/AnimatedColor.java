@@ -14,17 +14,19 @@ public class AnimatedColor {
 	private List<ColorValue> animationSequence = new ArrayList<ColorValue>();
 	private int animating;
 
-	public AnimatedColor(int initialRed, int initialGreen, int initialBlue) {
-		red = new ColorValue(initialRed);
-		green = new ColorValue(initialGreen);
-		blue = new ColorValue(initialBlue);
+	public AnimatedColor(int initialRed, int initialGreen, int initialBlue, int offset) {
+		red = new ColorValue(initialRed, 100);
+		green = new ColorValue(initialGreen, 255);
+		blue = new ColorValue(initialBlue, 100);
 
 		animationSequence.add(red);
-		animationSequence.add(red);
-		animationSequence.add(green);
 		animationSequence.add(green);
 
 		animating = 0;
+
+		for (int i = 0; i < offset; i++) {
+			animate();
+		}
 	}
 
 	public Color getNext() {
@@ -49,14 +51,15 @@ public class AnimatedColor {
 }
 class ColorValue {
 	private final int baseValue, minValue, maxValue;
-	private final static int hiLowRange = 100;
-	private final static int step = 1;
+	private final static int step = 2;
 
 	private int value;
+	private int hiLowRange = 100;
 	private boolean up = true;
 
-	ColorValue(int baseValue) {
+	ColorValue(int baseValue, int hiLowRange) {
 		this.baseValue = baseValue;
+		this.hiLowRange = hiLowRange;
 		minValue = getMinValue();
 		maxValue = getMaxValue();
 		value = baseValue;
