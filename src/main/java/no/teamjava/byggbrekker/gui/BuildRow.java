@@ -75,9 +75,17 @@ public class BuildRow extends JPanel {
 		}
 
 		label.setText(buildType.getText() + postFix);
-		labelPanel.setBackground(color);
-		buildingIndicationLeft.setBackground(color);
-		buildingIndicationRight.setBackground(color);
+		setBackground(color);
+	}
+
+	@Override
+	public void setBackground(Color color) {
+		super.setBackground(color);
+		if (labelPanel != null) {
+			labelPanel.setBackground(color);
+			buildingIndicationLeft.setBackground(color);
+			buildingIndicationRight.setBackground(color);
+		}
 	}
 
 	private void initializeGui() {
