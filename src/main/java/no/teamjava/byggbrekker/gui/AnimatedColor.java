@@ -21,6 +21,7 @@ public class AnimatedColor {
 
 		animationSequence.add(red);
 		animationSequence.add(green);
+		animationSequence.add(red);
 
 		animating = 0;
 
