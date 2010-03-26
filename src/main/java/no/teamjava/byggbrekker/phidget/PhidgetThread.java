@@ -36,7 +36,7 @@ class PhidgetThread extends Thread {
 		kit = new InterfaceKitPhidgetMockable();
 		importantHandler0 = new ConstantFlasher(kit, Settings.OUTPUTS_IMPORTANT0, 2, 2, 0);
 		importantHandler1 = new ConstantFlasher(kit, Settings.OUTPUTS_IMPORTANT1, 2, 2, 1);
-		minorHandler = new ConstantFlasher(kit, Settings.OUTPUTS_MINOR, 1, 10, 0);
+		minorHandler = new ConstantFlasher(kit, Settings.OUTPUTS_MINOR, 1, 60, 0);
 		okHandler = new ConstantLight(kit, Settings.OUTPUTS_OK, ConstantLight.LightWhenCondition.OK);
 
 		System.out.println("Phidget - legge til AttachListener og vente på attach..");
